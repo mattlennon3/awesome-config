@@ -20,6 +20,9 @@ beautiful.init(gears.filesystem.get_configuration_dir() .. "theme.lua")
 
 
 -- Import Keybinds
+local keys = require("keys")
+root.keys(keys.globalkeys)
+-- root.buttons(keys.desktopbuttons)
 
 -- Import rules
 
@@ -109,6 +112,15 @@ client.connect_signal("manage", function (c)
        awful.placement.no_offscreen(c)
     end
  end)
+
+
+ -- ===================================================================
+-- Client Focusing
+-- ===================================================================
+
+
+-- Autofocus a new client when previously focused one is closed
+require("awful.autofocus")
 
 
 -- ===================================================================
