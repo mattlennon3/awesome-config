@@ -78,18 +78,28 @@ keys.globalkeys = gears.table.join(
         {description = "open a terminal", group = "launcher"}
     ),
     -- Spawn launcher
-    awful.key({modkey}, "d",
+    awful.key({modkey}, "r",
         function()
         awful.spawn(apps.launcher)
         end,
         {description = "application launcher", group = "launcher"}
     ),
+    -- Spawn file explorer
+    awful.key({modkey}, "e",
+        function()
+        awful.spawn(apps.filebrowser)
+        end,
+        {description = "file explorer", group = "launcher"}
+    ),
 
+    -- Show help popup
     awful.key({ modkey }, "s",
         hotkeys_popup.show_help,
         {description="show help", group="awesome"}),
 
-    -- =========================================
+
+
+   -- =========================================
    -- FUNCTION KEYS
    -- =========================================
 
@@ -164,10 +174,6 @@ keys.globalkeys = gears.table.join(
       awesome.restart,
       {description = "reload awesome", group = "awesome"}
    ),
-   awful.key({modkey, ctrlkey}, "r",
-      awesome.restart,
-      {description = "reload awesome", group = "awesome"}
-   ),
    -- Quit Awesome
    awful.key({modkey, shiftkey}, "Escape",
       awesome.quit,
@@ -185,6 +191,10 @@ keys.globalkeys = gears.table.join(
    -- =========================================
    -- CLIENT FOCUSING
    -- =========================================
+
+    awful.key({ modkey }, "u",
+      awful.client.urgent.jumpto,
+      {description = "jump to urgent client", group = "client"}),
 
    -- =========================================
    -- CLIENT RESIZING

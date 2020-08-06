@@ -8,6 +8,7 @@
 - Keybinds next to open windows
 - Add the menu when you right click on the desktop
 - Implement exit screen (search for show_exit_screen)
+- Install screenshot software & add it to apps (& keybinds)
 
 
 ## Debug commands
