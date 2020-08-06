@@ -2,6 +2,7 @@
 -- Imports
 -- ===================================================================
 
+local awful = require("awful")
 
 -- Icon imports
 
@@ -18,14 +19,14 @@ local tags = {
     },
     {
         name = 'Comms',
-        layout = nil
+        layout = awful.layout.suit.tile.bottom
     },
     {
         name = 'Code',
         layout = nil
     },
     {
-        name = 'Web4',
+        name = 'Web',
         layout = nil
     },
     {
@@ -34,7 +35,7 @@ local tags = {
     },
     {
         name = 'Games', -- TODO: Add this one only if steam opens?
-        layout = nil
+        layout = awful.layout.suit.max
     }
 }
  

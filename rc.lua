@@ -81,6 +81,10 @@ awful.layout.layouts = {
     -- awful.layout.suit.corner.se,
  }
 
+-- Ratio of screen space master client takes
+ local local_master_width_factor = 0.65
+ -- Master takes the full screen when it's on it's own
+ local local_master_fill_policy = "expand"
 
 -- Set up each screen (add tags & panels)
 awful.screen.connect_for_each_screen(function(s)
@@ -92,13 +96,27 @@ awful.screen.connect_for_each_screen(function(s)
       awful.tag.add(tag.name, {
          layout = tag.layout and tag.layout or awful.layout.suit.tile,
          screen = s,
-         selected = i == 1
+         selected = tag.name == "Web",
+         master_width_factor = tag.master_width_factor or local_master_width_factor,
+         master_fill_policy = tag,local_master_fill_policy or local_master_fill_policy,
+        gap_single_client = false
       })
    end
 
    top_panel.create(s)
 
 end)
+
+-- remove gaps if layout is set to max
+tag.connect_signal('property::layout', function(t)
+   local current_layout = awful.tag.getproperty(t, 'layout')
+   if (current_layout == awful.layout.suit.max) then
+      t.gap = 0
+   else
+      t.gap = beautiful.useless_gap
+   end
+end)
+
 
 -- Signal function to execute when a new client appears.
 client.connect_signal("manage", function (c)
@@ -114,10 +132,12 @@ client.connect_signal("manage", function (c)
  end)
 
 
- -- ===================================================================
+-- ===================================================================
 -- Client Focusing
 -- ===================================================================
 
+client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
+client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 
 -- Autofocus a new client when previously focused one is closed
 require("awful.autofocus")

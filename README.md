@@ -5,6 +5,11 @@
 - Figure out the top bar configuration & creation
   - This will invove figuring out the widgets that have been made
 
+
+- NEXT:
+- Find out what the create_rules function is about. 
+- Required to get clientbuttons working (click to focus etc)
+
 - Keybinds next to open windows
 - Add the menu when you right click on the desktop
 - Implement exit screen (search for show_exit_screen)
