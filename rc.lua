@@ -98,8 +98,8 @@ awful.screen.connect_for_each_screen(function(s)
          screen = s,
          selected = tag.name == "Web",
          master_width_factor = tag.master_width_factor or local_master_width_factor,
-         master_fill_policy = tag,local_master_fill_policy or local_master_fill_policy,
-        gap_single_client = false
+         master_fill_policy = tag.local_master_fill_policy or local_master_fill_policy,
+         gap_single_client = false
       })
    end
 
