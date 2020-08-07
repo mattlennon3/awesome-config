@@ -4,6 +4,7 @@
 local awful = require("awful")
 local beautiful = require("beautiful")
 local wibox = require("wibox")
+local keys = require("keys")
 
 local top_panel = {}
 
@@ -18,16 +19,18 @@ local gears = require("gears")
 -- ===================================================================
 
 top_panel.create = function(s)
+    -- Tags
+    local tag_list = awful.widget.taglist {
+        screen = s,
+        filter = awful.widget.taglist.filter.all,
+        buttons = keys.taglist_buttons
+    }
+
+    -- Tasks (running apps)
     local task_list = awful.widget.tasklist {
         screen = s,
         filter = awful.widget.tasklist.filter.currenttags
         -- buttons = tasklist_buttons
-    }
-
-    local tag_list = awful.widget.taglist {
-        screen = s,
-        filter = awful.widget.taglist.filter.all
-        -- buttons = taglist_buttons
     }
 
     local panel = awful.wibar({

@@ -10,6 +10,8 @@
 - Find out what the create_rules function is about. 
 - Required to get clientbuttons working (click to focus etc)
 
+- get taglist_buttons working
+
 - Keybinds next to open windows
 - Add the menu when you right click on the desktop
 - Implement exit screen (search for show_exit_screen)

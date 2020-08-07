@@ -15,8 +15,8 @@ local apps = require("apps").default
 -- Define mod keys
 local modkey = "Mod4"
 local altkey = "Mod1"
-local ctrlkey = "Control"
-local shiftkey = "Shift"
+local ctrlkey = ctrlkey
+local shiftkey = shiftkey
 
 -- Define mouse buttons
 local leftclick = 1
@@ -222,7 +222,7 @@ keys.globalkeys = gears.table.join(
       {description = "select next", group = "layout"}
    ),
    -- select previous layout
-   awful.key({modkey, "Shift"}, "space",
+   awful.key({modkey, shiftkey}, "space",
       function()
          awful.layout.inc(-1)
       end,
@@ -234,7 +234,7 @@ keys.globalkeys = gears.table.join(
    -- =========================================
 
    -- restore minimized client
-   awful.key({modkey, "Shift"}, "n",
+   awful.key({modkey, shiftkey}, "n",
       function()
          local c = awful.client.restore()
          -- Focus restored client
@@ -281,42 +281,42 @@ local function move_client(c, direction)
 
 keys.clientkeys = gears.table.join(
     -- Move to edge or swap by direction
-   awful.key({modkey, "Shift"}, "Down",
+   awful.key({modkey, shiftkey}, "Down",
       function(c)
          move_client(c, "down")
       end
    ),
-   awful.key({modkey, "Shift"}, "Up",
+   awful.key({modkey, shiftkey}, "Up",
       function(c)
          move_client(c, "up")
       end
    ),
-   awful.key({modkey, "Shift"}, "Left",
+   awful.key({modkey, shiftkey}, "Left",
       function(c)
          move_client(c, "left")
       end
    ),
-   awful.key({modkey, "Shift"}, "Right",
+   awful.key({modkey, shiftkey}, "Right",
       function(c)
          move_client(c, "right")
       end
    ),
-   awful.key({modkey, "Shift"}, "j",
+   awful.key({modkey, shiftkey}, "j",
       function(c)
          move_client(c, "down")
       end
    ),
-   awful.key({modkey, "Shift"}, "k",
+   awful.key({modkey, shiftkey}, "k",
       function(c)
          move_client(c, "up")
       end
    ),
-   awful.key({modkey, "Shift"}, "h",
+   awful.key({modkey, shiftkey}, "h",
       function(c)
          move_client(c, "left")
       end
    ),
-   awful.key({modkey, "Shift"}, "l",
+   awful.key({modkey, shiftkey}, "l",
       function(c)
          move_client(c, "right")
       end
@@ -361,6 +361,7 @@ keys.clientkeys = gears.table.join(
 -- TAG BINDINGS
 -- =========================================
 
+-- Keyboard mod + 1-9
 for i = 1, 9 do
     keys.globalkeys = gears.table.join(keys.globalkeys,
        -- Switch to tag
@@ -375,7 +376,7 @@ for i = 1, 9 do
           {description = "view tag #"..i, group = "tag"}
        ),
        -- Move client to tag
-       awful.key({modkey, "Shift"}, "#" .. i + 9,
+       awful.key({modkey, shiftkey}, "#" .. i + 9,
           function()
              if client.focus then
                 local tag = client.focus.screen.tags[i]
@@ -385,8 +386,43 @@ for i = 1, 9 do
              end
           end,
           {description = "move focused client to tag #"..i, group = "tag"}
-       )
+       ),
+       -- Toggle tag on focused client.
+       awful.key({ modkey, ctrlkey, shiftkey }, "#" .. i + 9,
+         function ()
+            if client.focus then
+                  local tag = client.focus.screen.tags[i]
+                  if tag then
+                     client.focus:toggle_tag(tag)
+                  end
+            end
+         end,
+         {description = "toggle focused client on tag #" .. i, group = "tag"})
     )
  end
+
+-- Mouse buttons & scroll wheel
+keys.taglist_buttons = gears.table.join(
+      -- View tag
+      awful.button({ }, leftclick, function(t) t:view_only() end),
+      -- View tag & send current client to the tag with you
+      awful.button({ modkey }, leftclick, function(t)
+                                 if client.focus then
+                                    client.focus:move_to_tag(t)
+                                 end
+                           end),
+      -- Focus this tag also (merges clients)
+      awful.button({ }, rightclick, awful.tag.viewtoggle),
+      -- Also show client on the tag you clicked
+      awful.button({ modkey }, rightclick, function(t)
+                                 if client.focus then
+                                    client.focus:toggle_tag(t)
+                                 end
+                           end),
+      -- Scroll next tag
+      awful.button({ }, scrollup, function(t) awful.tag.viewnext(t.screen) end),
+      -- Scroll previous tag
+      awful.button({ }, scrolldown, function(t) awful.tag.viewprev(t.screen) end)
+   )
 
 return keys
