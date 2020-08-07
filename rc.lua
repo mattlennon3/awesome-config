@@ -25,6 +25,8 @@ root.keys(keys.globalkeys)
 -- root.buttons(keys.desktopbuttons)
 
 -- Import rules
+local create_rules = require("rules").create
+awful.rules.rules = create_rules(keys.clientkeys, keys.clientbuttons)
 
 -- Import notification appearance
 

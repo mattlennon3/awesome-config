@@ -41,7 +41,6 @@ local keys = {}
 keys.clientbuttons = gears.table.join(
     -- Enable click to focus
     awful.button({ }, leftclick, function (c)
-        print('clicked me')
         -- c:emit_signal("request::activate", "mouse_click", {raise = true})
         client.focus = c
         c:raise()
