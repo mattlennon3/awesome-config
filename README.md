@@ -3,14 +3,17 @@
 ## TODO List
 - find a MUCH better way of running & debugging this as you go
 - Figure out the top bar configuration & creation
-  - This will invove figuring out the widgets that have been made
+  - This will involve figuring out the widgets that have been made
 
 
 - NEXT:
 - Find out what the create_rules function is about. 
 - Required to get clientbuttons working (click to focus etc)
 
+- add startup_errors check (look in old rc.lua)
+
 - get taglist_buttons working
+- Add the "dot" indicator above each tag when a client is open on that tag
 
 - Keybinds next to open windows
 - Add the menu when you right click on the desktop

@@ -6,6 +6,14 @@ local beautiful = require("beautiful")
 local wibox = require("wibox")
 local keys = require("keys")
 
+
+
+-- Create a textclock widget
+local clock = wibox.widget.textclock()
+
+local systray = wibox.widget.systray()
+
+
 local top_panel = {}
 
 -- only need for debug
@@ -53,6 +61,9 @@ top_panel.create = function(s)
        },
        {-- Right widgets
           layout = wibox.layout.fixed.horizontal,
+          
+          systray,
+          clock,
           awful.widget.layoutbox(s)
        }
     }
