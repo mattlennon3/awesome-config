@@ -2,6 +2,9 @@
 -- Initialization
 -- ===================================================================
 
+-- awesome default theme assets
+local theme_assets = require("beautiful.theme_assets")
+
 -- Note that xft.dpi must be properly assigned in the .Xresources file if you are using a high DPI screen
 local xresources = require("beautiful.xresources")
 local dpi = xresources.apply_dpi
@@ -50,6 +53,19 @@ theme.border_marked = "#91231c"
 -- Window Borders
 
 -- Taglist
+theme.taglist_bg_empty = theme.bg_normal
+theme.taglist_bg_occupied = "#BC3908"
+theme.taglist_fg_occupied = "#BC3908"
+theme.taglist_bg_urgent = theme.bg_urgent
+theme.taglist_bg_focus = theme.bg_focus
+-- Generate taglist squares:
+local taglist_square_size = dpi(4)
+theme.taglist_squares_sel = theme_assets.taglist_squares_sel(
+    taglist_square_size, theme.fg_normal
+)
+theme.taglist_squares_unsel = theme_assets.taglist_squares_unsel(
+    taglist_square_size, theme.fg_normal
+)
 
 -- Tasklist
 theme.tasklist_font = theme.font

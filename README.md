@@ -15,12 +15,15 @@
 - [x] get taglist_buttons working
 
 - [x] Keybinds to open windows
+- [x] Add the "dot" indicator above each tag when a client is open on that tag
+- [ ] Control + Q closes windows (check this does not happen in old config & remove if it does not exist)
 
 Things I can do last:
 - [ ] Add the menu when you right click on the desktop
 - [ ] Implement exit screen (search for show_exit_screen)
-- [ ] Add the "dot" indicator above each tag when a client is open on that tag
 - [ ] Install screenshot software & add it to apps (& keybinds)
+- [ ] different background per screen with connect_for_each_screen
+- [ ] 
 
 
 
