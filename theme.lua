@@ -54,8 +54,7 @@ theme.border_marked = "#91231c"
 
 -- Taglist
 theme.taglist_bg_empty = theme.bg_normal
-theme.taglist_bg_occupied = "#BC3908"
-theme.taglist_fg_occupied = "#BC3908"
+theme.taglist_bg_occupied = theme.bg_normal
 theme.taglist_bg_urgent = theme.bg_urgent
 theme.taglist_bg_focus = theme.bg_focus
 -- Generate taglist squares:
@@ -77,8 +76,6 @@ theme.tasklist_bg_urgent = theme.bg_urgent
 theme.tasklist_fg_focus = theme.fg_focus
 theme.tasklist_fg_urgent = theme.fg_urgent
 theme.tasklist_fg_normal = theme.fg_normal
-
-
 
 -- Panel Sizing
 theme.top_panel_height = dpi(20)
