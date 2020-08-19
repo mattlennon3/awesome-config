@@ -6,6 +6,9 @@ local beautiful = require("beautiful")
 local wibox = require("wibox")
 local keys = require("keys")
 
+-- Note that xft.dpi must be properly assigned in the .Xresources file if you are using a high DPI screen
+local xresources = require("beautiful.xresources")
+local dpi = xresources.apply_dpi
 
 
 -- Create a textclock widget
@@ -37,8 +40,26 @@ top_panel.create = function(s)
     -- Tasks (running apps)
     local task_list = awful.widget.tasklist {
         screen = s,
-        filter = awful.widget.tasklist.filter.currenttags
-        -- buttons = tasklist_buttons
+        filter = awful.widget.tasklist.filter.currenttags,
+        buttons = keys.tasklist_buttons,
+        -- tasklist_bg_normal = beautiful.bg_urgent,
+        layout = {
+            spacing_widget = {
+                {
+                    forced_width  = dpi(1),
+                    forced_height = dpi(20),
+                    thickness     = 1,
+                    color         = beautiful.bg_normal,
+                    widget        = wibox.widget.separator
+                },
+                valign = 'center',
+                halign = 'center',
+                widget = wibox.container.place,
+            },
+            spacing = 10,
+            layout  = wibox.layout.flex.horizontal
+        },
+
     }
 
     local panel = awful.wibar({
@@ -56,12 +77,11 @@ top_panel.create = function(s)
           tag_list
        },
        {-- Middle Widgets
-       layout = wibox.layout.fixed.horizontal,
+       layout = wibox.layout.flex.horizontal,
        task_list,
        },
        {-- Right widgets
           layout = wibox.layout.fixed.horizontal,
-          
           systray,
           clock,
           awful.widget.layoutbox(s)

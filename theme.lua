@@ -24,7 +24,7 @@ theme.font = "JetBrains Mono Medium 12"
 
 theme.bg_normal     = "#222222"
 theme.bg_focus      = "#535d6c"
-theme.bg_urgent     = "#ff0000"
+theme.bg_urgent     = "#BC3908"
 theme.bg_minimize   = "#444444"
 theme.bg_systray    = theme.bg_normal
 
@@ -52,11 +52,20 @@ theme.border_marked = "#91231c"
 -- Taglist
 
 -- Tasklist
+theme.tasklist_font = theme.font
+
+theme.tasklist_bg_normal = theme.bg_normal
+theme.tasklist_bg_focus = theme.bg_focus
+theme.tasklist_bg_urgent = theme.bg_urgent
+
+theme.tasklist_fg_focus = theme.fg_focus
+theme.tasklist_fg_urgent = theme.fg_urgent
+theme.tasklist_fg_normal = theme.fg_normal
 
 
 
 -- Panel Sizing
-theme.top_panel_height = 20 --dpi(20)
+theme.top_panel_height = dpi(20)
 
 -- Notification Sizing
 

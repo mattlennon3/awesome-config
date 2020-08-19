@@ -7,18 +7,21 @@
 
 
 - NEXT:
-- Find out what the create_rules function is about. 
-- Required to get clientbuttons working (click to focus etc)
+- [x] Find out what the create_rules function is about. 
+- [x] Required to get clientbuttons working (click to focus etc)
 
-- add startup_errors check (look in old rc.lua)
+- [x] add startup_errors check (look in old rc.lua)
 
-- get taglist_buttons working
-- Add the "dot" indicator above each tag when a client is open on that tag
+- [x] get taglist_buttons working
 
-- Keybinds next to open windows
-- Add the menu when you right click on the desktop
-- Implement exit screen (search for show_exit_screen)
-- Install screenshot software & add it to apps (& keybinds)
+- [x] Keybinds to open windows
+
+Things I can do last:
+- [ ] Add the menu when you right click on the desktop
+- [ ] Implement exit screen (search for show_exit_screen)
+- [ ] Add the "dot" indicator above each tag when a client is open on that tag
+- [ ] Install screenshot software & add it to apps (& keybinds)
+
 
 
 ## Debug commands

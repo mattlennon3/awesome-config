@@ -15,8 +15,8 @@ local apps = require("apps").default
 -- Define mod keys
 local modkey = "Mod4"
 local altkey = "Mod1"
-local ctrlkey = ctrlkey
-local shiftkey = shiftkey
+local ctrlkey = "Control"
+local shiftkey = "Shift"
 
 -- Define mouse buttons
 local leftclick = 1
@@ -353,6 +353,35 @@ keys.clientkeys = gears.table.join(
          c:raise()
       end,
       {description = "(un)maximize", group = "client"}
+   )
+)
+
+
+-- =========================================
+-- TASK BINDINGS
+-- =========================================
+
+keys.tasklist_buttons = gears.table.join(
+   awful.button({ }, leftclick, function (c)
+      if c == client.focus then
+         c.minimized = true
+      else
+         c:emit_signal(
+            "request::activate",
+            "tasklist",
+            {raise = true}
+         )
+      end
+   end),
+   awful.button({ }, rightclick, function()
+         awful.menu.client_list({ theme = { width = 250 } })
+   end),
+   awful.button({ }, scrollup, function ()
+         awful.client.focus.byidx(1)
+   end),
+   awful.button({ }, scrolldown, function ()
+         awful.client.focus.byidx(-1)
+   end
    )
 )
 

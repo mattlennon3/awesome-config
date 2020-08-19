@@ -28,6 +28,9 @@ root.keys(keys.globalkeys)
 local create_rules = require("rules").create
 awful.rules.rules = create_rules(keys.clientkeys, keys.clientbuttons)
 
+-- Notification library
+local naughty = require("naughty")
+
 -- Import notification appearance
 
 -- Import components
@@ -39,6 +42,16 @@ local tags = require("tags")
 local top_panel = require("components.top-panel")
 
 -- Autostart specified apps
+
+
+-- {{{ Error handling
+-- Check if awesome encountered an error during startup and fell back to
+-- another config (This code will only ever execute for the fallback config)
+if awesome.startup_errors then
+   naughty.notify({ preset = naughty.config.presets.critical,
+                    title = "Oops, there were errors during startup!",
+                    text = awesome.startup_errors })
+end
 
 -- ===================================================================
 -- Set wallpaper
