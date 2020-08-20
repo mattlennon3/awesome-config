@@ -88,10 +88,6 @@ top_panel.create = function(s)
        }
     }
 
-    -- hide panel when client is fullscreen
-    client.connect_signal('property::fullscreen',
-                          function(c) panel.visible = not c.fullscreen end)
-
 end
 
 return top_panel
