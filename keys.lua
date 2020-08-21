@@ -335,6 +335,14 @@ keys.clientkeys = gears.table.join(
       {description = "toggle fullscreen", group = "client"}
    ),
 
+   -- toggle pinned
+   awful.key({modkey}, "t",
+      function (c)
+         c.ontop = not c.ontop
+      end,
+      {description = "toggle keep on top", group = "client"}
+   ),
+
    -- toggle floating
    awful.key({ modkey, ctrlkey }, "space",
       awful.client.floating.toggle,
