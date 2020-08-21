@@ -93,12 +93,17 @@ keys.globalkeys = gears.table.join(
         end,
         {description = "file explorer", group = "launcher"}
     ),
-
     -- Show help popup
     awful.key({ modkey }, "s",
         hotkeys_popup.show_help,
         {description="show help", group="awesome"}),
 
+    -- Lock screen
+    awful.key({ modkey }, "l",
+         function()
+            awful.spawn(apps.lock)
+         end,
+        {description="lock screen", group="awesome"}),
 
 
    -- =========================================
