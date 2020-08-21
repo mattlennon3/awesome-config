@@ -157,6 +157,18 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 -- Autofocus a new client when previously focused one is closed
 require("awful.autofocus")
 
+-- Attempt to fix spotify tracking. This will start any programs minimized if they have an xprop class of nil 
+-- https://redd.it/d8r74k
+client.connect_signal("manage", function (c)
+   if c.class == nil then 
+      c.minimized = true 
+      c:connect_signal("property::class", function ()
+         c.minimized = false
+         awful.rules.apply(c)
+      end)
+   end
+end)
+
 
 -- ===================================================================
 -- Garbage collection (allows for lower memory consumption)
