@@ -14,6 +14,11 @@
 local gears = require("gears")
 local awful = require("awful")
 
+-- Import logger
+local logger = require("log")
+-- clear previous startup log
+logger.clearlog()
+
 -- Import theme
 local beautiful = require("beautiful")
 beautiful.init(gears.filesystem.get_configuration_dir() .. "theme.lua")
@@ -99,12 +104,24 @@ awful.layout.layouts = {
  }
 
 -- Ratio of screen space master client takes
- local local_master_width_factor = 0.65
- -- Master takes the full screen when it's on it's own
- local local_master_fill_policy = "expand"
+local local_master_width_factor = 0.65
+-- Master takes the full screen when it's on it's own
+local local_master_fill_policy = "expand"
+
+
+-- some helpful screen code https://github.com/raphaelfournier/Dotfiles/blob/master/awesome/.config/awesome/rc.lua
+-- logger.log( screen:count() )
 
 -- Set up each screen (add tags & panels)
 awful.screen.connect_for_each_screen(function(s)
+
+   local screen_name = ''
+   for k, v in pairs(s.outputs) do
+      screen_name = k
+   end
+
+   logger.log(screen_name)
+   logger.log(s.index)
 
    -- Wallpaper
    set_wallpaper(s)

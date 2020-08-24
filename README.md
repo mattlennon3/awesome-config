@@ -17,6 +17,14 @@
 - [x] Keybinds to open windows
 - [x] Add the "dot" indicator above each tag when a client is open on that tag
 - [ ] Control + Q closes windows (check this does not happen in old config & remove if it does not exist)
+  - [ ] this may actually be a vscode only thing
+
+Screen TODO
+- [ ] A loop in rc.lua which will take the screen names from screens.lua and attach them to screen objects
+  - [ ] use this loop to set the screen in "awful.tag.add" part of rc.lua (if the specific_screen) is set
+  - [ ] the primary goal here is to only require music/comms on the vertical screen, games only on primary screen etc
+- [ ] need some contingency if we are using less than 3 monitors to put all tags on each screen
+- [ ] allowing for laptop layout would be good. (maybe tag property like specific_screen for desktop only?)
 
 Things I can do last:
 - [ ] Add the menu when you right click on the desktop

@@ -3,10 +3,9 @@
 -- ===================================================================
 
 local awful = require("awful")
+local screens = require("screens")
 
 -- Icon imports
-
-
 
 -- ===================================================================
 -- Define tags
@@ -15,29 +14,34 @@ local awful = require("awful")
 local tags = {
     {
         name = 'Music', -- TODO: Only add this one on secondary screens?
-        layout = nil
+        layout = nil,
+        specific_screen = screens.screen_left_vertical
     },
     {
         name = 'Comms',
-        layout = awful.layout.suit.tile.bottom
+        layout = awful.layout.suit.tile.bottom,
+        specific_screen = screens.screen_left_vertical
     },
     {
         name = 'Code',
-        layout = nil
+        layout = nil,
+        specific_screen = nil
     },
     {
         name = 'Web',
-        layout = nil
+        layout = nil,
+        specific_screen = nil
     },
     {
         name = 'Web5',
-        layout = nil
+        layout = nil,
+        specific_screen = nil
     },
     {
         name = 'Games', -- TODO: Add this one only if steam opens?
-        layout = awful.layout.suit.max
+        layout = awful.layout.suit.max,
+        specific_screen = screens.screen_center_primary
     }
 }
- 
- return tags
- 
+
+return tags
