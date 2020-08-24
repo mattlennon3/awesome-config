@@ -12,6 +12,9 @@ local screen_width = awful.screen.focused().geometry.width
 -- define module table
 local rules = {}
 
+-- All rules properties can be functions
+-- https://old.reddit.com/r/awesomewm/comments/73ms0f/tag_rule_conditioned_on_the_number_of_screens/dnw03l1/
+
 
 -- return a table of client rules including provided keys / buttons
 function rules.create(clientkeys, clientbuttons)
@@ -37,7 +40,12 @@ function rules.create(clientkeys, clientbuttons)
                 "minecraft-launcher"
              },
              name = {
+                -- steam stuff
                 "Steam Guard - Computer Authorization Required",
+                "Friends List",
+
+                -- TS3
+                "TeamSpeak 3",
 
                 -- Note that the name property shown in xprop might be set slightly after creation of the client
                 -- and the name shown there might not match defined rules here.
@@ -65,6 +73,7 @@ function rules.create(clientkeys, clientbuttons)
           rule_any = {
              class = {
                 -- "Terraria.bin.x86",
+                "FallGuys_client",
                 nil
              },
           }, properties = {fullscreen = true}
@@ -77,7 +86,15 @@ function rules.create(clientkeys, clientbuttons)
             instance = {
                 "code"
              },
-          }, properties = {switchtotag = true}
+          }, properties = {tag = "Code", switchtotag = true}
+       },
+
+       {
+         rule_any = {
+            class = {
+               "discord"
+            }
+         }, properties = {tag = "Comms"}
        },
 
        -- Visualizer
@@ -115,7 +132,7 @@ function rules.create(clientkeys, clientbuttons)
        -- Pavucontrol & Bluetooth Devices
        {
           rule_any = {class = {"Pavucontrol"}, name = {"Bluetooth Devices"}},
-          properties = {floating = true, width = screen_width * 0.55, height = screen_height * 0.45}
+          properties = {floating = true, width = 1050, height = 560}
        },
     }
  end
