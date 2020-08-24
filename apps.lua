@@ -22,6 +22,29 @@ apps.default = {
     lock = "xsecurelock",
     -- screenshot = "scrot -e 'mv $f ~/Pictures/ 2>/dev/null'",
     filebrowser = "thunar"
- }
+}
 
- return apps
+ -- ===================================================================
+ -- Start up
+ -- ===================================================================
+
+-- List of apps to start once on start-up
+local run_on_start_up = {
+    "code-oss foam-diary",
+    "discord",
+    "spotify"
+}
+
+-- Run all the apps listed in run_on_start_up
+function apps.autostart()
+    for _, app in ipairs(run_on_start_up) do
+        local findme = app
+        local firstspace = app:find(" ")
+        if firstspace then
+            findme = app:sub(0, firstspace - 1)
+        end
+        awful.spawn.with_shell(string.format("pgrep -u $USER -x %s > /dev/null || (%s)", findme, app), false)
+    end
+end
+
+return apps
