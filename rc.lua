@@ -42,6 +42,8 @@ local tags = require("tags")
 local top_panel = require("components.top-panel")
 
 -- Autostart specified apps
+local apps = require("apps")
+apps.autostart()
 
 
 -- {{{ Error handling
