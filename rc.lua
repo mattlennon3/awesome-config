@@ -60,6 +60,11 @@ if awesome.startup_errors then
                     text = awesome.startup_errors })
 end
 
+-- lua util
+local function isempty(s)
+   return s == nil or s == ''
+ end
+
 -- ===================================================================
 -- Set wallpaper
 -- ===================================================================
@@ -120,21 +125,45 @@ awful.screen.connect_for_each_screen(function(s)
       screen_name = k
    end
 
-   logger.log(screen_name)
-   logger.log(s.index)
+   logger.log('----')
+   logger.log("Screen name: " .. screen_name)
+   logger.log("Screen index: " .. s.index)
 
    -- Wallpaper
    set_wallpaper(s)
-
-   for i, tag in pairs(tags) do
-      awful.tag.add(tag.name, {
-         layout = tag.layout and tag.layout or awful.layout.suit.tile,
-         screen = s,
-         selected = tag.name == "Web",
-         master_width_factor = tag.master_width_factor or local_master_width_factor,
-         master_fill_policy = tag.local_master_fill_policy or local_master_fill_policy,
-         gap_single_client = false
-      })
+   logger.log('screencount: ' .. screen:count())
+   
+   -- if we are on desktop with 3 screens
+   if(screen:count() == 3) then
+      for i, tag in pairs(tags) do
+         -- if I want a tag on a specific screen
+         if tag.specific_screen == nil or screen_name == tag.specific_screen then
+            
+            logger.log(tag.name .. " - " .. (tag.specific_screen or 'nil') .. " - " .. screen_name)
+            
+            awful.tag.add(tag.name, {
+               layout = tag.layout and tag.layout or awful.layout.suit.tile,
+               screen = s,
+               selected = tag.name == "Web",
+               master_width_factor = tag.master_width_factor or local_master_width_factor,
+               master_fill_policy = tag.local_master_fill_policy or local_master_fill_policy,
+               gap_single_client = false
+            })
+         end
+      end
+      
+      -- else fall back to just putting every tag on every screen
+   else
+      for i, tag in pairs(tags) do
+         awful.tag.add(tag.name, {
+            layout = tag.layout and tag.layout or awful.layout.suit.tile,
+            screen = s,
+            selected = tag.name == "Web",
+            master_width_factor = tag.master_width_factor or local_master_width_factor,
+            master_fill_policy = tag.local_master_fill_policy or local_master_fill_policy,
+            gap_single_client = false
+         })
+      end
    end
 
    top_panel.create(s)
@@ -163,6 +192,18 @@ client.connect_signal("manage", function (c)
        -- Prevent clients from being unreachable after screen count changes.
        awful.placement.no_offscreen(c)
     end
+
+   -- Attempt to fix spotify tracking. This will start any programs minimized if they have an xprop class of nil 
+   -- https://redd.it/d8r74k
+    if c.class == nil then
+      c.minimized = true
+      logger.log('No client class found, attaching watcher...')
+      c:connect_signal("property::class", function ()
+         logger.log('Client class added: ' .. (c.class or ' -nil- '))
+         c.minimized = false
+         awful.rules.apply(c)
+      end)
+   end
  end)
 
 
@@ -175,19 +216,6 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 
 -- Autofocus a new client when previously focused one is closed
 require("awful.autofocus")
-
--- Attempt to fix spotify tracking. This will start any programs minimized if they have an xprop class of nil 
--- https://redd.it/d8r74k
-client.connect_signal("manage", function (c)
-   if c.class == nil then 
-      c.minimized = true 
-      c:connect_signal("property::class", function ()
-         c.minimized = false
-         awful.rules.apply(c)
-      end)
-   end
-end)
-
 
 -- ===================================================================
 -- Garbage collection (allows for lower memory consumption)

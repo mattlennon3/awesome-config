@@ -17,14 +17,16 @@
 - [x] Keybinds to open windows
 - [x] Add the "dot" indicator above each tag when a client is open on that tag
 - [ ] Control + Q closes windows (check this does not happen in old config & remove if it does not exist)
-  - [ ] this may actually be a vscode only thing
+  - [ ] this may actually be a vscode/firefox thing
 
 Screen TODO
-- [ ] A loop in rc.lua which will take the screen names from screens.lua and attach them to screen objects
-  - [ ] use this loop to set the screen in "awful.tag.add" part of rc.lua (if the specific_screen) is set
-  - [ ] the primary goal here is to only require music/comms on the vertical screen, games only on primary screen etc
-- [ ] need some contingency if we are using less than 3 monitors to put all tags on each screen
+- [x] the primary goal here is to only require music/comms on the vertical screen, games only on primary screen etc
+- [x] need some contingency if we are using less than 3 monitors to put all tags on each screen
 - [ ] allowing for laptop layout would be good. (maybe tag property like specific_screen for desktop only?)
+- [ ] if a tag name is "Web{{i}}" replace "{{i}}" with the tag number it will be
+
+Tag keybind todo
+- [ ] If a tag has a number in the name, if you do mod + (number), jump to that tag) (Maybe not needed)
 
 Things I can do last:
 - [ ] Add the menu when you right click on the desktop
@@ -33,7 +35,10 @@ Things I can do last:
 - [ ] different background per screen with connect_for_each_screen
 - [ ] 
 
-
+## Spotify issues:
+https://github.com/awesomeWM/awesome/pull/2484
+https://old.reddit.com/r/awesomewm/comments/bztj1c/spotify_and_raise_or_spawn/
+https://old.reddit.com/r/awesomewm/comments/d8r74k/detecting_spotify/
 
 ## Debug commands
 Open the Xephyr instance:

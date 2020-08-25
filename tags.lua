@@ -33,7 +33,7 @@ local tags = {
         specific_screen = nil
     },
     {
-        name = 'Web5',
+        name = 'Web{{i}}',
         layout = nil,
         specific_screen = nil
     },
