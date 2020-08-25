@@ -13,7 +13,7 @@ local screens = require("screens")
 
 local tags = {
     {
-        name = 'Music', -- TODO: Only add this one on secondary screens?
+        name = 'Music',
         layout = nil,
         specific_screen = screens.screen_left_vertical
     },

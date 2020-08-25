@@ -60,11 +60,6 @@ if awesome.startup_errors then
                     text = awesome.startup_errors })
 end
 
--- lua util
-local function isempty(s)
-   return s == nil or s == ''
- end
-
 -- ===================================================================
 -- Set wallpaper
 -- ===================================================================
@@ -114,8 +109,6 @@ local local_master_width_factor = 0.65
 local local_master_fill_policy = "expand"
 
 
--- some helpful screen code https://github.com/raphaelfournier/Dotfiles/blob/master/awesome/.config/awesome/rc.lua
--- logger.log( screen:count() )
 
 -- Set up each screen (add tags & panels)
 awful.screen.connect_for_each_screen(function(s)
@@ -137,12 +130,9 @@ awful.screen.connect_for_each_screen(function(s)
    if(screen:count() == 3) then
       local displayed_tag_count = 1
       for i, tag in pairs(tags) do
-         -- if I want a tag on a specific screen
+         -- If the tag has no specific_screen or if the screen matches the tags specific_screen
          if tag.specific_screen == nil or screen_name == tag.specific_screen then
-            logger.log(tag.name .. " - " .. (tag.specific_screen or 'nil') .. " - " .. screen_name)
             local name = string.gsub(tag.name, '{{i}}', tostring(displayed_tag_count))
-            logger.log('displayed_tag_count: ' .. tostring(displayed_tag_count))
-            
             awful.tag.add(name, {
                layout = tag.layout and tag.layout or awful.layout.suit.tile,
                screen = s,
@@ -159,7 +149,8 @@ awful.screen.connect_for_each_screen(function(s)
       -- else fall back to just putting every tag on every screen
    else
       for i, tag in pairs(tags) do
-         awful.tag.add(tag.name, {
+         local name = string.gsub(tag.name, '{{i}}', tostring(i))
+         awful.tag.add(name, {
             layout = tag.layout and tag.layout or awful.layout.suit.tile,
             screen = s,
             selected = tag.name == "Web",

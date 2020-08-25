@@ -48,6 +48,8 @@ Open the Xephyr instance:
 Run awesome inside that instance:
 > DISPLAY=:1.0 awesome -c ~/.config/awesome/awesome_refactor/rc.lua --search $HOME/.config/awesome/awesome_refactor
 
+## Useful links
+some helpful screen code https://github.com/raphaelfournier/Dotfiles/blob/master/awesome/.config/awesome/rc.lua
 
 ## Credits
 
