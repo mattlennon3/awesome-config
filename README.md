@@ -18,6 +18,10 @@
 - [x] Add the "dot" indicator above each tag when a client is open on that tag
 - [ ] Control + Q closes windows (check this does not happen in old config & remove if it does not exist)
   - [ ] this may actually be a vscode/firefox thing
+- [ ] Show spotify on Music & Comms tag
+- [ ] Add keybinds:
+  - [ ] alt+tab for clients within tag
+  - [ ] alt+` for tags (between screens too?)
 
 Screen TODO
 - [x] the primary goal here is to only require music/comms on the vertical screen, games only on primary screen etc

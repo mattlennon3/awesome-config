@@ -98,7 +98,7 @@ function rules.create(clientkeys, clientbuttons)
             }
          }, properties = {tag = "Comms", screen = screens.screen_left_vertical}
        },
-
+       -- Spotify
        {
          rule_any = {
             class = {
