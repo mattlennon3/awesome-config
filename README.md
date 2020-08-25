@@ -1,7 +1,7 @@
 # Awesome Dotfiles
 
 ## TODO List
-- find a MUCH better way of running & debugging this as you go
+- [x] find a MUCH better way of running & debugging this as you go
 - Figure out the top bar configuration & creation
   - This will involve figuring out the widgets that have been made
 

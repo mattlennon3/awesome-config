@@ -132,11 +132,16 @@ awful.screen.connect_for_each_screen(function(s)
       for i, tag in pairs(tags) do
          -- If the tag has no specific_screen or if the screen matches the tags specific_screen
          if tag.specific_screen == nil or screen_name == tag.specific_screen then
+            local selected_for_this_screen = false
+            local selected_tag = (tag.name == "Web" or tag.name == "Music") and selected_for_this_screen == false
+            if selected_tag then
+               selected_for_this_screen = true
+            end
             local name = string.gsub(tag.name, '{{i}}', tostring(displayed_tag_count))
             awful.tag.add(name, {
                layout = tag.layout and tag.layout or awful.layout.suit.tile,
                screen = s,
-               selected = tag.name == "Web",
+               selected = selected_tag,
                master_width_factor = tag.master_width_factor or local_master_width_factor,
                master_fill_policy = tag.local_master_fill_policy or local_master_fill_policy,
                gap_single_client = false
