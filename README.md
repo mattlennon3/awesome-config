@@ -22,11 +22,12 @@
 Screen TODO
 - [x] the primary goal here is to only require music/comms on the vertical screen, games only on primary screen etc
 - [x] need some contingency if we are using less than 3 monitors to put all tags on each screen
-- [ ] allowing for laptop layout would be good. (maybe tag property like specific_screen for desktop only?)
-- [ ] if a tag name is "Web{{i}}" replace "{{i}}" with the tag number it will be
+- [ ] adding laptop layout would be good. (maybe tag property like specific_screen for desktop only?)
+- [x] if a tag name is "Web{{i}}" replace "{{i}}" with the tag number it will be
+- [ ] set default tag per screen
 
 Tag keybind todo
-- [ ] If a tag has a number in the name, if you do mod + (number), jump to that tag) (Maybe not needed)
+- [x] If a tag has a number in the name, if you do mod + (number), jump to that tag) (Automatically worked)
 
 Things I can do last:
 - [ ] Add the menu when you right click on the desktop

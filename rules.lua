@@ -5,6 +5,8 @@
 local awful = require("awful")
 local beautiful = require("beautiful")
 
+local screens = require("screens")
+
 -- define screen height and width
 local screen_height = awful.screen.focused().geometry.height
 local screen_width = awful.screen.focused().geometry.width
@@ -94,7 +96,15 @@ function rules.create(clientkeys, clientbuttons)
             class = {
                "discord"
             }
-         }, properties = {tag = "Comms"}
+         }, properties = {tag = "Comms", screen = screens.screen_left_vertical}
+       },
+
+       {
+         rule_any = {
+            class = {
+               "Spotify"
+            }
+         }, properties = {tag = "Music", screen = screens.screen_left_vertical}
        },
 
        -- Visualizer

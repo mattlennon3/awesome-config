@@ -135,13 +135,15 @@ awful.screen.connect_for_each_screen(function(s)
    
    -- if we are on desktop with 3 screens
    if(screen:count() == 3) then
+      local displayed_tag_count = 1
       for i, tag in pairs(tags) do
          -- if I want a tag on a specific screen
          if tag.specific_screen == nil or screen_name == tag.specific_screen then
-            
             logger.log(tag.name .. " - " .. (tag.specific_screen or 'nil') .. " - " .. screen_name)
+            local name = string.gsub(tag.name, '{{i}}', tostring(displayed_tag_count))
+            logger.log('displayed_tag_count: ' .. tostring(displayed_tag_count))
             
-            awful.tag.add(tag.name, {
+            awful.tag.add(name, {
                layout = tag.layout and tag.layout or awful.layout.suit.tile,
                screen = s,
                selected = tag.name == "Web",
@@ -149,6 +151,8 @@ awful.screen.connect_for_each_screen(function(s)
                master_fill_policy = tag.local_master_fill_policy or local_master_fill_policy,
                gap_single_client = false
             })
+            
+            displayed_tag_count = displayed_tag_count + 1
          end
       end
       
