@@ -17,6 +17,9 @@ local rules = {}
 -- All rules properties can be functions
 -- https://old.reddit.com/r/awesomewm/comments/73ms0f/tag_rule_conditioned_on_the_number_of_screens/dnw03l1/
 
+-- Potential future plan
+-- All clients open on the center screen only. Unless specified otherwise
+
 
 -- return a table of client rules including provided keys / buttons
 function rules.create(clientkeys, clientbuttons)
@@ -64,6 +67,7 @@ function rules.create(clientkeys, clientbuttons)
                 "Arandr",
                 "Blueman-manager",
                 "MessageWin",  -- kalarm.
+                "battle.net.exe",
              },
              role = {
                 "AlarmWindow",  -- Thunderbird's calendar.
@@ -82,7 +86,7 @@ function rules.create(clientkeys, clientbuttons)
        {
           rule_any = {
              class = {
-                -- "Terraria.bin.x86",
+                "wowclassic.exe",
                 "FallGuys_client",
                 nil
              },
@@ -97,7 +101,14 @@ function rules.create(clientkeys, clientbuttons)
             instance = {
                 "code"
              },
-          }, properties = {tag = "Code", switchtotag = true}
+          }, properties = {switchtotag = true}
+       },
+       {
+         rule_any = {
+            class = {
+               "Lutris"
+            }
+         }, properties = {switchtotag = true}
        },
        -- ===================================================================
        -- Placement rules
@@ -120,7 +131,7 @@ function rules.create(clientkeys, clientbuttons)
        -- Lutris
        {
          rule_any = {
-            instance = {
+            class = {
                "Lutris"
             }
          }, properties = {tag = "Games", screen = screens.screen_center_primary}
@@ -133,6 +144,21 @@ function rules.create(clientkeys, clientbuttons)
             }
          }, properties = {tag = "Games", screen = screens.screen_center_primary}
        },
+       -- Blizz
+       {
+         rule_any = {
+            class = {
+               "Blizzard Battle.net"
+            }
+         }, properties = {tag = "Games", screen = screens.screen_center_primary}
+       },
+       {
+         rule_any = {
+           instance = {
+               "code"
+            },
+         }, properties = {tag = "Code"}
+      },
        -- ===================================================================
        -- Misc
        -- ===================================================================
