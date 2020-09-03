@@ -4,9 +4,6 @@
 - [x] find a MUCH better way of running & debugging this as you go
 - Figure out the top bar configuration & creation
   - This will involve figuring out the widgets that have been made
-
-
-- NEXT:
 - [x] Find out what the create_rules function is about. 
 - [x] Required to get clientbuttons working (click to focus etc)
 
@@ -39,13 +36,13 @@ Things I can do last:
 - [ ] Install screenshot software & add it to apps (& keybinds)
 - [ ] different background per screen with connect_for_each_screen
 - [ ] wallpaper driven from a folder rather than a specific file
-- [ ] 
+- [ ] add script to launch both debug commands into a terminal
 
 ## Spotify issues:
-https://github.com/awesomeWM/awesome/pull/2484
-https://old.reddit.com/r/awesomewm/comments/bztj1c/spotify_and_raise_or_spawn/
-https://old.reddit.com/r/awesomewm/comments/d8r74k/detecting_spotify/
-
+https://github.com/awesomeWM/awesome/pull/2484  
+https://old.reddit.com/r/awesomewm/comments/bztj1c/spotify_and_raise_or_spawn/  
+https://old.reddit.com/r/awesomewm/comments/d8r74k/detecting_spotify/  
+  
 ## Debug commands
 Open the Xephyr instance:
 > Xephyr :1 -ac -br -noreset -screen 960x540
