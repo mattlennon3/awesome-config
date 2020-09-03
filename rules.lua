@@ -21,7 +21,9 @@ local rules = {}
 -- return a table of client rules including provided keys / buttons
 function rules.create(clientkeys, clientbuttons)
     return {
-       -- All clients will match this rule.
+      -- ===================================================================
+      -- All clients will match this rule.
+      -- ===================================================================
        {
           rule = {},
           properties = {
@@ -35,7 +37,9 @@ function rules.create(clientkeys, clientbuttons)
              placement = awful.placement.centered+awful.placement.no_offscreen
           },
        },
-       -- Floating clients.
+      -- ===================================================================
+      -- Floating clients
+      -- ===================================================================
        {
           rule_any = {
              instance = {
@@ -48,6 +52,9 @@ function rules.create(clientkeys, clientbuttons)
 
                 -- TS3
                 "TeamSpeak 3",
+
+                -- Battle net
+                "Blizzard Battle.net",
 
                 -- Note that the name property shown in xprop might be set slightly after creation of the client
                 -- and the name shown there might not match defined rules here.
@@ -69,8 +76,9 @@ function rules.create(clientkeys, clientbuttons)
              }
           }, properties = {floating = true}
        },
-
+       -- ===================================================================
        -- Fullscreen clients
+       -- ===================================================================
        {
           rule_any = {
              class = {
@@ -80,9 +88,10 @@ function rules.create(clientkeys, clientbuttons)
              },
           }, properties = {fullscreen = true}
        },
-
+       -- ===================================================================
        -- "Switch to tag"
        -- These clients make you switch to their tag when they appear
+       -- ===================================================================
        {
           rule_any = {
             instance = {
@@ -90,7 +99,9 @@ function rules.create(clientkeys, clientbuttons)
              },
           }, properties = {tag = "Code", switchtotag = true}
        },
-
+       -- ===================================================================
+       -- Placement rules
+       -- ===================================================================
        {
          rule_any = {
             class = {
@@ -106,6 +117,25 @@ function rules.create(clientkeys, clientbuttons)
             }
          }, properties = {tag = "Music", screen = screens.screen_left_vertical}
        },
+       -- Lutris
+       {
+         rule_any = {
+            instance = {
+               "Lutris"
+            }
+         }, properties = {tag = "Games", screen = screens.screen_center_primary}
+       },
+       -- WoW classic
+       {
+         rule_any = {
+            class = {
+               "wowclassic.exe"
+            }
+         }, properties = {tag = "Games", screen = screens.screen_center_primary}
+       },
+       -- ===================================================================
+       -- Misc
+       -- ===================================================================
 
        -- Visualizer
     --    {
