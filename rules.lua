@@ -68,6 +68,7 @@ function rules.create(clientkeys, clientbuttons)
                 "Blueman-manager",
                 "MessageWin",  -- kalarm.
                 "battle.net.exe",
+                "Lutris",
              },
              role = {
                 "AlarmWindow",  -- Thunderbird's calendar.
@@ -101,14 +102,10 @@ function rules.create(clientkeys, clientbuttons)
             instance = {
                 "code"
              },
-          }, properties = {switchtotag = true}
-       },
-       {
-         rule_any = {
-            class = {
+             class = {
                "Lutris"
             }
-         }, properties = {switchtotag = true}
+          }, properties = {switchtotag = true}
        },
        -- ===================================================================
        -- Placement rules
