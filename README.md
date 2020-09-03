@@ -38,6 +38,7 @@ Things I can do last:
 - [ ] Implement exit screen (search for show_exit_screen)
 - [ ] Install screenshot software & add it to apps (& keybinds)
 - [ ] different background per screen with connect_for_each_screen
+- [ ] wallpaper driven from a folder rather than a specific file
 - [ ] 
 
 ## Spotify issues:
