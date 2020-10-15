@@ -21,7 +21,8 @@ apps.default = {
     launcher = "dmenu_run",
     lock = "xsecurelock",
     -- screenshot = "scrot -e 'mv $f ~/Pictures/ 2>/dev/null'",
-    filebrowser = "thunar"
+    filebrowser = "thunar",
+    webbrowser = "firefox-developer-edition"
 }
 
  -- ===================================================================

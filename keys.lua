@@ -73,25 +73,32 @@ keys.globalkeys = gears.table.join(
     -- SPAWN APPLICATION KEY BINDINGS
     -- =========================================
     -- Spawn terminal
-    awful.key({modkey}, "Return",
+    awful.key({ modkey }, "Return",
         function()
             awful.spawn(apps.terminal)
         end,
         {description = "open a terminal", group = "launcher"}
     ),
     -- Spawn launcher
-    awful.key({modkey}, "r",
+    awful.key({ modkey }, "r",
         function()
         awful.spawn(apps.launcher)
         end,
         {description = "application launcher", group = "launcher"}
     ),
     -- Spawn file explorer
-    awful.key({modkey}, "e",
+    awful.key({ modkey }, "e",
         function()
         awful.spawn(apps.filebrowser)
         end,
         {description = "file explorer", group = "launcher"}
+    ),
+    -- Spawn web browser
+    awful.key({ modkey }, "w",
+        function()
+        awful.spawn(apps.webbrowser)
+        end,
+        {description = "web browser", group = "launcher"}
     ),
     -- Show help popup
     awful.key({ modkey }, "s",
