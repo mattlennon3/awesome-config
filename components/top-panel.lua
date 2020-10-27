@@ -12,7 +12,13 @@ local dpi = xresources.apply_dpi
 
 
 -- Create a textclock widget
-local clock = wibox.widget.textclock()
+
+-- local clock = wibox.widget.textclock()
+-- https://unix.stackexchange.com/a/519655/358471
+clock_format = "%a %Y-%m-%d %H:%M %Z"
+-- utc_textclock = wibox.widget.textclock(" " .. clock_format, nil, "Z")
+local_textclock = wibox.widget.textclock(" — " .. clock_format .. " ")
+
 
 local systray = wibox.widget.systray()
 
@@ -22,8 +28,31 @@ local top_panel = {}
 -- only need for debug
 local gears = require("gears")
 
--- import widgets
+-- ===================================================================
+-- Import Widgets
+-- ===================================================================
+
 -- local task_list = require("widgets.task-list")
+
+-- Volume
+-- https://github.com/streetturtle/awesome-wm-widgets/tree/master/volumebar-widget
+local volumebar_widget = require("awesome-wm-widgets.volumebar-widget.volumebar")
+-- https://github.com/horst3180/arc-icon-theme#installation
+-- https://github.com/streetturtle/awesome-wm-widgets/tree/master/volume-widget
+local volume_widget = require("awesome-wm-widgets.volume-widget.volume")
+local previousVolume = "80%"
+volumebar_widget = volumebar_widget({
+    main_color = '#dedede',
+    mute_color = '#9e9e9e',
+    width = 80,
+    shape = 'rounded_bar', -- octogon, hexagon, powerline, etc
+    -- bar's height = wibar's height minus 2x margins
+    margins = 3
+})
+
+-- Battery Widget
+local battery_widget = require("battery-widget")
+local BAT0 = battery_widget { adapter = "BAT1", ac = "ACAD" }
 
 -- ===================================================================
 -- Bar Creation
@@ -77,13 +106,16 @@ top_panel.create = function(s)
           tag_list
        },
        {-- Middle Widgets
-       layout = wibox.layout.flex.horizontal,
-       task_list,
+          layout = wibox.layout.flex.horizontal,
+          task_list,
        },
        {-- Right widgets
+          volumebar_widget,
+          BAT0,
           layout = wibox.layout.fixed.horizontal,
           systray,
-          clock,
+        --   utc_textclock,
+          local_textclock,
           awful.widget.layoutbox(s)
        }
     }

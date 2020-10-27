@@ -16,7 +16,7 @@ local themes_path = gfs.get_themes_dir()
 -- define module table
 local theme = {}
 
-theme.wallpaper = "/home/matt/.config/awesome/awesome_refactor/Wallpapers/pink_stars_cluster-wallpaper-2560x1440.jpg"
+theme.wallpaper = "/home/matt/Content/Wallpapers/1920x1080/fever-dreams-me-digital-1920×1080.jpg"
 
 -- ===================================================================
 -- Theme Variables

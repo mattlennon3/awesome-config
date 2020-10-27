@@ -37,6 +37,7 @@ Things I can do last:
 - [ ] different background per screen with connect_for_each_screen
 - [ ] wallpaper driven from a folder rather than a specific file
 - [ ] add script to launch both debug commands into a terminal
+  - [ ] don't keep opening startup programs in Xephyr window (i.e when debugging/developing)
 
 ## Spotify issues:
 https://github.com/awesomeWM/awesome/pull/2484  
@@ -48,7 +49,7 @@ Open the Xephyr instance:
 > Xephyr :1 -ac -br -noreset -screen 960x540
 
 Run awesome inside that instance:
-> DISPLAY=:1.0 awesome -c ~/.config/awesome/awesome_refactor/rc.lua --search $HOME/.config/awesome/awesome_refactor
+> DISPLAY=:1.0 awesome -c ~/git/my-dotfiles/awesome-dotfiles/rc.lua --search $HOME/.config/awesome
 
 ## Useful links
 some helpful screen code https://github.com/raphaelfournier/Dotfiles/blob/master/awesome/.config/awesome/rc.lua

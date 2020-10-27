@@ -32,8 +32,8 @@ apps.default = {
 -- List of apps to start once on start-up
 local run_on_start_up = {
     "code-oss $HOME/git/foam-diary",
-    "discord",
-    "spotify"
+    -- "discord",
+    -- "spotify"
 }
 
 -- Run all the apps listed in run_on_start_up
