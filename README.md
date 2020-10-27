@@ -19,6 +19,9 @@
 - [ ] Add keybinds:
   - [ ] alt+tab for clients within tag
   - [ ] alt+` for tags (between screens too?)
+- [ ] do not show battery on desktop
+- [ ] change autostart programs/tags depending on device?
+- [ ] 
 
 Screen TODO
 - [x] the primary goal here is to only require music/comms on the vertical screen, games only on primary screen etc
