@@ -108,8 +108,6 @@ local local_master_width_factor = 0.65
 -- Master takes the full screen when it's on it's own
 local local_master_fill_policy = "expand"
 
-
-
 -- Set up each screen (add tags & panels)
 awful.screen.connect_for_each_screen(function(s)
 

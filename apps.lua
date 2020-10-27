@@ -22,7 +22,7 @@ apps.default = {
     lock = "xsecurelock",
     -- screenshot = "scrot -e 'mv $f ~/Pictures/ 2>/dev/null'",
     filebrowser = "thunar",
-    webbrowser = "firefox"
+    webbrowser = "firefox-developer-edition"
 }
 
  -- ===================================================================

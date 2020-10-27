@@ -52,7 +52,7 @@ Open the Xephyr instance:
 > Xephyr :1 -ac -br -noreset -screen 960x540
 
 Run awesome inside that instance:
-> DISPLAY=:1.0 awesome -c ~/git/my-dotfiles/awesome-dotfiles/rc.lua --search $HOME/.config/awesome
+> DISPLAY=:1.0 awesome -c ~/git/my-dotfiles/awesome-config/rc.lua --search $HOME/.config/awesome
 
 ## Useful links
 some helpful screen code https://github.com/raphaelfournier/Dotfiles/blob/master/awesome/.config/awesome/rc.lua
