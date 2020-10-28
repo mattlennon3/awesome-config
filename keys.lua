@@ -363,6 +363,14 @@ keys.clientkeys = gears.table.join(
       {description = "close", group = "client"}
    ),
 
+   -- close client 2
+   awful.key({modkey}, "q",
+      function(c)
+         c:kill()
+      end,
+      {description = "close", group = "client"}
+   ),
+
    -- Minimize
    awful.key({modkey}, "n",
       function(c)
