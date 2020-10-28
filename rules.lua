@@ -14,6 +14,8 @@ local screen_width = awful.screen.focused().geometry.width
 -- define module table
 local rules = {}
 
+local device = os.getenv("ML_DEVICE")
+
 -- All rules properties can be functions
 -- https://old.reddit.com/r/awesomewm/comments/73ms0f/tag_rule_conditioned_on_the_number_of_screens/dnw03l1/
 
@@ -100,7 +102,7 @@ function rules.create(clientkeys, clientbuttons)
        {
           rule_any = {
             instance = {
-                "code"
+               (device == "desktop" and "code" or nil)
              },
              class = {
                "Lutris"
