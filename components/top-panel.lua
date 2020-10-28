@@ -37,7 +37,7 @@ if device == "thinkbook" then
 
     -- Volume
     -- https://github.com/streetturtle/awesome-wm-widgets/tree/master/volumebar-widget
-    local volumebar_widget = require("awesome-wm-widgets.volumebar-widget.volumebar")
+    volumebar_widget = require("awesome-wm-widgets.volumebar-widget.volumebar")
     -- https://github.com/horst3180/arc-icon-theme#installation
     -- https://github.com/streetturtle/awesome-wm-widgets/tree/master/volume-widget
     volumebar_widget = volumebar_widget({
