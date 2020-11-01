@@ -20,7 +20,7 @@ apps.default = {
     terminal = "alacritty",
     launcher = "dmenu_run",
     lock = "xsecurelock",
-    -- screenshot = "scrot -e 'mv $f ~/Pictures/ 2>/dev/null'",
+    screenshot = "maim",
     filebrowser = "thunar",
     webbrowser = "firefox-developer-edition"
 }
@@ -37,7 +37,7 @@ local run_on_start_up = {
 }
 
 if device == "desktop" then 
-    table.insert(run_on_start_up, "discord")
+    -- table.insert(run_on_start_up, "discord")
     table.insert(run_on_start_up, "spotify")
 end
 

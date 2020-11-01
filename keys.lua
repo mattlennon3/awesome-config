@@ -9,6 +9,9 @@ local beautiful = require("beautiful")
 local dpi = beautiful.xresources.apply_dpi
 local hotkeys_popup = require("awful.hotkeys_popup")
 
+-- Import logger
+local logger = require("log")
+
 -- Default Applications
 local apps = require("apps").default
 
@@ -172,10 +175,17 @@ keys.globalkeys = gears.table.join(
       {description = "play/pause music", group = "hotkeys"}
    ),
 
-   -- Screenshot on prtscn using scrot
+   -- Screenshot on prtscn
    awful.key({}, "Print",
       function()
-         awful.util.spawn(apps.screenshot, false)
+         -- local active_window = os.execute("xdotool getactivewindow")
+         local active_window = os.capture("xdotool getactivewindow")
+         logger.log(active_window)
+         if(active_window) then
+            -- logger.log("active window: " .. (active_window or "no active window"))
+            logger.log(apps.screenshot .. " -i " .. active_window .. " ~/Content/Screenshots/mypicture.png")
+            awful.util.spawn(apps.screenshot .. " -i " .. active_window .. " ~/Content/Screenshots/mypicture.png", false)
+         end
       end
    ),
 
