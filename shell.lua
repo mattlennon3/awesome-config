@@ -5,7 +5,7 @@
 --
 -- cmd: string
 -- raw: boolean (return raw output if true)
--- 
+-- TODO: DELETE OR REPLACE WITH ASYNC
 function os.capture(cmd, raw)
     local handle = assert(io.popen(cmd, 'r'))
     local output = assert(handle:read('*a'))

@@ -41,6 +41,7 @@ Things I can do last:
 - [ ] wallpaper driven from a folder rather than a specific file
 - [ ] add script to launch both debug commands into a terminal
   - [ ] don't keep opening startup programs in Xephyr window (i.e when debugging/developing)
+- [ ] sort out imports? keys.lua is imported in 2 different files so runs twice, which could be an issue. Maybe assign the result to a global and use it if available?
 
 ## Spotify issues:
 https://github.com/awesomeWM/awesome/pull/2484  
@@ -53,6 +54,9 @@ Open the Xephyr instance:
 
 Run awesome inside that instance:
 > DISPLAY=:1.0 awesome -c ~/git/my-dotfiles/awesome-config/rc.lua --search $HOME/.config/awesome
+
+2 for 1
+> Xephyr :1 -ac -br -noreset -screen 960x540 & sleep 2 && DISPLAY=:1.0 awesome -c ~/git/my-dotfiles/awesome-config/rc.lua --search $HOME/.config/awesome
 
 ## Useful links
 some helpful screen code https://github.com/raphaelfournier/Dotfiles/blob/master/awesome/.config/awesome/rc.lua

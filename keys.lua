@@ -31,6 +31,18 @@ local scrolldown = 5
 -- define module table
 local keys = {}
 
+-- Get home dir
+local home_dir
+awful.spawn.easy_async_with_shell("echo $HOME", function(home_directory)
+   if(home_directory) then
+      -- TODO: Logs twice because this file is imported in 2 places. Fixme
+      logger.log("home directory found: " .. home_directory)
+      home_dir = string.gsub(home_directory, "\n", "")
+   else
+      logger.log("home directory not found!!!")
+   end
+end)
+
 -- ===================================================================
 -- Movement Functions (Called by some keybinds)
 -- ===================================================================
@@ -175,17 +187,24 @@ keys.globalkeys = gears.table.join(
       {description = "play/pause music", group = "hotkeys"}
    ),
 
-   -- Screenshot on prtscn
+   -- Screenshot current active client
    awful.key({}, "Print",
       function()
-         -- local active_window = os.execute("xdotool getactivewindow")
-         local active_window = os.capture("xdotool getactivewindow")
-         logger.log(active_window)
-         if(active_window) then
-            -- logger.log("active window: " .. (active_window or "no active window"))
-            logger.log(apps.screenshot .. " -i " .. active_window .. " ~/Content/Screenshots/mypicture.png")
-            awful.util.spawn(apps.screenshot .. " -i " .. active_window .. " ~/Content/Screenshots/mypicture.png", false)
-         end
+         -- https://stackoverflow.com/a/52636847/3033813
+         awful.spawn.easy_async_with_shell("xdotool getactivewindow > /tmp/awesome-active-client.txt", function()
+            awful.spawn.easy_async_with_shell("cat /tmp/awesome-active-client.txt", function(client_id_string)
+               logger.log(client_id_string)
+               if(client_id_string) then
+                  local client_id = string.gsub(client_id_string, "\n", "")
+
+                  local command = apps.screenshot .. " -i " .. client_id .. " " .. home_dir .. "/Content/Screenshots/Screenshot-" .. os.date("%Y-%m-%d_%Hh%Mm%Ss") .. ".png"
+
+                  logger.log("Screenshot: " .. command)
+
+                  awful.spawn.easy_async_with_shell(command, function() end)
+               end
+            end)
+         end)
       end
    ),
 
