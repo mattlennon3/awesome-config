@@ -212,10 +212,14 @@ keys.globalkeys = gears.table.join(
    -- Screenshot area
    awful.key({shiftkey}, "Print",
       function()
-         local command = (apps.screenshot .. " -s " .. getScreenshotFileName())
+         local file_name = getScreenshotFileName()
+         local command = (apps.screenshot .. " -s " .. file_name)
 
          logger.log("Screenshot: " .. command)
-         awful.spawn.easy_async_with_shell(command, function() end)
+         awful.spawn.easy_async_with_shell(command, function() 
+            -- copy to clipboard
+            awful.spawn.easy_async_with_shell("xclip -selection clipboard -t image/png -i " .. file_name)
+         end)
       end
    ),
 

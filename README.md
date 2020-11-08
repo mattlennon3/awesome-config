@@ -17,7 +17,7 @@
 - [x] do not show battery on desktop
 - [x] change autostart programs/tags depending on device?
 - [ ] find a better way of running & debugging this as you go
-- [ ] 
+- [ ] system notification helper
 
 Screen TODO
 - [x] the primary goal here is to only require music/comms on the vertical screen, games only on primary screen etc
@@ -39,6 +39,7 @@ Things I can do last:
 - [ ] add script to launch both debug commands into a terminal
   - [ ] don't keep opening startup programs in Xephyr window (i.e when debugging/developing)
 - [ ] sort out imports? keys.lua is imported in 2 different files so runs twice, which could be an issue. Maybe assign the result to a global and use it if available
+- [ ] when copying a screenshot to the clipboard, don't seem to be able to paste into every program (i.e works when pasting to discord chat/whatsapp but not into a directory)
 
 ## Spotify issues:
 https://github.com/awesomeWM/awesome/pull/2484  
