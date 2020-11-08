@@ -29,6 +29,7 @@ Screen TODO
 - [ ] adding laptop layout would be good. (maybe tag property like specific_screen for desktop only?)
 - [x] if a tag name is "Web{{i}}" replace "{{i}}" with the tag number it will be
 - [ ] set default tag per screen
+- [ ] Add screenshot client name into the file name.
 
 Tag keybind todo
 - [x] If a tag has a number in the name, if you do mod + (number), jump to that tag) (Automatically worked)

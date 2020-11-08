@@ -43,6 +43,10 @@ awful.spawn.easy_async_with_shell("echo $HOME", function(home_directory)
    end
 end)
 
+local getScreenshotFileName = function ()
+   return home_dir .. "/Content/Screenshots/Screenshot-" .. os.date("%Y-%m-%d_%Hh%Mm%Ss") .. ".png"
+end
+
 -- ===================================================================
 -- Movement Functions (Called by some keybinds)
 -- ===================================================================
@@ -193,18 +197,35 @@ keys.globalkeys = gears.table.join(
          -- https://stackoverflow.com/a/52636847/3033813
          awful.spawn.easy_async_with_shell("xdotool getactivewindow > /tmp/awesome-active-client.txt", function()
             awful.spawn.easy_async_with_shell("cat /tmp/awesome-active-client.txt", function(client_id_string)
-               logger.log(client_id_string)
                if(client_id_string) then
                   local client_id = string.gsub(client_id_string, "\n", "")
-
-                  local command = apps.screenshot .. " -i " .. client_id .. " " .. home_dir .. "/Content/Screenshots/Screenshot-" .. os.date("%Y-%m-%d_%Hh%Mm%Ss") .. ".png"
+                  local command = (apps.screenshot .. " -i " .. client_id .. " " .. getScreenshotFileName())
 
                   logger.log("Screenshot: " .. command)
-
                   awful.spawn.easy_async_with_shell(command, function() end)
                end
             end)
          end)
+      end
+   ),
+
+   -- Screenshot area
+   awful.key({shiftkey}, "Print",
+      function()
+         local command = (apps.screenshot .. " -s " .. getScreenshotFileName())
+
+         logger.log("Screenshot: " .. command)
+         awful.spawn.easy_async_with_shell(command, function() end)
+      end
+   ),
+
+   -- Screenshot whole desktop
+   awful.key({modkey, shiftkey}, "Print",
+      function()
+         local command = (apps.screenshot .. " " .. getScreenshotFileName())
+
+         logger.log("Screenshot: " .. command)
+         awful.spawn.easy_async_with_shell(command, function() end)
       end
    ),
 
