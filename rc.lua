@@ -14,6 +14,8 @@
 local gears = require("gears")
 local awful = require("awful")
 
+-- Import config
+
 -- Import logger
 local logger = require("log")
 

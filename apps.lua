@@ -26,18 +26,18 @@ apps.default = {
     altTab = "rofi -show window"
 }
 
- -- ===================================================================
- -- Start up
- -- ===================================================================
+-- ===================================================================
+-- Start up
+-- ===================================================================
 
- local device = os.getenv("ML_DEVICE")
- 
+local device = os.getenv("ML_DEVICE")
+
 -- List of apps to start once on start-up
 local run_on_start_up = {
     "code-oss $HOME/git/foam-diary",
 }
 
-if device == "desktop" then 
+if device == "desktop" then
     -- table.insert(run_on_start_up, "discord")
     table.insert(run_on_start_up, "spotify")
 end
