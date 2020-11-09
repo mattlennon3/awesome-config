@@ -202,7 +202,7 @@ keys.globalkeys = gears.table.join(
    awful.key({}, "Print",
       function()
          -- https://stackoverflow.com/a/52636847/3033813
-         awful.spawn.easy_async_with_shell("xdotool getactivewindow > /tmp/awesome-active-client.txt", function()
+         awful.spawn.easy_async_with_shell(apps.x_helpers.xdotool .. " getactivewindow > /tmp/awesome-active-client.txt", function()
             awful.spawn.easy_async_with_shell("cat /tmp/awesome-active-client.txt", function(client_id_string)
                if(client_id_string) then
                   local client_id = string.gsub(client_id_string, "\n", "")
@@ -225,7 +225,7 @@ keys.globalkeys = gears.table.join(
          logger.log("Screenshot: " .. command)
          awful.spawn.easy_async_with_shell(command, function() 
             -- copy to clipboard
-            awful.spawn.easy_async_with_shell("xclip -selection clipboard -t image/png -i " .. file_name)
+            awful.spawn.easy_async_with_shell(apps.x_helpers.xclip .. " -selection clipboard -t image/png -i " .. file_name)
          end)
       end
    ),
@@ -272,6 +272,10 @@ keys.globalkeys = gears.table.join(
    {description = "jump to urgent client", group = "client"}),
 
    awful.key({altkey}, "Tab",
+   -- Holding ALT when pressing tab repeatedly will just keep
+   -- opening the same rofi dialog,
+   -- rather than cycling the list of items in rofi
+   -- FIX: do not spawn the command if the rofi dialog box is open
       function ()
          awful.spawn.easy_async_with_shell(apps.altTab, function() end)
       end,

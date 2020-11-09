@@ -35,8 +35,7 @@ local est_textclock = wibox.widget.textclock(" " .. short_clock .. " ", nil, "ES
 local volumebar_widget
 local BAT0
 
-if device == "thinkbook" then 
-
+if device == "thinkbook" then
     -- Volume
     -- https://github.com/streetturtle/awesome-wm-widgets/tree/master/volumebar-widget
     volumebar_widget = require("awesome-wm-widgets.volumebar-widget.volumebar")

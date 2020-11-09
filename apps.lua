@@ -21,8 +21,14 @@ apps.default = {
     launcher = "dmenu_run",
     lock = "xsecurelock",
     screenshot = "maim",
+    -- TODO write a PKGBUILD for this repo? 
+    -- define programs used in here for now at least
+    x_helpers = {
+        xdotool = "xdotool",
+        xclip = "xclip"
+    },
     filebrowser = "thunar",
-    webbrowser = (device == "desktop" and "firefox-developer-edition" or "firefox")
+    webbrowser = (device == "desktop" and "firefox-developer-edition" or "firefox"),
     altTab = "rofi -show window"
 }
 
@@ -32,10 +38,6 @@ apps.default = {
 
 local device = os.getenv("ML_DEVICE")
 
-<<<<<<< HEAD
-=======
- 
->>>>>>> 4e6c2c1 (More keybinds)
 -- List of apps to start once on start-up
 local run_on_start_up = {
     "code-oss $HOME/git/foam-diary",

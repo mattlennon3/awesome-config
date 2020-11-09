@@ -9,7 +9,7 @@ local device = os.getenv("ML_DEVICE")
 
 -- defaults
 local config = {
-    wallpaper_dir = "", -- TODO defaultpath
+    wallpaper_dir = "", -- TODO image in this repo to use as default
     wallpaper_command = ""
 }
 

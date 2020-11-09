@@ -13,6 +13,7 @@
 - [x] Show spotify on Music & Comms tag
 - [x] Add keybinds:
   - [x] alt+tab for clients within tag
+    - [ ] fix alt-tab rofi issue (keys.lua)
   - [ ] ~~alt+` for tags (between screens too?)~~
 - [x] do not show battery on desktop
 - [x] change autostart programs/tags depending on device?
@@ -42,6 +43,7 @@ Things I can do last:
   - [ ] don't keep opening startup programs in Xephyr window (i.e when debugging/developing)
 - [ ] sort out imports? keys.lua is imported in 2 different files so runs twice, which could be an issue. Maybe assign the result to a global and use it if available
 - [ ] when copying a screenshot to the clipboard, don't seem to be able to paste into every program (i.e works when pasting to discord chat/whatsapp but not into a directory)
+- [ ] create a PKGBUILD to keep track of what is required to be installed, rather than just listing the programs in apps.lua
 
 ## Spotify issues:
 https://github.com/awesomeWM/awesome/pull/2484  
