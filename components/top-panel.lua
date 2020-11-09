@@ -26,9 +26,11 @@ local systray = wibox.widget.systray()
 -- Create a textclock widget
 
 -- https://unix.stackexchange.com/a/519655/358471
-local clock_format = "%a %Y-%m-%d %H:%M %Z"
--- utc_textclock = wibox.widget.textclock(" " .. clock_format, nil, "Z")
-local local_textclock = wibox.widget.textclock(" " .. clock_format .. " ")
+local date_format = "%a %Y-%m-%d"
+local short_clock = "%H:%M %Z"
+local date_textclock = wibox.widget.textclock(" " .. date_format .. " ")
+local local_textclock = wibox.widget.textclock(" " .. short_clock .. " ", nil)
+local est_textclock = wibox.widget.textclock(" " .. short_clock .. " ", nil, "EST")
 
 local volumebar_widget
 local BAT0
@@ -115,7 +117,8 @@ top_panel.create = function(s)
           BAT0,
           layout = wibox.layout.fixed.horizontal,
           systray,
-        --   utc_textclock,
+          date_textclock,
+          est_textclock,
           local_textclock,
           awful.widget.layoutbox(s)
        }

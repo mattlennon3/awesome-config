@@ -260,9 +260,9 @@ keys.globalkeys = gears.table.join(
    -- CLIENT FOCUSING
    -- =========================================
 
-    awful.key({ modkey }, "u",
+   awful.key({ modkey }, "u",
       awful.client.urgent.jumpto,
-      {description = "jump to urgent client", group = "client"}),
+   {description = "jump to urgent client", group = "client"}),
 
    awful.key({altkey}, "Tab",
       function ()
@@ -276,7 +276,7 @@ keys.globalkeys = gears.table.join(
 
    -- =========================================
    -- NUMBER OF MASTER / COLUMN CLIENTS
--- =========================================
+   -- =========================================
 
    -- =========================================
    -- GAP CONTROL

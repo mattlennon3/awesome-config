@@ -126,7 +126,7 @@ awful.screen.connect_for_each_screen(function(s)
 
    -- Wallpaper
    set_wallpaper(s)
-   logger.log('screencount: ' .. screen:count())
+   logger.log('Screencount: ' .. screen:count())
    
    -- if we are on desktop with 3 screens
    if(screen:count() == 3) then

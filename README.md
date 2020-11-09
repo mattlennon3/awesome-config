@@ -37,6 +37,7 @@ Things I can do last:
 - [x] Install screenshot software & add it to apps (& keybinds)
 - [ ] different background per screen with connect_for_each_screen
 - [ ] wallpaper driven from a folder rather than a specific file
+- [ ] separate wallpaper for portrait monitor
 - [ ] add script to launch both debug commands into a terminal
   - [ ] don't keep opening startup programs in Xephyr window (i.e when debugging/developing)
 - [ ] sort out imports? keys.lua is imported in 2 different files so runs twice, which could be an issue. Maybe assign the result to a global and use it if available
