@@ -18,6 +18,9 @@ local theme = {}
 
 theme.wallpaper = "/home/matt/git/my-dotfiles/awesome-config/Wallpapers/pink_stars_cluster-wallpaper-2560x1440.jpg"
 
+theme.notification_icon_size = 150
+theme.notification_max_width = 600
+
 -- ===================================================================
 -- Theme Variables
 -- ===================================================================
