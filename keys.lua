@@ -119,6 +119,13 @@ keys.globalkeys = gears.table.join(
         end,
         {description = "web browser", group = "launcher"}
     ),
+    -- Spawn web browser private window
+    awful.key({ modkey, shiftkey }, "w",
+        function()
+        awful.spawn(apps.webbrowser .. " --private-window")
+        end,
+        {description = "web browser, private window", group = "launcher"}
+    ),
     -- Show help popup
     awful.key({ modkey }, "s",
         hotkeys_popup.show_help,

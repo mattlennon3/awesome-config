@@ -1,7 +1,6 @@
 -- ===================================================================
 -- Initialization
--- ===================================================================
-
+-- =========================================
 
 local awful = require("awful")
 local filesystem = require("gears.filesystem")
@@ -9,6 +8,7 @@ local filesystem = require("gears.filesystem")
 -- define module table
 local apps = {}
 
+local device = os.getenv("ML_DEVICE")
 
 -- ===================================================================
 -- App Declarations
@@ -22,7 +22,7 @@ apps.default = {
     lock = "xsecurelock",
     screenshot = "maim",
     filebrowser = "thunar",
-    webbrowser = "firefox-developer-edition",
+    webbrowser = (device == "desktop" and "firefox-developer-edition" or "firefox")
     altTab = "rofi -show window"
 }
 
@@ -32,6 +32,10 @@ apps.default = {
 
 local device = os.getenv("ML_DEVICE")
 
+<<<<<<< HEAD
+=======
+ 
+>>>>>>> 4e6c2c1 (More keybinds)
 -- List of apps to start once on start-up
 local run_on_start_up = {
     "code-oss $HOME/git/foam-diary",
