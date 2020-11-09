@@ -11,9 +11,9 @@
 - [x] Add the "dot" indicator above each tag when a client is open on that tag
 - [x] Control + Q closes windows
 - [x] Show spotify on Music & Comms tag
-- [ ] Add keybinds:
-  - [ ] alt+tab for clients within tag
-  - [ ] alt+` for tags (between screens too?)
+- [x] Add keybinds:
+  - [x] alt+tab for clients within tag
+  - [ ] ~~alt+` for tags (between screens too?)~~
 - [x] do not show battery on desktop
 - [x] change autostart programs/tags depending on device?
 - [ ] find a better way of running & debugging this as you go
@@ -28,6 +28,7 @@ Screen TODO
 
 Tag todo
 - [ ] Add screenshot client name into the file name.
+  - [ ] create a folder for the client name and place it there?
 - [x] If a tag has a number in the name, if you do mod + (number), jump to that tag) (Automatically worked)
 
 Things I can do last:

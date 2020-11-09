@@ -264,13 +264,19 @@ keys.globalkeys = gears.table.join(
       awful.client.urgent.jumpto,
       {description = "jump to urgent client", group = "client"}),
 
+   awful.key({altkey}, "Tab",
+      function ()
+         awful.spawn.easy_async_with_shell(apps.altTab, function() end)
+      end,
+   {description = "Open alt-tab prompt", group = "client"}),
+
    -- =========================================
    -- CLIENT RESIZING
    -- =========================================
 
    -- =========================================
    -- NUMBER OF MASTER / COLUMN CLIENTS
-   -- =========================================
+-- =========================================
 
    -- =========================================
    -- GAP CONTROL

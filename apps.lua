@@ -22,7 +22,8 @@ apps.default = {
     lock = "xsecurelock",
     screenshot = "maim",
     filebrowser = "thunar",
-    webbrowser = "firefox-developer-edition"
+    webbrowser = "firefox-developer-edition",
+    altTab = "rofi -show window"
 }
 
  -- ===================================================================
