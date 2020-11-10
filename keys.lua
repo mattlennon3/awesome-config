@@ -213,7 +213,8 @@ keys.globalkeys = gears.table.join(
                end
             end)
          end)
-      end
+      end,
+      {description = "screenshot current client", group = "hotkeys"}
    ),
 
    -- Screenshot area
@@ -227,7 +228,8 @@ keys.globalkeys = gears.table.join(
             -- copy to clipboard
             awful.spawn.easy_async_with_shell(apps.x_helpers.xclip .. " -selection clipboard -t image/png -i " .. file_name)
          end)
-      end
+      end,
+      {description = "screenshot selection area", group = "hotkeys"}
    ),
 
    -- Screenshot whole desktop
@@ -237,7 +239,19 @@ keys.globalkeys = gears.table.join(
 
          logger.log("Screenshot: " .. command)
          awful.spawn.easy_async_with_shell(command, function() end)
-      end
+      end,
+      {description = "screenshot whole desktop", group = "hotkeys"}
+   ),
+
+   -- =========================================
+   -- PROGRAM LAUNCHERS
+   -- =========================================
+
+   awful.key({modkey}, "#90", -- num pad 0
+      function ()
+         awful.spawn.easy_async_with_shell(apps.calculator, function() end)
+      end,
+      {description = "calculator", group = "launcher"}
    ),
 
    -- =========================================
@@ -252,7 +266,7 @@ keys.globalkeys = gears.table.join(
    -- Quit Awesome
    awful.key({modkey, shiftkey}, "Escape",
       awesome.quit,
-      {description = "toggle exit screen", group = "hotkeys"}
+      {description = "toggle exit screen", group = "awesome"}
    ),
 
 --    awful.key({}, "XF86PowerOff",

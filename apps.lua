@@ -21,15 +21,17 @@ apps.default = {
     launcher = "dmenu_run",
     lock = "xsecurelock",
     screenshot = "maim",
+    filebrowser = "thunar",
     -- TODO write a PKGBUILD for this repo? 
     -- define programs used in here for now at least
     x_helpers = {
         xdotool = "xdotool",
         xclip = "xclip"
     },
-    filebrowser = "thunar",
-    webbrowser = (device == "desktop" and "firefox-developer-edition" or "firefox"),
-    altTab = "rofi -show window"
+    altTab = "rofi -show window",
+    -- calculator | control + numpad0 to open (requires rofi-calc package). control + c to copy result
+    calculator = "rofi -show calc -modi calc -no-show-match -no-sort -kb-accept-custom 'Control_L+c' -calc-command 'echo {result}' | xclip -selection clipboard",
+    webbrowser = (device == "desktop" and "firefox-developer-edition" or "firefox")
 }
 
 -- ===================================================================

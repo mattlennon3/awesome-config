@@ -60,6 +60,14 @@ Run awesome inside that instance:
 2 for 1
 > Xephyr :1 -ac -br -noreset -screen 960x540 & sleep 2 && DISPLAY=:1.0 awesome -c ~/git/my-dotfiles/awesome-config/rc.lua --search $HOME/.config/awesome
 
+## Listen for keyboard presses to find out what keycode to bind
+Get keyboard id
+> xinput list
+Start listener
+> xinput test 11
+or try this
+> xmodmap -pke | less
+
 ## Useful links
 some helpful screen code https://github.com/raphaelfournier/Dotfiles/blob/master/awesome/.config/awesome/rc.lua
 
