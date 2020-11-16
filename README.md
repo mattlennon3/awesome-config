@@ -19,6 +19,8 @@
 - [x] change autostart programs/tags depending on device?
 - [ ] find a better way of running & debugging this as you go
 - [ ] system notification helper
+- [ ] reading left aligned text in a browser is annoying when its the only window as its to the left,
+  - [ ] add margin to the left/right side of the client to center the browsers text
 
 Screen TODO
 - [x] the primary goal here is to only require music/comms on the vertical screen, games only on primary screen etc
@@ -70,6 +72,10 @@ or try this
 
 ## Useful links
 some helpful screen code https://github.com/raphaelfournier/Dotfiles/blob/master/awesome/.config/awesome/rc.lua
+
+interface with awesomewm from the command line:  
+https://awesomewm.org/doc/manpages/awesome-client.1.html
+
 
 ## Credits
 

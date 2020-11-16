@@ -219,6 +219,8 @@ keys.globalkeys = gears.table.join(
 
    -- Screenshot area
    awful.key({shiftkey}, "Print",
+      -- for snipping tool screenshot in windows:
+      -- windows key + shift + s
       function()
          local file_name = getScreenshotFileName()
          local command = (apps.screenshot .. " -s " .. file_name)
@@ -252,6 +254,13 @@ keys.globalkeys = gears.table.join(
          awful.spawn.easy_async_with_shell(apps.calculator, function() end)
       end,
       {description = "calculator", group = "launcher"}
+   ),
+
+   awful.key({modkey, shiftkey}, "t",
+      function ()
+         awful.spawn.easy_async_with_shell(apps.rofiTimer, function() end)
+      end,
+      {description = "timer", group = "launcher"}
    ),
 
    -- =========================================
