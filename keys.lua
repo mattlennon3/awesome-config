@@ -256,9 +256,16 @@ keys.globalkeys = gears.table.join(
       {description = "calculator", group = "launcher"}
    ),
 
-   awful.key({modkey, shiftkey}, "t",
+   awful.key({modkey}, "t",
       function ()
          awful.spawn.easy_async_with_shell(apps.rofiTimer, function() end)
+      end,
+      {description = "timer", group = "launcher"}
+   ),
+
+   awful.key({modkey, shiftkey}, "p",
+      function ()
+         awful.spawn.easy_async_with_shell(apps.password_prompt, function() end)
       end,
       {description = "timer", group = "launcher"}
    ),
@@ -437,7 +444,7 @@ keys.clientkeys = gears.table.join(
    ),
 
    -- toggle pinned
-   awful.key({modkey}, "t",
+   awful.key({modkey}, "p",
       function (c)
          c.ontop = not c.ontop
       end,

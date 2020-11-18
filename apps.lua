@@ -30,9 +30,10 @@ apps.default = {
     },
     altTab = "rofi -show window",
     -- calculator | control + numpad0 to open (requires rofi-calc package). control + c to copy result
-    calculator = "rofi -show calc -modi calc -no-show-match -no-sort -kb-accept-custom 'Control_L+c' -calc-command 'echo {result}' | xclip -selection clipboard",
+    calculator = "rofi -show calc -modi calc -no-show-match -no-sort -kb-accept-custom 'Control_L+c' -no-unicode -calc-command 'echo {result}' | xclip -selection clipboard",
     webbrowser = (device == "desktop" and "firefox-developer-edition" or "firefox"),
-    rofiTimer = "$HOME/git/rust/rofi-timer/target/release/rofi-timer"
+    rofiTimer = "(cd /home/matt/git/rust/rofi-timer; $PWD/target/release/rofi-timer)",
+    password_prompt = "passmenu"
 }
 
 -- ===================================================================

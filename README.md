@@ -46,6 +46,7 @@ Things I can do last:
 - [ ] sort out imports? keys.lua is imported in 2 different files so runs twice, which could be an issue. Maybe assign the result to a global and use it if available
 - [ ] when copying a screenshot to the clipboard, don't seem to be able to paste into every program (i.e works when pasting to discord chat/whatsapp but not into a directory)
 - [ ] create a PKGBUILD to keep track of what is required to be installed, rather than just listing the programs in apps.lua
+- [ ] youtube-dl rofi prompt
 
 ## Spotify issues:
 https://github.com/awesomeWM/awesome/pull/2484  

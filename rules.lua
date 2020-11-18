@@ -54,6 +54,8 @@ function rules.create(clientkeys, clientbuttons)
                 -- steam stuff
                 "Steam Guard - Computer Authorization Required",
                 "Friends List",
+                "Steam - News (1 of 2)", -- a "temporary" workaround
+                "Steam - News (1 of 3)", -- a "temporary" workaround
 
                 -- TS3
                 "TeamSpeak 3",
@@ -110,6 +112,17 @@ function rules.create(clientkeys, clientbuttons)
           }, properties = {switchtotag = true}
        },
        -- ===================================================================
+       -- Pinned Clients
+       -- These clients will stay on top of others
+       -- ===================================================================
+       {
+         rule_any = {
+           name = {
+              "TeamSpeak 3",
+            }
+         }, properties = {ontop = true}
+      },
+       -- ===================================================================
        -- Placement rules
        -- ===================================================================
        {
@@ -135,6 +148,14 @@ function rules.create(clientkeys, clientbuttons)
             }
          }, properties = {tag = "Games", screen = screens.screen_center_primary}
        },
+      -- Steam
+      {
+         rule_any = {
+            class = {
+               "Steam"
+            }
+         }, properties = {tag = "Games", screen = screens.screen_center_primary}
+      },
        -- WoW classic
        {
          rule_any = {
@@ -197,7 +218,7 @@ function rules.create(clientkeys, clientbuttons)
        -- Pavucontrol & Bluetooth Devices
        {
           rule_any = {class = {"Pavucontrol"}, name = {"Bluetooth Devices"}},
-          properties = {floating = true, width = 1050, height = 560}
+          properties = {floating = true, ontop = true, width = 1050, height = 560}
        },
     }
  end
