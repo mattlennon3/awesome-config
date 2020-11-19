@@ -54,6 +54,7 @@ function rules.create(clientkeys, clientbuttons)
                 -- steam stuff
                 "Steam Guard - Computer Authorization Required",
                 "Friends List",
+                "Steam - News",          -- a "temporary" workaround
                 "Steam - News (1 of 2)", -- a "temporary" workaround
                 "Steam - News (1 of 3)", -- a "temporary" workaround
 
