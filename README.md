@@ -21,6 +21,7 @@
 - [ ] system notification helper
 - [ ] reading left aligned text in a browser is annoying when its the only window as its to the left,
   - [ ] add margin to the left/right side of the client to center the browsers text
+- [ ] gap increase/decrease/toggle hotkeys
 
 Screen TODO
 - [x] the primary goal here is to only require music/comms on the vertical screen, games only on primary screen etc
@@ -47,6 +48,22 @@ Things I can do last:
 - [ ] when copying a screenshot to the clipboard, don't seem to be able to paste into every program (i.e works when pasting to discord chat/whatsapp but not into a directory)
 - [ ] create a PKGBUILD to keep track of what is required to be installed, rather than just listing the programs in apps.lua
 - [ ] youtube-dl rofi prompt
+
+
+vertical stacking layout:
+
+I
+\----------------------------  
+.............Top  
+I
+\----------------------------  
+...........Middle  
+I
+\----------------------------  
+...........Bottom  
+I
+\----------------------------  
+
 
 ## Spotify issues:
 https://github.com/awesomeWM/awesome/pull/2484  

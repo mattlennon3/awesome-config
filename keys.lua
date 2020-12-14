@@ -521,7 +521,7 @@ keys.tasklist_buttons = gears.table.join(
 
 
 -- =========================================
--- TAG BINDINGS
+-- TAG KEYBOARD BINDINGS
 -- =========================================
 
 -- Keyboard mod + 1-9
@@ -564,7 +564,11 @@ for i = 1, 9 do
     )
  end
 
--- Mouse buttons & scroll wheel
+
+-- =========================================
+-- TAG MOUSE BINDINGS
+-- =========================================
+
 keys.taglist_buttons = gears.table.join(
       -- View tag
       awful.button({ }, leftclick, function(t) t:view_only() end),

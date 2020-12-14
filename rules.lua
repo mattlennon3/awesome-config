@@ -57,6 +57,9 @@ function rules.create(clientkeys, clientbuttons)
                 "Steam - News",          -- a "temporary" workaround
                 "Steam - News (1 of 2)", -- a "temporary" workaround
                 "Steam - News (1 of 3)", -- a "temporary" workaround
+                "Steam - News (1 of 4)", -- a "temporary" workaround
+                "Steam - News (1 of 5)", -- a "temporary" workaround
+                "Steam - News (1 of 6)", -- a "temporary" workaround
 
                 -- TS3
                 "TeamSpeak 3",
@@ -106,8 +109,8 @@ function rules.create(clientkeys, clientbuttons)
           rule_any = {
             instance = {
                (device == "desktop" and "code" or nil)
-             },
-             class = {
+            },
+            class = {
                "Lutris"
             }
           }, properties = {switchtotag = true}
@@ -157,23 +160,32 @@ function rules.create(clientkeys, clientbuttons)
             }
          }, properties = {tag = "Games", screen = screens.screen_center_primary}
       },
-       -- WoW classic
-       {
+      -- Spelunky 2
+      {
+         rule_any = {
+            name = {
+               "Spelunky 2"
+            }
+         }, properties = {tag = "Games", screen = screens.screen_center_primary}
+      },
+      -- WoW classic
+      {
          rule_any = {
             class = {
                "wowclassic.exe"
             }
          }, properties = {tag = "Games", screen = screens.screen_center_primary}
-       },
-       -- Blizz
-       {
+      },
+      -- Blizz
+      {
          rule_any = {
             class = {
                "Blizzard Battle.net"
             }
          }, properties = {tag = "Games", screen = screens.screen_center_primary}
-       },
-       {
+      },
+      -- VSCode
+      {
          rule_any = {
            instance = {
                "code"

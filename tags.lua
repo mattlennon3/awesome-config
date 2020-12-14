@@ -14,7 +14,7 @@ local screens = require("screens")
 local tags = {
     {
         name = 'Music',
-        layout = nil,
+        layout = awful.layout.suit.tile.bottom,
         specific_screen = screens.screen_left_vertical
     },
     {
