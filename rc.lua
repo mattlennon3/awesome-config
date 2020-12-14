@@ -114,6 +114,9 @@ local local_master_width_factor = 0.65
 -- Master takes the full screen when it's on it's own
 local local_master_fill_policy = "expand"
 
+-- FILTHY CODE ALERT (easily get the discord tag to split spotify 50/50 on boot)
+local discord_tag = nil
+
 -- Set up each screen (add tags & panels)
 awful.screen.connect_for_each_screen(function(s)
 
@@ -122,7 +125,6 @@ awful.screen.connect_for_each_screen(function(s)
       screen_name = k
    end
 
-   logger.log('----')
    logger.log("Screen name: " .. screen_name)
    logger.log("Screen index: " .. s.index)
 
@@ -138,9 +140,16 @@ awful.screen.connect_for_each_screen(function(s)
          if tag.specific_screen == nil or screen_name == tag.specific_screen then
             local selected_for_this_screen = false -- TODO: WTF is this variable for?
             local selected_tag = (tag.name == "Web" or tag.name == "Music") and selected_for_this_screen == false
+            -- logger.log("selected_for_this_screen: " .. (selected_for_this_screen))
             if selected_tag then
                selected_for_this_screen = true
             end
+
+            if tag.name == "Comms" then
+               logger.log("Comms found")
+               discord_tag = tag
+            end
+
             local name = string.gsub(tag.name, '{{i}}', tostring(displayed_tag_count))
             awful.tag.add(name, {
                layout = tag.layout and tag.layout or awful.layout.suit.tile,
@@ -172,6 +181,7 @@ awful.screen.connect_for_each_screen(function(s)
 
    top_panel.create(s)
 
+   logger.log('----')
 end)
 
 -- remove gaps if layout is set to max
@@ -199,11 +209,31 @@ client.connect_signal("manage", function (c)
 
    -- Attempt to fix spotify tracking. This will start any programs minimized if they have an xprop class of nil 
    -- https://redd.it/d8r74k
-    if c.class == nil then
+   if c.class == nil then
       c.minimized = true
       logger.log('No client class found, attaching watcher...')
       c:connect_signal("property::class", function ()
-         logger.log('Client class added: ' .. (c.class or ' -nil- '))
+         logger.log('Client class added: ' .. (c.class or ' -nil- ') .. ".")
+         -- logger.log('Discord tag: ' .. (discord_tag or ' -nil- ') .. ".")
+
+         -- TODO FUTURE ME
+         -- I have no idea why the below if statement never seems to run. I can make it super simple and it just
+         -- completely skips both branches.
+         -- Could be that discord_tag is nil. I guess an error is being thrown silently.
+         -- I haven't tried increasing log verbosity yet.
+         --
+
+         -- Split Spotify 50/50 with discord on boot
+         -- if c.class == 'Spotify' then
+         --    logger.log('Spotify & Discord - putting on same tag')
+         c:toggle_tag(discord_tag)
+         -- -- else
+         --    logger.log("haha get fucked")
+         -- end
+
+         logger.log('end of the line')
+
+
          c.minimized = false
          awful.rules.apply(c)
       end)
