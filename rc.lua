@@ -168,6 +168,12 @@ awful.screen.connect_for_each_screen(function(s)
    else
       for i, tag in pairs(tags) do
          local name = string.gsub(tag.name, '{{i}}', tostring(i))
+         
+         if tag.name == "Comms" then
+            logger.log("Comms found")
+            discord_tag = tag
+         end
+
          awful.tag.add(name, {
             layout = tag.layout and tag.layout or awful.layout.suit.tile,
             screen = s,
@@ -214,6 +220,7 @@ client.connect_signal("manage", function (c)
       logger.log('No client class found, attaching watcher...')
       c:connect_signal("property::class", function ()
          logger.log('Client class added: ' .. (c.class or ' -nil- ') .. ".")
+         logger.log('hol up')
          -- logger.log('Discord tag: ' .. (discord_tag or ' -nil- ') .. ".")
 
          -- TODO FUTURE ME
@@ -222,11 +229,14 @@ client.connect_signal("manage", function (c)
          -- Could be that discord_tag is nil. I guess an error is being thrown silently.
          -- I haven't tried increasing log verbosity yet.
          --
+         if gears.dump_return(discord_tag.name, "name") == "" then
+            logger.log("y does nothing work")
+         end
 
          -- Split Spotify 50/50 with discord on boot
          -- if c.class == 'Spotify' then
          --    logger.log('Spotify & Discord - putting on same tag')
-         c:toggle_tag(discord_tag)
+         -- c:toggle_tag(discord_tag)
          -- -- else
          --    logger.log("haha get fucked")
          -- end
