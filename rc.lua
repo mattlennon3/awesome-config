@@ -122,7 +122,6 @@ awful.screen.connect_for_each_screen(function(s)
       screen_name = k
    end
 
-   logger.log('----')
    logger.log("Screen name: " .. screen_name)
    logger.log("Screen index: " .. s.index)
 
@@ -172,6 +171,7 @@ awful.screen.connect_for_each_screen(function(s)
 
    top_panel.create(s)
 
+   logger.log('----')
 end)
 
 -- remove gaps if layout is set to max
