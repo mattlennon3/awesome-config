@@ -20,7 +20,7 @@
 - [ ] find a better way of running & debugging this as you go
 - [ ] system notification helper
 - [ ] reading left aligned text in a browser is annoying when its the only window as its to the left,
-  - [ ] add margin to the left/right side of the client to center the browsers text
+  - [ ] add margin to the left/right side of the client to center the browsers text (basically gaps I guess)
 - [ ] gap increase/decrease/toggle hotkeys
 
 Screen TODO
@@ -31,9 +31,8 @@ Screen TODO
 - [ ] set default tag per screen
 
 Tag todo
-- [ ] Add screenshot client name into the file name.
-  - [ ] create a folder for the client name and place it there?
 - [x] If a tag has a number in the name, if you do mod + (number), jump to that tag) (Automatically worked)
+- [ ] tag for pavucontrol/htop (open on boot)
 
 Things I can do last:
 - [ ] Add the menu when you right click on the desktop
@@ -48,6 +47,8 @@ Things I can do last:
 - [ ] when copying a screenshot to the clipboard, don't seem to be able to paste into every program (i.e works when pasting to discord chat/whatsapp but not into a directory)
 - [ ] create a PKGBUILD to keep track of what is required to be installed, rather than just listing the programs in apps.lua
 - [ ] youtube-dl rofi prompt
+- [ ] Add screenshot client name into the file name.
+  - [ ] create a folder for the client name and place it there?
 
 
 vertical stacking layout:
