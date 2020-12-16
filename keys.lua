@@ -218,14 +218,14 @@ keys.globalkeys = gears.table.join(
    ),
 
    -- Screenshot area
-   awful.key({shiftkey}, "Print",
+   awful.key({modkey, shiftkey}, "s",
       -- for snipping tool screenshot in windows:
       -- windows key + shift + s
       function()
          local file_name = getScreenshotFileName()
          local command = (apps.screenshot .. " -s " .. file_name)
 
-         logger.log("Screenshot: " .. command)
+         logger.log("Screenshot area snip: " .. command)
          awful.spawn.easy_async_with_shell(command, function() 
             -- copy to clipboard
             awful.spawn.easy_async_with_shell(apps.x_helpers.xclip .. " -selection clipboard -t image/png -i " .. file_name)
