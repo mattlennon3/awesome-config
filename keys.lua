@@ -270,6 +270,13 @@ keys.globalkeys = gears.table.join(
       {description = "timer", group = "launcher"}
    ),
 
+   awful.key({modkey}, "y",
+      function ()
+         awful.spawn.easy_async_with_shell(apps.youtube_dl_rofi_prompt, function() end)
+      end,
+      {description = "timer", group = "launcher"}
+   ),
+
    -- =========================================
    -- RELOAD / QUIT AWESOME
    -- =========================================
@@ -322,6 +329,19 @@ keys.globalkeys = gears.table.join(
    -- =========================================
    -- GAP CONTROL
    -- =========================================
+
+   awful.key({modkey}, "-",
+      function()
+         awful.tag.incgap(5, nil)
+      end,
+      {description = "increment gaps size for the current tag", group = "gaps"}
+   ),
+   awful.key({modkey, shiftkey}, "=",
+      function()
+         awful.tag.incgap(-5, nil)
+      end,
+      {description = "decrement gap size for the current tag", group = "gaps"}
+   ),
 
    -- =========================================
    -- LAYOUT SELECTION

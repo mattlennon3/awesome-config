@@ -21,7 +21,8 @@
 - [ ] system notification helper
 - [ ] reading left aligned text in a browser is annoying when its the only window as its to the left,
   - [ ] add margin to the left/right side of the client to center the browsers text
-- [ ] gap increase/decrease/toggle hotkeys
+- [x] gap increase/decrease/toggle hotkeys
+- [ ] shortcut to make client active on all tags
 
 Screen TODO
 - [x] the primary goal here is to only require music/comms on the vertical screen, games only on primary screen etc
@@ -48,6 +49,7 @@ Things I can do last:
 - [ ] when copying a screenshot to the clipboard, don't seem to be able to paste into every program (i.e works when pasting to discord chat/whatsapp but not into a directory)
 - [ ] create a PKGBUILD to keep track of what is required to be installed, rather than just listing the programs in apps.lua
 - [ ] youtube-dl rofi prompt
+- [ ] shortcut to call dmenu-run, but will create a new tag to hold the client instead of opening on the current tag (could try and generate the tag name from the client). Handy for maximized clients, prusa-slicer, freecad etc
 
 
 vertical stacking layout:

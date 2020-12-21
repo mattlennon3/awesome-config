@@ -97,8 +97,12 @@ function rules.create(clientkeys, clientbuttons)
              class = {
                 "wowclassic.exe",
                 "FallGuys_client",
+                "rocketleague.exe",
                 nil
              },
+             name = {
+               "Spelunky 2"
+            }
           }, properties = {fullscreen = true}
        },
        -- ===================================================================
@@ -157,6 +161,22 @@ function rules.create(clientkeys, clientbuttons)
          rule_any = {
             class = {
                "Steam"
+            }
+         }, properties = {tag = "Games", screen = screens.screen_center_primary}
+      },
+      -- Epic Launcher
+      {
+         rule_any = {
+            class = {
+               "epicgameslauncher.exe"
+            }
+         }, properties = {tag = "Games", screen = screens.screen_center_primary}
+      },
+      -- Rocket League
+      {
+         rule_any = {
+            class = {
+               "rocketleague.exe"
             }
          }, properties = {tag = "Games", screen = screens.screen_center_primary}
       },

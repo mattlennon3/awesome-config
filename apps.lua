@@ -33,7 +33,8 @@ apps.default = {
     calculator = "rofi -show calc -modi calc -no-show-match -no-sort -kb-accept-custom 'Control_L+c' -no-unicode -calc-command 'echo {result}' | xclip -selection clipboard",
     webbrowser = (device == "desktop" and "firefox-developer-edition" or "firefox"),
     rofiTimer = "(cd /home/matt/git/rust/rofi-timer; $PWD/target/release/rofi-timer)",
-    password_prompt = "passmenu"
+    password_prompt = "passmenu",
+    youtube_dl_rofi_prompt = "rofi -dmenu -theme-str 'listview { enabled: false;}' -p 'Video URL' | youtube-dl"
 }
 
 -- ===================================================================
@@ -48,7 +49,7 @@ local run_on_start_up = {
 }
 
 if device == "desktop" then
-    -- table.insert(run_on_start_up, "discord")
+    table.insert(run_on_start_up, "discord")
     table.insert(run_on_start_up, "spotify")
 end
 
