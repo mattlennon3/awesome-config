@@ -584,6 +584,8 @@ for i = 1, 9 do
     )
  end
 
+ -- rofi -dmenu -lines 0 > /tmp/rofi-test.txt
+
 
 -- =========================================
 -- TAG MOUSE BINDINGS

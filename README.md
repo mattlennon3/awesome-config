@@ -35,6 +35,7 @@ Tag todo
 - [ ] Add screenshot client name into the file name.
   - [ ] create a folder for the client name and place it there?
 - [x] If a tag has a number in the name, if you do mod + (number), jump to that tag) (Automatically worked)
+- [ ] hotkey to rename current tag
 
 Things I can do last:
 - [ ] Add the menu when you right click on the desktop
@@ -50,6 +51,7 @@ Things I can do last:
 - [ ] create a PKGBUILD to keep track of what is required to be installed, rather than just listing the programs in apps.lua
 - [ ] youtube-dl rofi prompt
 - [ ] shortcut to call dmenu-run, but will create a new tag to hold the client instead of opening on the current tag (could try and generate the tag name from the client). Handy for maximized clients, prusa-slicer, freecad etc
+- [ ] gimp maximize on open
 
 
 vertical stacking layout:
