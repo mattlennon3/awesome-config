@@ -52,6 +52,7 @@ Things I can do last:
 - [ ] youtube-dl rofi prompt
 - [ ] shortcut to call dmenu-run, but will create a new tag to hold the client instead of opening on the current tag (could try and generate the tag name from the client). Handy for maximized clients, prusa-slicer, freecad etc
 - [ ] gimp maximize on open
+- [ ] delayed autostart for some apps (spotify)
 
 
 vertical stacking layout:
