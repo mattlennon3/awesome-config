@@ -8,9 +8,9 @@ local screens = {}
 -- Desktop screens
 -- ===================================================================
 
-screens.screen_left_vertical = "HDMI-0"
-screens.screen_center_primary = "DP-0"
-screens.screen_right_secondary = "HDMI-0"
+screens.screen_left_vertical = "DVI-D-0"
+screens.screen_center_primary = "HDMI-0"
+screens.screen_right_secondary = "DVI-I-1"
 
 
 -- ===================================================================
