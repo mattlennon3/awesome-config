@@ -29,6 +29,7 @@ apps.default = {
         xclip = "xclip"
     },
     altTab = "rofi -show window",
+    mediaKeys = "playerctl",
     -- calculator | control + numpad0 to open (requires rofi-calc package). control + c to copy result
     calculator = "rofi -show calc -modi calc -no-show-match -no-sort -kb-accept-custom 'Control_L+c' -no-unicode -calc-command 'echo {result}' | xclip -selection clipboard",
     webbrowser = (device == "desktop" and "firefox-developer-edition" or "firefox"),
@@ -46,7 +47,8 @@ local device = os.getenv("ML_DEVICE")
 -- List of apps to start once on start-up
 local run_on_start_up = {
     "code-oss $HOME/git/foam-diary",
-    "boostnote"
+    "boostnote",
+    "dwall -s forest"
 }
 
 if device == "desktop" then

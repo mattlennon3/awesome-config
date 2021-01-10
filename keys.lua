@@ -179,21 +179,22 @@ keys.globalkeys = gears.table.join(
       end,
       {description = "toggle mute", group = "hotkeys"}
    ),
+   -- https://wiki.archlinux.org/index.php/MPRIS
    awful.key({}, "XF86AudioNext",
       function()
-         awful.spawn("mpc next", false)
+         awful.spawn(apps.mediaKeys .. " next", false)
       end,
       {description = "next music", group = "hotkeys"}
    ),
    awful.key({}, "XF86AudioPrev",
       function()
-         awful.spawn("mpc prev", false)
+         awful.spawn(apps.mediaKeys .. " previous", false)
       end,
       {description = "previous music", group = "hotkeys"}
    ),
    awful.key({}, "XF86AudioPlay",
       function()
-         awful.spawn("mpc toggle", false)
+         awful.spawn(apps.mediaKeys .. " play-pause", false)
       end,
       {description = "play/pause music", group = "hotkeys"}
    ),
@@ -275,6 +276,17 @@ keys.globalkeys = gears.table.join(
          awful.spawn.easy_async_with_shell(apps.youtube_dl_rofi_prompt, function() end)
       end,
       {description = "timer", group = "launcher"}
+   ),
+
+   -- =========================================
+   -- MACRO KEYPAD SHORTCUTS
+   -- =========================================
+
+   awful.key({}, "XF86AudioMicMute",
+      function ()
+         awful.spawn.easy_async_with_shell(apps.terminal, function() end)
+      end,
+      {description = "macro key 1", group = "launcher"}
    ),
 
    -- =========================================
