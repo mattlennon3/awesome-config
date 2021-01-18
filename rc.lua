@@ -207,12 +207,12 @@ client.connect_signal("manage", function (c)
          c.minimized = false
          awful.rules.apply(c)
       end)
-      -- Fix vscode name field being added later
-      c:connect_signal("property::name", function ()
-         logger.log('Client name added: ' .. (c.class or ' -nil- '))
-         c.minimized = false
-         awful.rules.apply(c)
-      end)
+      -- CAREFUL - Clients such as spotify change their name regularly (track change), forcing them to reapply rules & jump back to their original tag
+      -- c:connect_signal("property::name", function ()
+      --    logger.log('Client name added: ' .. (c.class or ' -nil- '))
+      --    c.minimized = false
+      --    awful.rules.apply(c)
+      -- end)
    end
  end)
 
