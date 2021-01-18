@@ -207,6 +207,12 @@ client.connect_signal("manage", function (c)
          c.minimized = false
          awful.rules.apply(c)
       end)
+      -- Fix vscode name field being added later
+      c:connect_signal("property::name", function ()
+         logger.log('Client name added: ' .. (c.class or ' -nil- '))
+         c.minimized = false
+         awful.rules.apply(c)
+      end)
    end
  end)
 

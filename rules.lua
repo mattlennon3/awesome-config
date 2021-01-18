@@ -212,6 +212,22 @@ function rules.create(clientkeys, clientbuttons)
             },
          }, properties = {tag = "Code"}
       },
+      -- VSCode (notes) could not get this working :(
+      -- {
+      --    rule = {
+      --      name = {
+      --          "foam-diary"
+      --       },
+      --    }, properties = {tag = "Notes"}
+      -- },
+      -- Boost Note
+      {
+         rule_any = {
+            class = {
+               "Boost Note"
+            },
+         }, properties = {tag = "Notes"}
+      },
        -- ===================================================================
        -- Misc
        -- ===================================================================

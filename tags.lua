@@ -23,6 +23,11 @@ local tags = {
         specific_screen = screens.screen_left_vertical
     },
     {
+        name = 'Notes',
+        layout = nil,
+        specific_screen = screens.screen_right_secondary
+    },
+    {
         name = 'Code',
         layout = nil,
         specific_screen = nil
