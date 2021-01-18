@@ -28,6 +28,10 @@ apps.default = {
         xdotool = "xdotool",
         xclip = "xclip"
     },
+    scripts = {
+        keyboardToHost = "sh /home/matt/scripts/virt-manager/input_detach.sh",
+        keyboardToGuest = "sh /home/matt/scripts/virt-manager/input_attach.sh"
+    },
     altTab = "rofi -show window",
     mediaKeys = "playerctl",
     -- calculator | control + numpad0 to open (requires rofi-calc package). control + c to copy result

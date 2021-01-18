@@ -27,6 +27,21 @@ local rightclick = 3
 local scrollup = 4
 local scrolldown = 5
 
+local XF86Binds = {
+   -- Brightness (laptop)
+   brightnessUp = "XF86MonBrightnessUp",
+   brightnessDown = "XF86MonBrightnessDown",
+   -- Audio Control
+   audioRaiseVolume = "XF86AudioRaiseVolume",
+   audioLowerVolume = "XF86AudioLowerVolume",
+   audioMute = "XF86AudioMute",
+   audioNext = "XF86AudioNext",
+   audioPrev = "XF86AudioPrev",
+   audioPlay = "XF86AudioPlay",
+   -- Macro keypad (bind spare XF86 keys to functions)
+   keyboardToHost = "XF86HomePage", -- TODO: Change me
+   keyboardToGuest = "XF86Game"
+}
 
 -- define module table
 local keys = {}
@@ -144,13 +159,13 @@ keys.globalkeys = gears.table.join(
    -- =========================================
 
    -- Brightness
-   awful.key({}, "XF86MonBrightnessUp",
+   awful.key({}, XF86Binds.brightnessUp,
       function()
          awful.spawn("xbacklight -inc 10", false)
       end,
       {description = "+10%", group = "hotkeys"}
    ),
-   awful.key({}, "XF86MonBrightnessDown",
+   awful.key({}, XF86Binds.brightnessDown,
       function()
          awful.spawn("xbacklight -dec 10", false)
       end,
@@ -158,21 +173,21 @@ keys.globalkeys = gears.table.join(
    ),
 
    -- ALSA volume control
-   awful.key({}, "XF86AudioRaiseVolume",
+   awful.key({}, XF86Binds.audioRaiseVolume,
       function()
          awful.spawn("amixer -D pulse sset Master 5%+", false)
          awesome.emit_signal("volume_change")
       end,
       {description = "volume up", group = "hotkeys"}
    ),
-   awful.key({}, "XF86AudioLowerVolume",
+   awful.key({}, XF86Binds.audioLowerVolume,
       function()
          awful.spawn("amixer -D pulse sset Master 5%-", false)
          awesome.emit_signal("volume_change")
       end,
       {description = "volume down", group = "hotkeys"}
    ),
-   awful.key({}, "XF86AudioMute",
+   awful.key({}, XF86Binds.audioMute,
       function()
          awful.spawn("amixer -D pulse set Master 1+ toggle", false)
          awesome.emit_signal("volume_change")
@@ -180,19 +195,19 @@ keys.globalkeys = gears.table.join(
       {description = "toggle mute", group = "hotkeys"}
    ),
    -- https://wiki.archlinux.org/index.php/MPRIS
-   awful.key({}, "XF86AudioNext",
+   awful.key({}, XF86Binds.audioNext,
       function()
          awful.spawn(apps.mediaKeys .. " next", false)
       end,
       {description = "next music", group = "hotkeys"}
    ),
-   awful.key({}, "XF86AudioPrev",
+   awful.key({}, XF86Binds.audioPrev,
       function()
          awful.spawn(apps.mediaKeys .. " previous", false)
       end,
       {description = "previous music", group = "hotkeys"}
    ),
-   awful.key({}, "XF86AudioPlay",
+   awful.key({}, XF86Binds.audioPlay,
       function()
          awful.spawn(apps.mediaKeys .. " play-pause", false)
       end,
@@ -282,11 +297,18 @@ keys.globalkeys = gears.table.join(
    -- MACRO KEYPAD SHORTCUTS
    -- =========================================
 
-   awful.key({}, "XF86AudioMicMute",
+   awful.key({}, XF86Binds.keyboardToHost,
       function ()
-         awful.spawn.easy_async_with_shell(apps.terminal, function() end)
+         awful.spawn.easy_async_with_shell(apps.scripts.keyboardToHost, function() end)
       end,
       {description = "macro key 1", group = "launcher"}
+   ),
+
+   awful.key({}, XF86Binds.keyboardToGuest,
+      function ()
+         awful.spawn.easy_async_with_shell(apps.scripts.keyboardToGuest, function() end)
+      end,
+      {description = "macro key 2", group = "launcher"}
    ),
 
    -- =========================================

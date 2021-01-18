@@ -53,6 +53,7 @@ Things I can do last:
 - [ ] shortcut to call dmenu-run, but will create a new tag to hold the client instead of opening on the current tag (could try and generate the tag name from the client). Handy for maximized clients, prusa-slicer, freecad etc
 - [ ] gimp maximize on open
 - [ ] delayed autostart for some apps (spotify)
+- [ ] ctrl + alt + v to reset volume to 40% (set this on start too?)
 
 
 vertical stacking layout:
