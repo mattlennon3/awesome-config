@@ -226,7 +226,7 @@ function rules.create(clientkeys, clientbuttons)
             class = {
                "Boost Note"
             },
-         }, properties = {tag = "Notes"}
+         }, properties = {tag = "Notes", screen = screens.screen_right_secondary}
       },
        -- ===================================================================
        -- Misc
