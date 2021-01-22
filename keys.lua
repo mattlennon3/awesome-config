@@ -39,7 +39,7 @@ local XF86Binds = {
    audioPrev = "XF86AudioPrev",
    audioPlay = "XF86AudioPlay",
    -- Macro keypad (bind spare XF86 keys to functions)
-   keyboardToHost = "XF86HomePage", -- TODO: Change me
+   keyboardToHost = "XF86HomePage", -- TODO: Change me (browser detects this and navs to homepage)
    keyboardToGuest = "XF86Game"
 }
 

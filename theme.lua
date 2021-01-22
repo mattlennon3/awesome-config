@@ -17,6 +17,7 @@ local themes_path = gfs.get_themes_dir()
 local theme = {}
 
 -- theme.wallpaper = "/home/matt/git/my-dotfiles/awesome-config/Wallpapers/pink_stars_cluster-wallpaper-2560x1440.jpg"
+theme.macro_keypad_reload_icon = "/home/matt/Content/Icons/iconfinder_keyboard_2130489_invert_edit.png"
 
 theme.notification_icon_size = 150
 theme.notification_max_width = 600

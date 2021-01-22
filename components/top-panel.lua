@@ -12,6 +12,9 @@ local dpi = xresources.apply_dpi
 
 local device = os.getenv("ML_DEVICE")
 
+-- Default Applications
+local apps = require("apps").default
+
 -- only need for debug
 local gears = require("gears")
 
@@ -55,6 +58,22 @@ if device == "thinkbook" then
     BAT0 = battery_widget { adapter = "BAT1", ac = "ACAD" }
 
 end
+
+local reload_macro_button = wibox.widget {
+    {
+        image = beautiful.macro_keypad_reload_icon,
+        resize = true,
+        forced_height = beautiful.top_panel_height,
+        widget = wibox.widget.imagebox
+    },
+    margins = 2,
+    widget = wibox.container.margin
+}
+
+reload_macro_button:connect_signal("button::press", function(_,_,_,button)
+    -- button 1 is left click, described in apps
+    if (button == 1) then awful.spawn.easy_async_with_shell(apps.scripts.keyboardToggle, function() end) end
+end)
 
 -- ===================================================================
 -- Bar Creation
@@ -119,6 +138,7 @@ top_panel.create = function(s)
           date_textclock,
           est_textclock,
           local_textclock,
+          reload_macro_button,
           awful.widget.layoutbox(s)
        }
     }

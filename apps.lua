@@ -29,6 +29,8 @@ apps.default = {
         xclip = "xclip"
     },
     scripts = {
+        keypadRemap = "sh /home/matt/scripts/keypad_remap.sh",
+        keyboardToggle = "sh /home/matt/scripts/virt-manager/input_toggle.sh",
         keyboardToHost = "sh /home/matt/scripts/virt-manager/input_detach.sh",
         keyboardToGuest = "sh /home/matt/scripts/virt-manager/input_attach.sh"
     },
