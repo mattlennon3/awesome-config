@@ -220,11 +220,11 @@ function rules.create(clientkeys, clientbuttons)
       --       },
       --    }, properties = {tag = "Notes"}
       -- },
-      -- Boost Note
+      -- Todoist
       {
          rule_any = {
             class = {
-               "Boost Note"
+               "todoist"
             },
          }, properties = {tag = "Notes", screen = screens.screen_right_secondary}
       },

@@ -53,7 +53,7 @@ local device = os.getenv("ML_DEVICE")
 -- List of apps to start once on start-up
 local run_on_start_up = {
     "code-oss $HOME/git/foam-diary",
-    "boostnote",
+    "todoist",
     "dwall -s forest"
 }
 
