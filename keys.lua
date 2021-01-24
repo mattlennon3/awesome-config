@@ -39,8 +39,9 @@ local XF86Binds = {
    audioPrev = "XF86AudioPrev",
    audioPlay = "XF86AudioPlay",
    -- Macro keypad (bind spare XF86 keys to functions)
-   keyboardToHost = "XF86HomePage", -- TODO: Change me (browser detects this and navs to homepage)
-   keyboardToGuest = "XF86Game"
+   macro1 = "XF86Launch1", --unused
+   macro2 = "XF86Launch2", --unused
+   keyboardToggle = "XF86Game",
 }
 
 -- define module table
@@ -297,18 +298,11 @@ keys.globalkeys = gears.table.join(
    -- MACRO KEYPAD SHORTCUTS
    -- =========================================
 
-   awful.key({}, XF86Binds.keyboardToHost,
+   awful.key({}, XF86Binds.keyboardToggle,
       function ()
-         awful.spawn.easy_async_with_shell(apps.scripts.keyboardToHost, function() end)
+         awful.spawn.easy_async_with_shell(apps.scripts.keyboardToggle, function() end)
       end,
-      {description = "macro key 1", group = "launcher"}
-   ),
-
-   awful.key({}, XF86Binds.keyboardToGuest,
-      function ()
-         awful.spawn.easy_async_with_shell(apps.scripts.keyboardToGuest, function() end)
-      end,
-      {description = "macro key 2", group = "launcher"}
+      {description = "macro key 3", group = "launcher"}
    ),
 
    -- =========================================

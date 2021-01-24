@@ -30,9 +30,7 @@ apps.default = {
     },
     scripts = {
         keypadRemap = "sh /home/matt/scripts/keypad_remap.sh",
-        keyboardToggle = "sh /home/matt/scripts/virt-manager/input_toggle.sh",
-        keyboardToHost = "sh /home/matt/scripts/virt-manager/input_detach.sh",
-        keyboardToGuest = "sh /home/matt/scripts/virt-manager/input_attach.sh"
+        keyboardToggle = "sh /home/matt/scripts/virt-manager/input_toggle.sh"
     },
     altTab = "rofi -show window",
     mediaKeys = "playerctl",

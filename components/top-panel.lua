@@ -72,7 +72,7 @@ local reload_macro_button = wibox.widget {
 
 reload_macro_button:connect_signal("button::press", function(_,_,_,button)
     -- button 1 is left click, described in apps
-    if (button == 1) then awful.spawn.easy_async_with_shell(apps.scripts.keyboardToggle, function() end) end
+    if (button == 1) then awful.spawn.easy_async_with_shell(apps.scripts.keypadRemap, function() end) end
 end)
 
 -- ===================================================================
