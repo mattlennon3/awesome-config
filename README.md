@@ -54,6 +54,7 @@ Things I can do last:
 - [ ] gimp maximize on open
 - [ ] delayed autostart for some apps (spotify)
 - [ ] ctrl + alt + v to reset volume to 40% (set this on start too?)
+- [ ] autostart spotify should check if it's already running and not run if it is
 
 
 vertical stacking layout:

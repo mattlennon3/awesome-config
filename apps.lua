@@ -52,12 +52,13 @@ local device = os.getenv("ML_DEVICE")
 local run_on_start_up = {
     "code-oss $HOME/git/foam-diary",
     "todoist",
+    "obsidian",
     "dwall -s forest"
 }
 
 if device == "desktop" then
     table.insert(run_on_start_up, "discord")
-    -- table.insert(run_on_start_up, "spotify")
+    table.insert(run_on_start_up, "sleep 10; spotify")
 end
 
 -- Run all the apps listed in run_on_start_up

@@ -25,7 +25,8 @@ local tags = {
     {
         name = 'Notes',
         layout = nil,
-        specific_screen = screens.screen_right_secondary
+        specific_screen = screens.screen_right_secondary,
+        master_width_factor = 0.5
     },
     {
         name = 'Code',

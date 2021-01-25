@@ -228,6 +228,14 @@ function rules.create(clientkeys, clientbuttons)
             },
          }, properties = {tag = "Notes", screen = screens.screen_right_secondary}
       },
+      -- Obsidian
+      {
+         rule_any = {
+            class = {
+               "obsidian"
+            },
+         }, properties = {tag = "Notes", screen = screens.screen_right_secondary}
+      },
        -- ===================================================================
        -- Misc
        -- ===================================================================
