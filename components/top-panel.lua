@@ -71,8 +71,14 @@ local reload_macro_button = wibox.widget {
 }
 
 reload_macro_button:connect_signal("button::press", function(_,_,_,button)
-    -- button 1 is left click, described in apps
+    -- button 1 is left click, described in keys.lua
     if (button == 1) then awful.spawn.easy_async_with_shell(apps.scripts.keypadRemap, function() end) end
+end)
+
+-- sensors | grep -ioP "Tctl:\s+\+\K(.*)"
+-- To use pipe (|) in commands, must be wrapped in bash -c first.
+local cpu_temp = awful.widget.watch('bash -c \'sensors | grep -ioP "Tctl:\\s+\\+\\K(.*)"\'', 10, function (widget, stdout)
+    widget:set_text("CPU: " .. stdout)
 end)
 
 -- ===================================================================
@@ -134,6 +140,7 @@ top_panel.create = function(s)
           volumebar_widget,
           BAT0,
           layout = wibox.layout.fixed.horizontal,
+          cpu_temp,
           systray,
           date_textclock,
           est_textclock,

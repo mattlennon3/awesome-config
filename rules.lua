@@ -223,7 +223,7 @@ function rules.create(clientkeys, clientbuttons)
       -- Todoist
       {
          rule_any = {
-            class = {
+            instance = {
                "todoist"
             },
          }, properties = {tag = "Notes", screen = screens.screen_right_secondary}

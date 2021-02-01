@@ -9,7 +9,7 @@ local screens = {}
 -- ===================================================================
 
 screens.screen_left_vertical = "DVI-D-0"
-screens.screen_center_primary = "HDMI-0"
+screens.screen_center_primary = "DP-1"
 screens.screen_right_secondary = "DVI-I-1"
 
 
