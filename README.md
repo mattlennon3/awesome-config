@@ -56,6 +56,7 @@ Things I can do last:
 - [ ] ctrl + alt + v to reset volume to 40% (set this on start too?)
 - [ ] autostart spotify should check if it's already running and not run if it is
 - [ ] margin around CPU temp widget
+- [ ] better alt tab https://github.com/blueyed/awesome-cyclefocus/
 
 
 vertical stacking layout:

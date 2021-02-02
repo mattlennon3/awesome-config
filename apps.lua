@@ -29,8 +29,8 @@ apps.default = {
         xclip = "xclip"
     },
     scripts = {
-        keypadRemap = "sh /home/matt/scripts/keypad_remap.sh",
-        keyboardToggle = "sh /home/matt/scripts/virt-manager/input_toggle.sh"
+        keypadRemap = "bash /home/matt/scripts/macro-keypad/keypad_remap.sh",
+        keyboardToggle = "bash /home/matt/scripts/virt-manager/input_toggle.sh"
     },
     altTab = "rofi -show window",
     mediaKeys = "playerctl",
