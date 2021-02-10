@@ -19,9 +19,6 @@ local awful = require("awful")
 -- Import logger
 local logger = require("log")
 
--- Import shell script helper
-require("shell")
-
 -- clear previous startup log
 logger.clearlog()
 
