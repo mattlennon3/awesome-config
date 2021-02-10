@@ -81,13 +81,19 @@ https://old.reddit.com/r/awesomewm/comments/d8r74k/detecting_spotify/
   
 ## Debug commands
 Open the Xephyr instance:
-> Xephyr :1 -ac -br -noreset -screen 960x540
-
+```
+Xephyr :1 -ac -br -noreset -screen 960x540
+```
 Run awesome inside that instance:
-> DISPLAY=:1.0 awesome -c ~/git/my-dotfiles/awesome-config/rc.lua --search $HOME/.config/awesome
+```
+AWESOME_DEV_MODE=TRUE;
+DISPLAY=:1.0 awesome -c ~/git/my-dotfiles/awesome-config/rc.lua --search $HOME/.config/awesome
+```
 
-2 for 1
-> Xephyr :1 -ac -br -noreset -screen 960x540 & sleep 2 && DISPLAY=:1.0 awesome -c ~/git/my-dotfiles/awesome-config/rc.lua --search $HOME/.config/awesome
+As a one-liner
+```
+AWESOME_DEV_MODE=TRUE; Xephyr :1 -ac -br -noreset -screen 960x540 & sleep 2 && DISPLAY=:1.0 awesome -c ~/git/my-dotfiles/awesome-config/rc.lua --search $HOME/.config/awesome
+```
 
 ## Listen for keyboard presses to find out what keycode to bind
 Get keyboard id

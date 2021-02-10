@@ -9,6 +9,9 @@ local beautiful = require("beautiful")
 local dpi = beautiful.xresources.apply_dpi
 local hotkeys_popup = require("awful.hotkeys_popup")
 
+-- Alt-tab library
+local cyclefocus = require('cyclefocus')
+
 -- Import logger
 local logger = require("log")
 
@@ -39,9 +42,10 @@ local XF86Binds = {
    audioPrev = "XF86AudioPrev",
    audioPlay = "XF86AudioPlay",
    -- Macro keypad (bind spare XF86 keys to functions)
-   macro1 = "XF86Launch1", --unused
-   macro2 = "XF86Launch2", --unused
-   keyboardToggle = "XF86Game",
+   macro1 = "XF86Launch1",
+   macro2 = "XF86Launch2",
+   macro3 = "XF86Launch3",
+   macro4 = "XF86Launch4",
 }
 
 -- define module table
@@ -298,12 +302,36 @@ keys.globalkeys = gears.table.join(
    -- MACRO KEYPAD SHORTCUTS
    -- =========================================
 
-   awful.key({}, XF86Binds.keyboardToggle,
+   --- WIP
+   awful.key({}, XF86Binds.macro1,
+      function ()
+         logger.log("cycle key pressed")
+         cyclefocus.cycle({ cycle_filters={cyclefocus.filters.same_class}, move_mouse_pointer=false, display_notifications = false })
+         -- awful.spawn.easy_async_with_shell(apps.scripts.macroscript1, function() end)
+      end,
+      {description = "macro key 1", group = "launcher"}
+   ),
+
+   awful.key({}, XF86Binds.macro2,
+      function ()
+         awful.spawn.easy_async_with_shell(apps.scripts.macroscript2, function() end)
+      end,
+      {description = "macro key 2", group = "launcher"}
+   ),
+
+   awful.key({}, XF86Binds.macro3,
       function ()
          awful.spawn.easy_async_with_shell(apps.scripts.keyboardToggle, function() end)
       end,
       {description = "macro key 3", group = "launcher"}
    ),
+
+   -- awful.key({}, XF86Binds.macro4,
+   --    function ()
+   --       awful.spawn.easy_async_with_shell("notify-send 'key 4 pressed'", function() end)
+   --    end,
+   --    {description = "macro key 4", group = "launcher"}
+   -- ),
 
    -- =========================================
    -- RELOAD / QUIT AWESOME
