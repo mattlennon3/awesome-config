@@ -123,25 +123,26 @@ awful.screen.connect_for_each_screen(function(s)
    logger.log("Screen index: " .. s.index)
 
    -- Wallpaper
-   set_wallpaper(s)
+   -- set_wallpaper(s)
    logger.log('Screencount: ' .. screen:count())
    
+   local selected_tag_for_screen = nil
    -- if we are on desktop with 3 screens
    if(screen:count() == 3) then
       local displayed_tag_count = 1
       for i, tag in pairs(tags) do
          -- If the tag has no specific_screen or if the screen matches the tags specific_screen
          if tag.specific_screen == nil or screen_name == tag.specific_screen then
-            local selected_for_this_screen = false -- TODO: WTF is this variable for?
-            local selected_tag = (tag.name == "Web" or tag.name == "Music") and selected_for_this_screen == false
-            if selected_tag then
-               selected_for_this_screen = true
+            -- The order of the tags in tags.lua matters here. Whatever comes first will be default
+            if selected_tag_for_screen == nil and (tag.name == "Web" or tag.name == "Music" or tag.name == "Notes") then
+               selected_tag_for_screen = tag.name
             end
+
             local name = string.gsub(tag.name, '{{i}}', tostring(displayed_tag_count))
             awful.tag.add(name, {
                layout = tag.layout and tag.layout or awful.layout.suit.tile,
                screen = s,
-               selected = selected_tag,
+               selected = selected_tag_for_screen == tag.name,
                master_width_factor = tag.master_width_factor or local_master_width_factor,
                master_fill_policy = tag.local_master_fill_policy or local_master_fill_policy,
                gap_single_client = false
@@ -151,9 +152,14 @@ awful.screen.connect_for_each_screen(function(s)
          end
       end
       
-      -- else fall back to just putting every tag on every screen
+   -- else fall back to just putting every tag on every screen
    else
       for i, tag in pairs(tags) do
+         -- The order of the tags in tags.lua matters here. Whatever comes first will be default
+         if selected_tag_for_screen == nil and (tag.name == "Web" or tag.name == "Music" or tag.name == "Notes") then
+            selected_tag_for_screen = tag.name
+         end
+
          local name = string.gsub(tag.name, '{{i}}', tostring(i))
          awful.tag.add(name, {
             layout = tag.layout and tag.layout or awful.layout.suit.tile,
