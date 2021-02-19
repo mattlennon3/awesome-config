@@ -1,5 +1,9 @@
 # Awesome Dotfiles
 
+## Libraries
+// todo incomplete
+cyclefocus
+
 ## TODO List
 - Figure out the top bar configuration & creation
   - This will involve figuring out the widgets that have been made

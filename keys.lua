@@ -10,7 +10,7 @@ local dpi = beautiful.xresources.apply_dpi
 local hotkeys_popup = require("awful.hotkeys_popup")
 
 -- Alt-tab library
-local cyclefocus = require('cyclefocus')
+-- local cyclefocus = require('cyclefocus')
 
 -- Import logger
 local logger = require("log")
@@ -303,14 +303,14 @@ keys.globalkeys = gears.table.join(
    -- =========================================
 
    --- WIP
-   awful.key({}, XF86Binds.macro1,
-      function ()
-         logger.log("cycle key pressed")
-         cyclefocus.cycle({ cycle_filters={cyclefocus.filters.same_class}, move_mouse_pointer=false, display_notifications = false })
-         -- awful.spawn.easy_async_with_shell(apps.scripts.macroscript1, function() end)
-      end,
-      {description = "macro key 1", group = "launcher"}
-   ),
+   -- awful.key({}, XF86Binds.macro1,
+   --    function ()
+   --       logger.log("cycle key pressed")
+   --       cyclefocus.cycle({ cycle_filters={cyclefocus.filters.same_class}, move_mouse_pointer=false, display_notifications = false })
+   --       -- awful.spawn.easy_async_with_shell(apps.scripts.macroscript1, function() end)
+   --    end,
+   --    {description = "macro key 1", group = "launcher"}
+   -- ),
 
    awful.key({}, XF86Binds.macro2,
       function ()
