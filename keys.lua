@@ -335,9 +335,9 @@ keys.globalkeys = gears.table.join(
             return
          end
 
-         local spotlight = awful.tag.find_by_name(main_screen, "Spotlight")
+         local spotlight_tag = awful.tag.find_by_name(main_screen, "Spotlight")
 
-         if spotlight == nil then
+         if spotlight_tag == nil then
             awful.tag.add("Spotlight", {
                layout = awful.layout.suit.tile,
                screen = main_screen,
@@ -346,12 +346,24 @@ keys.globalkeys = gears.table.join(
                gap_single_client = false
             })
 
-            spotlight = awful.tag.find_by_name(main_screen, "Spotlight")
+            spotlight_tag = awful.tag.find_by_name(main_screen, "Spotlight")
+
+            local spotlight_client = client.focus
+            -- move client to tag
+            spotlight_client:move_to_tag(main_screen.tags[spotlight_tag.index])
+            -- make client fullscreen
+            spotlight_client.fullscreen = true
+            -- focus tag
+            main_screen.tags[spotlight_tag.index]:view_only()
+
          end
-         -- move client to tag
-         client.focus:move_to_tag(main_screen.tags[spotlight.index])
-         -- focus tag
-         main_screen.tags[spotlight.index]:view_only()
+         -- else if 
+         -- spotlight tag is focused and client is focused
+         -- spotlight tag exists, restore client to where it came from, swap focused client in
+         -- then restore client to wherever it came from (spotlight tag is volatile so will remove itself)
+
+         
+
       end,
       {description = "macro key 2", group = "launcher"}
    ),
