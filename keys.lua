@@ -54,6 +54,10 @@ local XF86Binds = {
 -- define module table
 local keys = {}
 
+local spotlight_source_screen = nil
+local spotlight_source_tag = nil
+local spotlight_client = nil
+
 -- Get home dir
 local home_dir
 awful.spawn.easy_async_with_shell("echo $HOME", function(home_directory)
@@ -338,6 +342,7 @@ keys.globalkeys = gears.table.join(
          local spotlight_tag = awful.tag.find_by_name(main_screen, "Spotlight")
 
          if spotlight_tag == nil then
+            logger.log("No Spotlight tag exists")
             awful.tag.add("Spotlight", {
                layout = awful.layout.suit.tile,
                screen = main_screen,
@@ -348,18 +353,49 @@ keys.globalkeys = gears.table.join(
 
             spotlight_tag = awful.tag.find_by_name(main_screen, "Spotlight")
 
-            local spotlight_client = client.focus
-            -- move client to tag
+            -- save info before moving client
+            spotlight_client = client.focus
+            spotlight_source_screen = awful.screen.focused()
+            spotlight_source_tag = spotlight_source_screen.selected_tag
+
+            -- move client to spotlight tag
             spotlight_client:move_to_tag(main_screen.tags[spotlight_tag.index])
             -- make client fullscreen
             spotlight_client.fullscreen = true
-            -- focus tag
+            -- focus spotlight tag
             main_screen.tags[spotlight_tag.index]:view_only()
+            main_screen.tags[spotlight_tag.index].focus()
+            main_screen.focus()
 
+            -- spotlight tag is focused and client is focused
+            -- if the spotlight client, return it to where it came from
+         -- else if spotlight_source_tag ~= nil and spotlight_source_screen ~= nil then
+
+
+         elseif spotlight_client ~= nil then
+            logger.log("Spotlight tag exists")
+            logger.log("spotlight_source_tag.index: " .. spotlight_source_tag.index)
+            spotlight_client.fullscreen = false
+            -- spotlight_client.swap.global_bydirection("up", client.focus)
+
+            spotlight_client:move_to_tag(spotlight_source_screen.tags[spotlight_source_tag.index])
+
+            -- spotlight_client = client.focus
+            spotlight_client = nil
+            
+            -- spotlight_client.fullscreen = true
+            -- main_screen.tags[spotlight_tag.index]:view_only()
+            spotlight_source_screen.tags[spotlight_source_tag.index]:view_only()
+            spotlight_source_screen.tags[spotlight_source_tag.index].focus()
+            spotlight_source_screen.focus()
+            
+            -- spotlight tag exists, restore client to where it came from, swap focused client in
+            -- if not the spotlight client, restore spotlight & set this one
+         else 
+            spotlight_tag:delete()
+            -- spotlight_client:close()
          end
          -- else if 
-         -- spotlight tag is focused and client is focused
-         -- spotlight tag exists, restore client to where it came from, swap focused client in
          -- then restore client to wherever it came from (spotlight tag is volatile so will remove itself)
 
          
@@ -497,13 +533,13 @@ local function move_client(c, direction)
     if c.floating or (awful.layout.get(mouse.screen) == awful.layout.suit.floating) then
        local workarea = awful.screen.focused().workarea
        if direction == "up" then
-          c:geometry({nil, y = workarea.y + beautiful.useless_gap * 2, nil, nil})
+          c:geometry({nil, y = workarea.y + beautiful.useless_gap * 4, nil, nil})
        elseif direction == "down" then
-          c:geometry({nil, y = workarea.height + workarea.y - c:geometry().height - beautiful.useless_gap * 2 - beautiful.border_width * 2, nil, nil})
+          c:geometry({nil, y = workarea.height + workarea.y - c:geometry().height - beautiful.useless_gap * 4 - beautiful.border_width * 2, nil, nil})
        elseif direction == "left" then
-          c:geometry({x = workarea.x + beautiful.useless_gap * 2, nil, nil, nil})
+          c:geometry({x = workarea.x + beautiful.useless_gap * 4, nil, nil, nil})
        elseif direction == "right" then
-          c:geometry({x = workarea.width + workarea.x - c:geometry().width - beautiful.useless_gap * 2 - beautiful.border_width * 2, nil, nil, nil})
+          c:geometry({x = workarea.width + workarea.x - c:geometry().width - beautiful.useless_gap * 4 - beautiful.border_width * 2, nil, nil, nil})
        end
     -- Otherwise swap the client in the tiled layout
     elseif awful.layout.get(mouse.screen) == awful.layout.suit.max then

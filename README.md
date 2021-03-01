@@ -61,6 +61,7 @@ Things I can do last:
 - [ ] autostart spotify should check if it's already running and not run if it is
 - [ ] margin around CPU temp widget
 - [ ] better alt tab https://github.com/blueyed/awesome-cyclefocus/
+- [ ] awful.urgent.delete (c) (for discord and todoist who are always urgent on launch)
 
 
 vertical stacking layout:
