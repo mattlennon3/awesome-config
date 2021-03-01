@@ -18,6 +18,9 @@ local logger = require("log")
 -- Default Applications
 local apps = require("apps").default
 
+-- Screens
+local screens = require("screens")
+
 -- Define mod keys
 local modkey = "Mod4"
 local altkey = "Mod1"
@@ -314,7 +317,41 @@ keys.globalkeys = gears.table.join(
 
    awful.key({}, XF86Binds.macro2,
       function ()
-         awful.spawn.easy_async_with_shell(apps.scripts.macroscript2, function() end)
+         -- Get the main screen
+         local main_screen = nil
+         for s in screen do
+            local screen_name = ''
+            for k, v in pairs(s.outputs) do
+               screen_name = k
+            end
+         
+            if screen_name == screens.screen_center_primary then
+               main_screen = s
+            end
+         end
+         
+         -- bail for laptop etc
+         if main_screen == nil then
+            return
+         end
+
+         local spotlight = awful.tag.find_by_name(main_screen, "Spotlight")
+
+         if spotlight == nil then
+            awful.tag.add("Spotlight", {
+               layout = awful.layout.suit.tile,
+               screen = main_screen,
+               selected = true,
+               volatile = true,
+               gap_single_client = false
+            })
+
+            spotlight = awful.tag.find_by_name(main_screen, "Spotlight")
+         end
+         -- move client to tag
+         client.focus:move_to_tag(main_screen.tags[spotlight.index])
+         -- focus tag
+         main_screen.tags[spotlight.index]:view_only()
       end,
       {description = "macro key 2", group = "launcher"}
    ),
