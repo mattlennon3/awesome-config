@@ -340,6 +340,12 @@ keys.globalkeys = gears.table.join(
          end
 
          local spotlight_tag = awful.tag.find_by_name(main_screen, "Spotlight")
+         logger.log("----")
+         logger.log("Current Focus: " .. client.focus.class)
+         if spotlight_source_screen ~= nil and spotlight_source_tag ~= nil then
+            logger.log("spotlight_source_screen: " .. spotlight_source_screen.index)
+            logger.log("spotlight_source_tag: " .. spotlight_source_tag.name)
+         end
 
          if spotlight_tag == nil then
             logger.log("No Spotlight tag exists")
@@ -355,7 +361,7 @@ keys.globalkeys = gears.table.join(
 
             -- save info before moving client
             spotlight_client = client.focus
-            spotlight_source_screen = awful.screen.focused()
+            spotlight_source_screen = spotlight_client.screen
             spotlight_source_tag = spotlight_source_screen.selected_tag
 
             -- move client to spotlight tag
@@ -363,9 +369,10 @@ keys.globalkeys = gears.table.join(
             -- make client fullscreen
             spotlight_client.fullscreen = true
             -- focus spotlight tag
-            main_screen.tags[spotlight_tag.index]:view_only()
-            main_screen.tags[spotlight_tag.index].focus()
-            main_screen.focus()
+            -- main_screen.tags[spotlight_tag.index]:view_only()
+            -- main_screen.tags[spotlight_tag.index].focus()
+            -- main_screen.focus()
+            spotlight_client:raise()
 
             -- spotlight tag is focused and client is focused
             -- if the spotlight client, return it to where it came from
@@ -374,26 +381,29 @@ keys.globalkeys = gears.table.join(
 
          elseif spotlight_client ~= nil then
             logger.log("Spotlight tag exists")
-            logger.log("spotlight_source_tag.index: " .. spotlight_source_tag.index)
+            -- logger.log("spotlight_source_tag.index: " .. spotlight_source_tag.index)
             spotlight_client.fullscreen = false
             -- spotlight_client.swap.global_bydirection("up", client.focus)
 
             spotlight_client:move_to_tag(spotlight_source_screen.tags[spotlight_source_tag.index])
 
-            -- spotlight_client = client.focus
+            spotlight_client:raise()
+
+            -- cleanup
             spotlight_client = nil
+            spotlight_source_screen = nil
+            spotlight_source_tag = nil
             
             -- spotlight_client.fullscreen = true
             -- main_screen.tags[spotlight_tag.index]:view_only()
-            spotlight_source_screen.tags[spotlight_source_tag.index]:view_only()
-            spotlight_source_screen.tags[spotlight_source_tag.index].focus()
-            spotlight_source_screen.focus()
+            -- spotlight_source_screen.tags[spotlight_source_tag.index]:view_only()
+            -- spotlight_source_screen.tags[spotlight_source_tag.index].focus()
+            -- spotlight_source_screen.focus()
             
             -- spotlight tag exists, restore client to where it came from, swap focused client in
             -- if not the spotlight client, restore spotlight & set this one
          else 
             spotlight_tag:delete()
-            -- spotlight_client:close()
          end
          -- else if 
          -- then restore client to wherever it came from (spotlight tag is volatile so will remove itself)

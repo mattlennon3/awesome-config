@@ -1,3 +1,3 @@
 #!/bin/bash
 
-watch tail -10 $HOME/Logs/awesome/awesome.log
+watch tail -20 $HOME/Logs/awesome/awesome.log
