@@ -22,7 +22,7 @@ screens.screen_right_secondary = "DVI-I-1"
 -- ===================================================================
 -- Helpers
 -- ===================================================================
-
+-- Pass in one of the above screens and get the screen object
 local getScreenByOutput = function(output)
     local screen_by_output = nil
     for s in screen do
