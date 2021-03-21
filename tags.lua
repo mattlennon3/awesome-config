@@ -15,7 +15,8 @@ local tags = {
     {
         name = 'Music',
         layout = awful.layout.suit.tile.bottom,
-        specific_screen = screens.screen_left_vertical
+        specific_screen = screens.screen_left_vertical,
+        master_width_factor = 0.9
     },
     {
         name = 'Comms',

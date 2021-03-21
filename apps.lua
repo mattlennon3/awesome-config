@@ -62,10 +62,11 @@ local run_on_start_up_delayed = {}
 
 if device == "desktop" then
     table.insert(run_on_start_up, "discord")
+    table.insert(run_on_start_up_delayed, "alacritty --class cava -e cava")
     table.insert(run_on_start_up_delayed, "spotify")
 end
 
-
+-- TODO the check to see if the app is already running is not flexible enough
 if develop_mode ~= "TRUE" then
     -- Run all the apps listed in run_on_start_up
     function apps.autostart()

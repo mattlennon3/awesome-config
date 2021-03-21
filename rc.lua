@@ -177,6 +177,10 @@ awful.screen.connect_for_each_screen(function(s)
    logger.log('----')
 end)
 
+-- ===================================================================
+-- Events
+-- ===================================================================
+
 -- remove gaps if layout is set to max
 tag.connect_signal('property::layout', function(t)
    local current_layout = awful.tag.getproperty(t, 'layout')
@@ -216,6 +220,19 @@ client.connect_signal("manage", function (c)
       --    c.minimized = false
       --    awful.rules.apply(c)
       -- end)
+   end
+
+   -- cava ran inside a terminal which sets the name after launching
+   if c.name == "Alacritty" then
+      local watch_name = function ()
+         if c.name == "cava" then
+            awful.rules.apply(c)
+         end
+         -- TODO: Does not work - FIXME
+         -- c:disconnect_signal("property::name", self)
+      end
+      
+      c:connect_signal("property::name", watch_name)
    end
  end)
 

@@ -240,25 +240,22 @@ function rules.create(clientkeys, clientbuttons)
        -- Misc
        -- ===================================================================
 
-       -- Visualizer
-    --    {
-    --       rule_any = {name = {"cava"}},
-    --       properties = {
-    --          floating = true,
-    --          maximized_horizontal = true,
-    --          sticky = true,
-    --          ontop = false,
-    --          skip_taskbar = true,
-    --          below = true,
-    --          focusable = false,
-    --          height = screen_height * 0.40,
-    --          opacity = 0.6
-    --       },
-    --       callback = function (c)
-    --          decorations.hide(c)
-    --          awful.placement.bottom(c)
-    --       end
-    --    },
+      --  Visualizer
+       {
+          rule_any = { 
+            name = {"^cava$"},
+            class = {"cava"},
+         },
+         properties = {
+            skip_taskbar = true,
+            tag = "Music", 
+            screen = screens.screen_left_vertical
+         }
+         -- callback = function (c)
+         --    decorations.hide(c)
+         --    awful.placement.bottom(c)
+         -- end
+      },
  
        -- Rofi
     --    {
