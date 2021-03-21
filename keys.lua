@@ -404,12 +404,23 @@ keys.globalkeys = gears.table.join(
       {description = "macro key 3 - keyboard toggle", group = "launcher"}
    ),
 
-   -- awful.key({}, XF86Binds.macro4,
-   --    function ()
-   --       awful.spawn.easy_async_with_shell("notify-send 'key 4 pressed'", function() end)
-   --    end,
-   --    {description = "macro key 4", group = "launcher"}
-   -- ),
+   awful.key({}, XF86Binds.macro4,
+      function ()
+         -- Teamspeak Mute
+         local old_coords = mouse.coords()
+         mouse.coords {
+            x = 812,
+            y = 1340
+         }
+         awful.spawn.easy_async_with_shell("xdotool click 1", function()
+            mouse.coords {
+               x = old_coords.x,
+               y = old_coords.y
+            }         
+         end)
+      end,
+      {description = "macro key 4", group = "launcher"}
+   ),
 
    -- =========================================
    -- RELOAD / QUIT AWESOME
