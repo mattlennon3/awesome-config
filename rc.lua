@@ -53,6 +53,8 @@ local top_panel = require("components.top-panel")
 local apps = require("apps")
 apps.autostart()
 
+-- Screens
+local screens = require("screens")
 
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
@@ -213,10 +215,16 @@ client.connect_signal("manage", function (c)
          logger.log('Client class added: ' .. (c.class or ' -nil- '))
          c.minimized = false
          awful.rules.apply(c)
+         -- Spotify on comms tag
+         if c.class == "Spotify" then
+            local vert_screen = screens.getScreenByOutput(screens.screen_left_vertical)
+            local comms_tag = awful.tag.find_by_name(vert_screen, "Comms")
+            c:toggle_tag(comms_tag)
+         end
       end)
       -- CAREFUL - Clients such as spotify change their name regularly (track change), forcing them to reapply rules & jump back to their original tag
       -- c:connect_signal("property::name", function ()
-      --    logger.log('Client name added: ' .. (c.class or ' -nil- '))
+      --    logger.log('Client name added: ' .. (c.name or ' -nil- '))
       --    c.minimized = false
       --    awful.rules.apply(c)
       -- end)
