@@ -125,8 +125,8 @@ function rules.create(clientkeys, clientbuttons)
        -- ===================================================================
        {
          rule_any = {
-           name = {
-              "TeamSpeak 3",
+            name = {
+              "TeamSpeak 3"
             }
          }, properties = {ontop = true}
       },
@@ -135,6 +135,9 @@ function rules.create(clientkeys, clientbuttons)
        -- ===================================================================
        {
          rule_any = {
+            name = {
+               "TeamSpeak 3"
+            },
             class = {
                "discord"
             }

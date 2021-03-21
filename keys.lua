@@ -87,19 +87,19 @@ end
 keys.clientbuttons = gears.table.join(
     -- Enable click to focus
     awful.button({ }, leftclick, function (c)
-        -- c:emit_signal("request::activate", "mouse_click", {raise = true})
-        client.focus = c
-        c:raise()
+         -- c:emit_signal("request::activate", "mouse_click", {raise = true})
+         client.focus = c
+         c:raise()
     end),
     -- Enable mod + click to move
     awful.button({ modkey }, leftclick, function (c)
-        -- c:emit_signal("request::activate", "mouse_click", {raise = true})
-        awful.mouse.client.move(c)
+         -- c:emit_signal("request::activate", "mouse_click", {raise = true})
+         awful.mouse.client.move(c)
     end),
     -- Enable mod + click to resize
     awful.button({ modkey }, rightclick, function (c)
-        -- c:emit_signal("request::activate", "mouse_click", {raise = true})
-        awful.mouse.client.resize(c)
+         -- c:emit_signal("request::activate", "mouse_click", {raise = true})
+         awful.mouse.client.resize(c)
     end)
 )
 
