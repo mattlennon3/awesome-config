@@ -369,7 +369,7 @@ keys.globalkeys = gears.table.join(
          -- bit ugly to use name rather than ID, but was the closest thing
          elseif spotlight_client.name ~= client.focus.name then
             -- get new spotlight client
-            next_spotlight_client = client.focus
+            local next_spotlight_client = client.focus
             -- return existing client back to where it came from
             restoreClient()
             -- Spotlight tag is probably destroyed at this point as it is volatile
