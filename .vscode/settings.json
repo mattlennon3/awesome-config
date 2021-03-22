@@ -4,6 +4,7 @@
         "client",
         "screen",
         "root",
-        "mouse"
+        "mouse",
+        "tag"
     ]
 }

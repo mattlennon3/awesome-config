@@ -70,6 +70,8 @@ function rules.create(clientkeys, clientbuttons)
                 -- Note that the name property shown in xprop might be set slightly after creation of the client
                 -- and the name shown there might not match defined rules here.
                 "Event Tester",  -- xev.
+                
+                "Android Emulator -"
              },
              class = {
                 "Arandr",
@@ -126,7 +128,8 @@ function rules.create(clientkeys, clientbuttons)
        {
          rule_any = {
             name = {
-              "TeamSpeak 3"
+              "TeamSpeak 3",
+              "Android Emulator -"
             }
          }, properties = {ontop = true}
       },
