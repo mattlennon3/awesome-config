@@ -70,8 +70,22 @@ awful.spawn.easy_async_with_shell("echo $HOME", function(home_directory)
    end
 end)
 
-local getScreenshotFileName = function ()
-   return home_dir .. "/Content/Screenshots/Screenshot-" .. os.date("%Y-%m-%d_%Hh%Mm%Ss") .. ".png"
+
+local getScreenshotBaseDir = function (subdir)
+   if(subdir) then
+      return home_dir .. "/Content/Screenshots/" .. subdir .. "/"
+   end
+   return home_dir .. "/Content/Screenshots/"
+end
+
+local generateScreenshotFileName = function (client_name)
+   local prefix = "Screenshot-"
+   if client_name then
+      -- remove spaces and /slashes/
+      prefix = string.gsub(client_name, "(%s+)", "")
+      prefix = string.gsub(prefix, "(/+)", "") .. "-"
+   end
+   return prefix .. os.date("%Y-%m-%d_%Hh%Mm%Ss") .. ".png"
 end
 
 -- ===================================================================
@@ -153,6 +167,20 @@ keys.globalkeys = gears.table.join(
         end,
         {description = "web browser, private window", group = "launcher"}
     ),
+    -- Spawn brave browser
+    awful.key({ modkey }, "d",
+        function()
+        awful.spawn(apps.bravebrowser)
+        end,
+        {description = "web browser", group = "launcher"}
+    ),
+    -- Spawn brave browser private window
+    awful.key({ modkey, shiftkey }, "d",
+        function()
+        awful.spawn(apps.bravebrowser .. " --incognito")
+        end,
+        {description = "web browser, private window", group = "launcher"}
+    ),
     -- Show help popup
     awful.key({ modkey }, "s",
         hotkeys_popup.show_help,
@@ -229,16 +257,26 @@ keys.globalkeys = gears.table.join(
    -- Screenshot current active client
    awful.key({}, "Print",
       function()
-         -- https://stackoverflow.com/a/52636847/3033813
+         -- Get class of window to make a directory for it
+         local class = client.focus.class
+         class = string.gsub(client.focus.class, "%s+", "-")
+         if class == "" then
+            class = "Unknown"
+         end
+         local screenshotDir = getScreenshotBaseDir(class)
+         -- Do getactivewindow first, incase we're tabbing out or other shenanigans
          awful.spawn.easy_async_with_shell(apps.x_helpers.xdotool .. " getactivewindow > /tmp/awesome-active-client.txt", function()
-            awful.spawn.easy_async_with_shell("cat /tmp/awesome-active-client.txt", function(client_id_string)
-               if(client_id_string) then
-                  local client_id = string.gsub(client_id_string, "\n", "")
-                  local command = (apps.screenshot .. " -i " .. client_id .. " " .. getScreenshotFileName())
-
-                  logger.log("Screenshot: " .. command)
-                  awful.spawn.easy_async_with_shell(command, function() end)
-               end
+            awful.spawn.easy_async_with_shell("mkdir -p " .. screenshotDir, function()
+               awful.spawn.easy_async_with_shell("cat /tmp/awesome-active-client.txt", function(client_id_string)
+                  if(client_id_string) then
+                     local client_id = string.gsub(client_id_string, "\n", "")
+                     local file_name = screenshotDir .. generateScreenshotFileName(client.focus.name)
+                     local command = (apps.screenshot .. " -i " .. client_id .. " " .. file_name)
+                     
+                     logger.log("Screenshot: " .. command)
+                     awful.spawn.easy_async_with_shell(command, function() end)
+                  end
+               end)
             end)
          end)
       end,
@@ -250,25 +288,32 @@ keys.globalkeys = gears.table.join(
       -- for snipping tool screenshot in windows:
       -- windows key + shift + s
       function()
-         local file_name = getScreenshotFileName()
-         local command = (apps.screenshot .. " -s " .. file_name)
+         local screenshotDir = getScreenshotBaseDir("SnippingTool")
+         awful.spawn.easy_async_with_shell("mkdir -p " .. screenshotDir, function()
+            local file_name = screenshotDir .. generateScreenshotFileName()
+            local command = (apps.screenshot .. " -s " .. file_name)
 
-         logger.log("Screenshot area snip: " .. command)
-         awful.spawn.easy_async_with_shell(command, function() 
-            -- copy to clipboard
-            awful.spawn.easy_async_with_shell(apps.x_helpers.xclip .. " -selection clipboard -t image/png -i " .. file_name)
+            logger.log("Screenshot area snip: " .. command)
+            awful.spawn.easy_async_with_shell(command, function() 
+               -- copy to clipboard
+               awful.spawn.easy_async_with_shell(apps.x_helpers.xclip .. " -selection clipboard -t image/png -i " .. file_name)
+            end)
          end)
       end,
       {description = "screenshot selection area", group = "hotkeys"}
    ),
 
    -- Screenshot whole desktop
-   awful.key({modkey, shiftkey}, "Print",
+   awful.key({altkey}, "Print",
       function()
-         local command = (apps.screenshot .. " " .. getScreenshotFileName())
+         local screenshotDir = getScreenshotBaseDir("Desktop")
+         awful.spawn.easy_async_with_shell("mkdir -p " .. screenshotDir, function()
+            local file_name = screenshotDir .. generateScreenshotFileName()
+            local command = (apps.screenshot .. " " .. file_name)
 
-         logger.log("Screenshot: " .. command)
-         awful.spawn.easy_async_with_shell(command, function() end)
+            logger.log("Screenshot: " .. command)
+            awful.spawn.easy_async_with_shell(command, function() end)
+         end)
       end,
       {description = "screenshot whole desktop", group = "hotkeys"}
    ),

@@ -23,8 +23,8 @@ cyclefocus
 - [x] change autostart programs/tags depending on device?
 - [ ] find a better way of running & debugging this as you go
 - [ ] system notification helper
-- [ ] reading left aligned text in a browser is annoying when its the only window as its to the left,
-  - [ ] add margin to the left/right side of the client to center the browsers text
+- [ ] ~~reading left aligned text in a browser is annoying when its the only window as its to the left,~~ solved by spotlight & firefox reader mode
+  - [ ] ~~add margin to the left/right side of the client to center the browsers text~~
 - [x] gap increase/decrease/toggle hotkeys
 - [ ] shortcut to make client active on all tags
 
@@ -33,11 +33,11 @@ Screen TODO
 - [x] need some contingency if we are using less than 3 monitors to put all tags on each screen
 - [x] adding laptop layout would be good. (maybe tag property like specific_screen for desktop only?)
 - [x] if a tag name is "Web{{i}}" replace "{{i}}" with the tag number it will be
-- [ ] set default tag per screen
+- [ ] set default tag per screen. Should be screen prop rather than selected_tag_for_screen
 
 Tag todo
-- [ ] Add screenshot client name into the file name.
-  - [ ] create a folder for the client name and place it there?
+- [x] Add screenshot client name into the file name.
+  - [x] create a folder for the client name and place it there?
 - [x] If a tag has a number in the name, if you do mod + (number), jump to that tag) (Automatically worked)
 - [ ] hotkey to rename current tag
 
@@ -114,6 +114,8 @@ some helpful screen code https://github.com/raphaelfournier/Dotfiles/blob/master
 interface with awesomewm from the command line:  
 https://awesomewm.org/doc/manpages/awesome-client.1.html
 
+Dangers in spawning commands
+https://stackoverflow.com/a/52636847/3033813
 
 ## Credits
 
