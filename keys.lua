@@ -444,7 +444,13 @@ keys.globalkeys = gears.table.join(
 
    awful.key({}, XF86Binds.macro3,
       function ()
-         awful.spawn.easy_async_with_shell(apps.scripts.keyboardToggle, function() end)
+         awful.spawn.easy_async_with_shell(apps.scripts.keyboardToggle, function(state) 
+            for line in state:gmatch("[^\r\n]+") do
+               if line == "guest" or line == "host" then
+                  awesome.emit_signal("kb_state_change", line)
+               end
+            end
+         end)
       end,
       {description = "macro key 3 - keyboard toggle", group = "launcher"}
    ),

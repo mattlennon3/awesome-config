@@ -18,6 +18,9 @@ local apps = require("apps").default
 -- only need for debug
 local gears = require("gears")
 
+-- Import logger
+local logger = require("log")
+
 -- ===================================================================
 -- Import Widgets
 -- ===================================================================
@@ -59,6 +62,10 @@ if device == "thinkbook" then
 
 end
 
+-- ===================================================================
+-- Reload Macro keys
+-- ===================================================================
+
 local reload_macro_button = wibox.widget {
     {
         image = beautiful.macro_keypad_reload_icon,
@@ -75,11 +82,53 @@ reload_macro_button:connect_signal("button::press", function(_,_,_,button)
     if (button == 1) then awful.spawn.easy_async_with_shell(apps.scripts.keypadRemap, function() end) end
 end)
 
+
+-- ===================================================================
+-- CPU Meter
+-- ===================================================================
+
 -- sensors | grep -ioP "Tctl:\s+\+\K(.*)"
 -- To use pipe (|) in commands, must be wrapped in bash -c first.
 local cpu_temp = awful.widget.watch('bash -c \'sensors | grep -ioP "Tctl:\\s+\\+\\K(.*)"\'', 10, function (widget, stdout)
     -- TODO: Nice icon
     widget:set_text(" " .. stdout)
+end)
+
+
+-- ===================================================================
+-- Keyboard Indicator
+-- ===================================================================
+
+local kb_context_timeout = 10
+
+local kb_context = awful.widget.watch('/home/matt/scripts/virt-manager/keyboard_state.sh', kb_context_timeout, function (widget, stdout)
+    local text = ""
+    for line in stdout:gmatch("[^\r\n]+") do -- Had to do this to get the echo from the script
+        if line == "guest" then
+            text = "-G-"
+        elseif line == "host" then
+            text = "-H-"
+        else
+            -- vm not running
+            text = " "
+        end
+        -- keyboard_vm_indicator.icon:set_image(PATH_TO_ICONS .. widget_icon_name .. ".svg")
+    end
+    widget:set_text(text)
+end)
+
+-- For faster updates than watch, get the state change as it happens
+awesome.connect_signal("kb_state_change", function (state)
+    local text = ""
+    if state == "guest" then
+        text = "-G-"
+    elseif state == "host" then
+        text = "-H-"
+    else
+        -- vm not running
+        text = " "
+    end
+    kb_context:set_text(text)
 end)
 
 -- ===================================================================
@@ -141,6 +190,7 @@ top_panel.create = function(s)
           volumebar_widget,
           BAT0,
           layout = wibox.layout.fixed.horizontal,
+          kb_context,
           cpu_temp,
           systray,
           date_textclock,
