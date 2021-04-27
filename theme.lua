@@ -30,12 +30,14 @@ theme.notification_max_width = 600
 theme.font = "JetBrains Mono Medium 12"
 
 theme.bg_normal     = "#222222"
+theme.bg_open       = "#444444"
 theme.bg_focus      = "#535d6c"
 theme.bg_urgent     = "#BC3908"
-theme.bg_minimize   = "#444444"
+theme.bg_minimize   = theme.bg_normal
 theme.bg_systray    = theme.bg_normal
 
 theme.fg_normal     = "#aaaaaa"
+theme.fg_open       = "#ffffff"
 theme.fg_focus      = "#ffffff"
 theme.fg_urgent     = "#ffffff"
 theme.fg_minimize   = "#ffffff"
@@ -73,13 +75,14 @@ theme.taglist_squares_unsel = theme_assets.taglist_squares_unsel(
 -- Tasklist
 theme.tasklist_font = theme.font
 
-theme.tasklist_bg_normal = theme.bg_normal
+theme.tasklist_bg_normal = theme.bg_open
 theme.tasklist_bg_focus = theme.bg_focus
 theme.tasklist_bg_urgent = theme.bg_urgent
 
 theme.tasklist_fg_focus = theme.fg_focus
 theme.tasklist_fg_urgent = theme.fg_urgent
-theme.tasklist_fg_normal = theme.fg_normal
+theme.tasklist_fg_normal = theme.fg_open
+
 
 -- Panel Sizing
 theme.top_panel_height = dpi(20)
