@@ -18,6 +18,9 @@ local logger = require("log")
 -- Default Applications
 local apps = require("apps").default
 
+-- Icons
+local icon_paths = require("icons").icon_paths
+
 -- Screens
 local screens = require("screens")
 
@@ -354,12 +357,9 @@ keys.globalkeys = gears.table.join(
    -- MACRO KEYPAD SHORTCUTS
    -- =========================================
 
-   --- WIP
    -- awful.key({}, XF86Binds.macro1,
    --    function ()
-   --       logger.log("cycle key pressed")
-   --       cyclefocus.cycle({ cycle_filters={cyclefocus.filters.same_class}, move_mouse_pointer=false, display_notifications = false })
-   --       -- awful.spawn.easy_async_with_shell(apps.scripts.macroscript1, function() end)
+
    --    end,
    --    {description = "macro key 1", group = "launcher"}
    -- ),
@@ -445,11 +445,26 @@ keys.globalkeys = gears.table.join(
    awful.key({}, XF86Binds.macro3,
       function ()
          awful.spawn.easy_async_with_shell(apps.scripts.keyboardToggle, function(state) 
-            for line in state:gmatch("[^\r\n]+") do
-               if line == "guest" or line == "host" then
-                  awesome.emit_signal("kb_state_change", line)
-               end
+         local side_screen = screens.getScreenByOutput(screens.screen_right_secondary)
+         for line in state:gmatch("[^\r\n]+") do
+            if line == "guest" then
+               naughty.notify({
+                  title = "Attaching devices to guest",
+                  screen = side_screen,
+                  icon = icon_paths.windows10,
+                  position = "top_left"
+               })
+               awesome.emit_signal("kb_state_change", line)
+            elseif line == "host" then
+               naughty.notify({
+                  title = "Attaching devices to host",
+                  screen = side_screen,
+                  icon = icon_paths.linux,
+                  position = "top_left"
+               })
+               awesome.emit_signal("kb_state_change", line)
             end
+         end
          end)
       end,
       {description = "macro key 3 - keyboard toggle", group = "launcher"}

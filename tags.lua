@@ -45,6 +45,11 @@ local tags = {
         specific_screen = nil
     },
     {
+        name = 'Prod',
+        layout = awful.layout.suit.max,
+        specific_screen = screens.screen_center_primary
+    },
+    {
         name = 'Games', -- TODO: Add this one only if steam/lutris opens?
         layout = awful.layout.suit.max,
         specific_screen = screens.screen_center_primary

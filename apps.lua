@@ -34,7 +34,7 @@ apps.default = {
     },
     scripts = {
         keypadRemap = "bash /home/matt/scripts/macro-keypad/keypad_remap.sh",
-        keyboardToggle = "bash /home/matt/scripts/virt-manager/input_toggle.sh"
+        keyboardToggle = "bash /home/matt/scripts/virt-manager/input_toggle.sh --awesome" -- pass arg to supress script notification
     },
     altTab = "rofi -show window",
     mediaKeys = "playerctl",
