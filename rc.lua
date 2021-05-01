@@ -140,9 +140,14 @@ awful.screen.connect_for_each_screen(function(s)
                selected_tag_for_screen = tag.name
             end
 
+            local default_layout = awful.layout.suit.tile
+            if screen_name == screens.screen_left_vertical then
+               default_layout = awful.layout.suit.tilebottom
+            end
+
             local name = string.gsub(tag.name, '{{i}}', tostring(displayed_tag_count))
             awful.tag.add(name, {
-               layout = tag.layout and tag.layout or awful.layout.suit.tile,
+               layout = tag.layout and tag.layout or default_layout,
                screen = s,
                selected = selected_tag_for_screen == tag.name,
                master_width_factor = tag.master_width_factor or local_master_width_factor,
