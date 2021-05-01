@@ -67,7 +67,7 @@ if device == "desktop" then
     table.insert(run_on_start_up_delayed, "spotify")
 end
 
--- TODO the check to see if the app is already running is not flexible enough
+-- TODO the check to see if the app is already running is not flexible enough. programs with arguments are awkward to check
 if develop_mode ~= "TRUE" then
     -- Run all the apps listed in run_on_start_up
     function apps.autostart()
@@ -89,6 +89,9 @@ if develop_mode ~= "TRUE" then
             awful.spawn.easy_async_with_shell(string.format("pgrep -u $USER -x %s > /dev/null || (sleep 10; (%s))", findme, app), function() end)
         end
     end
+else 
+    -- function must be defined
+    function apps.autostart() end
 end
 
 return apps

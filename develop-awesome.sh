@@ -1,6 +1,6 @@
 #!/bin/sh
 
-AWESOME_DEV_MODE=TRUE
+export AWESOME_DEV_MODE=TRUE
 
 Xephyr :1 -ac -br -noreset -screen 960x540 &
 
