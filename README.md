@@ -3,6 +3,7 @@
 ## Libraries
 // todo incomplete
 cyclefocus
+kikito/inspect.lua
 
 ## TODO List
 - Figure out the top bar configuration & creation
@@ -28,28 +29,26 @@ cyclefocus
 - [x] gap increase/decrease/toggle hotkeys
 - [ ] shortcut to make client active on all tags
 
-Screen TODO
+### Screen TODO
 - [x] the primary goal here is to only require music/comms on the vertical screen, games only on primary screen etc
 - [x] need some contingency if we are using less than 3 monitors to put all tags on each screen
 - [x] adding laptop layout would be good. (maybe tag property like specific_screen for desktop only?)
 - [x] if a tag name is "Web{{i}}" replace "{{i}}" with the tag number it will be
 - [ ] set default tag per screen. Should be screen prop rather than selected_tag_for_screen
 
-Tag todo
+### Tag TODO
 - [x] Add screenshot client name into the file name.
   - [x] create a folder for the client name and place it there?
 - [x] If a tag has a number in the name, if you do mod + (number), jump to that tag) (Automatically worked)
-- [ ] hotkey to rename current tag
+- [ ] add/rename tags on the fly
 
-Things I can do last:
+### Things I can do last:
 - [ ] Add the menu when you right click on the desktop
 - [ ] Implement exit screen (search for show_exit_screen)
 - [x] Install screenshot software & add it to apps (& keybinds)
 - [ ] different background per screen with connect_for_each_screen
 - [ ] wallpaper driven from a folder rather than a specific file
 - [ ] separate wallpaper for portrait monitor
-- [ ] add script to launch both debug commands into a terminal
-  - [ ] don't keep opening startup programs in Xephyr window (i.e when debugging/developing)
 - [ ] sort out imports? keys.lua is imported in 2 different files so runs twice, which could be an issue. Maybe assign the result to a global and use it if available
 - [ ] when copying a screenshot to the clipboard, don't seem to be able to paste into every program (i.e works when pasting to discord chat/whatsapp but not into a directory)
 - [ ] create a PKGBUILD to keep track of what is required to be installed, rather than just listing the programs in apps.lua
@@ -62,6 +61,8 @@ Things I can do last:
 - [ ] margin around CPU temp widget
 - [ ] better alt tab https://github.com/blueyed/awesome-cyclefocus/
 - [ ] awful.urgent.delete (c) (for discord and todoist who are always urgent on launch)
+- [ ] add way to serialise (print) objects https://github.com/kikito/inspect.lua ?
+- [ ] Figure out rule callback functions
 
 
 vertical stacking layout:
@@ -85,6 +86,11 @@ https://old.reddit.com/r/awesomewm/comments/bztj1c/spotify_and_raise_or_spawn/
 https://old.reddit.com/r/awesomewm/comments/d8r74k/detecting_spotify/  
   
 ## Debug commands
+
+### Debug TODO
+- [ ] add script to launch both debug commands into a terminal
+  - [ ] don't keep opening startup programs in Xephyr window (i.e when debugging/developing)
+
 Open the Xephyr instance:
 ```
 Xephyr :1 -ac -br -noreset -screen 960x540

@@ -478,7 +478,7 @@ keys.globalkeys = gears.table.join(
             x = 812,
             y = 1340
          }
-         awful.spawn.easy_async_with_shell("xdotool click 1", function()
+         awful.spawn.easy_async_with_shell(apps.x_helpers.xdotool .. " click 1", function()
             mouse.coords {
                x = old_coords.x,
                y = old_coords.y

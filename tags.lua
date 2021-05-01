@@ -45,8 +45,14 @@ local tags = {
         specific_screen = nil
     },
     {
+        name = 'Sound',
+        layout = nil,
+        specific_screen = screens.screen_right_secondary,
+        master_width_factor = 0.5
+    },
+    {
         name = 'Prod',
-        layout = awful.layout.suit.max,
+        layout = nil,
         specific_screen = screens.screen_center_primary
     },
     {

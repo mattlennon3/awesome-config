@@ -262,7 +262,24 @@ function rules.create(clientkeys, clientbuttons)
          --    awful.placement.bottom(c)
          -- end
       },
+      -- Pavucontrol
+      {
+         rule_any = {
+            class = {
+               "pavucontrol"
+            },
+         }, properties = {tag = "Sound", screen = screens.screen_right_secondary}
+      },
+      -- Pulseeffects
+      {
+         rule_any = {
+            class = {
+               "pulseeffects"
+            },
+         }, properties = {tag = "Sound", screen = screens.screen_right_secondary}
+      },
  
+
        -- Rofi
     --    {
     --       rule_any = {name = {"rofi"}},
