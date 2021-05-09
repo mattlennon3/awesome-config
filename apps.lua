@@ -8,8 +8,6 @@ local filesystem = require("gears.filesystem")
 -- define module table
 local apps = {}
 
-local device = os.getenv("ML_DEVICE")
-
 -- get envs
 local device = os.getenv("ML_DEVICE")
 local develop_mode = os.getenv("AWESOME_DEV_MODE")
@@ -68,9 +66,9 @@ if device == "desktop" then
 end
 
 -- TODO the check to see if the app is already running is not flexible enough. programs with arguments are awkward to check
-if develop_mode ~= "TRUE" then
-    -- Run all the apps listed in run_on_start_up
-    function apps.autostart()
+-- Run all the apps listed in run_on_start_up
+function apps.autostart()
+    if develop_mode ~= "TRUE" then
         for _, app in ipairs(run_on_start_up) do
             local findme = app
             local firstspace = app:find(" ")
@@ -89,9 +87,6 @@ if develop_mode ~= "TRUE" then
             awful.spawn.easy_async_with_shell(string.format("pgrep -u $USER -x %s > /dev/null || (sleep 10; (%s))", findme, app), function() end)
         end
     end
-else 
-    -- function must be defined
-    function apps.autostart() end
 end
 
 return apps

@@ -452,6 +452,7 @@ keys.globalkeys = gears.table.join(
                   title = "Attaching devices to guest",
                   screen = side_screen,
                   icon = icon_paths.windows10,
+                  timeout = 1,
                   position = "top_left"
                })
                awesome.emit_signal("kb_state_change", line)
@@ -460,6 +461,7 @@ keys.globalkeys = gears.table.join(
                   title = "Attaching devices to host",
                   screen = side_screen,
                   icon = icon_paths.linux,
+                  timeout = 1,
                   position = "top_left"
                })
                awesome.emit_signal("kb_state_change", line)

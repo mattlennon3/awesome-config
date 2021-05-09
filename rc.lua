@@ -142,7 +142,7 @@ awful.screen.connect_for_each_screen(function(s)
 
             local default_layout = awful.layout.suit.tile
             if screen_name == screens.screen_left_vertical then
-               default_layout = awful.layout.suit.tilebottom
+               default_layout = awful.layout.suit.tile.bottom
             end
 
             local name = string.gsub(tag.name, '{{i}}', tostring(displayed_tag_count))

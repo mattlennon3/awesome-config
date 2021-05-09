@@ -5,6 +5,9 @@
 local awful = require("awful")
 local beautiful = require("beautiful")
 
+-- Import logger
+local logger = require("log")
+
 local screens = require("screens")
 
 -- define screen height and width
