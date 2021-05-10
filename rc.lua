@@ -247,15 +247,6 @@ client.connect_signal("manage", function (c)
       
       c:connect_signal("property::name", watch_name)
    end
-
-   if c.name == "TeamSpeak 3" then
-      logger.log("Setting TS3 Location")
-      -- Ideal spot, found using xprop
-      c.x = 726
-      c.y = 1308
-      c.height = 527
-      c.width = 342
-   end
  end)
 
 

@@ -14,7 +14,7 @@ local dir = (develop_mode == "TRUE" and log_dev_dir or log_dir)
 function logger.log(message)
     local logfile = io.open(dir, "a")
     io.output(logfile)
-    io.write(message)
+    io.write(message .. '\n')
     io.close(logfile)
     -- Also print to console
     print(message)

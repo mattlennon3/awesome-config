@@ -141,13 +141,28 @@ function rules.create(clientkeys, clientbuttons)
        -- ===================================================================
        {
          rule_any = {
-            name = {
-               "TeamSpeak 3"
-            },
             class = {
                "discord"
             }
          }, properties = {tag = "Comms", screen = screens.screen_left_vertical}
+       },
+       {
+         rule_any = {
+            name = {
+               "TeamSpeak 3"
+            },
+         }, properties = {
+            tag = "Comms",
+            screen = screens.screen_left_vertical,
+            callback = function (c)
+               logger.log("Setting TS3 Location")
+               -- Ideal spot, found using xprop
+               c.x = 726
+               c.y = 1308
+               c.height = 527
+               c.width = 342
+            end
+         }
        },
        -- Spotify
        {
