@@ -4,6 +4,7 @@
 // todo incomplete
 cyclefocus
 kikito/inspect.lua
+luacheck / luarocks
 
 ## TODO List
 - Figure out the top bar configuration & creation
