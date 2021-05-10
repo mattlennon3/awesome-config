@@ -6,7 +6,7 @@ local awful = require("awful")
 local gears = require("gears")
 local naughty = require("naughty")
 local beautiful = require("beautiful")
-local dpi = beautiful.xresources.apply_dpi
+-- local dpi = beautiful.xresources.apply_dpi
 local hotkeys_popup = require("awful.hotkeys_popup")
 
 -- Alt-tab library

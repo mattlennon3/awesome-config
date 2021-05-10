@@ -3,7 +3,7 @@
 -- =========================================
 
 local awful = require("awful")
-local filesystem = require("gears.filesystem")
+-- local filesystem = require("gears.filesystem")
 
 -- define module table
 local apps = {}
@@ -15,7 +15,6 @@ local develop_mode = os.getenv("AWESOME_DEV_MODE")
 -- ===================================================================
 -- App Declarations
 -- ===================================================================
-
 
 -- define default apps
 apps.default = {

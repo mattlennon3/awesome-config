@@ -15,9 +15,6 @@ local device = os.getenv("ML_DEVICE")
 -- Default Applications
 local apps = require("apps").default
 
--- only need for debug
-local gears = require("gears")
-
 -- Import logger
 local logger = require("log")
 
