@@ -133,6 +133,9 @@ function rules.create(clientkeys, clientbuttons)
             name = {
               "TeamSpeak 3",
               "Android Emulator -"
+            },
+            class = {
+               "Xephyr"
             }
          }, properties = {ontop = true}
       },
