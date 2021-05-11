@@ -13,13 +13,10 @@ CHECKSUM_PREV_VAL=$(<$CHECKSUM_FILE)
 
 # if checksum exists in /tmp/awesome_checksum
 if test -f "$CHECKSUM_FILE"; then
-#   then compare
     if [[ "$CHECKSUM_PREV_VAL" == "$CONFIG_CHECKSUM" ]]; then
         # No changes, don't reload
         echo "#nochanges"
     else
-#       if different, run luacheck
-        # echo "Running Luacheck"
         if [[ `luacheck --no-color $CONFIG_DIR | tail -1` == *"0 errors"* ]]; then
             # update checksum
             echo $CONFIG_CHECKSUM > $CHECKSUM_FILE
