@@ -82,6 +82,7 @@ function rules.create(clientkeys, clientbuttons)
                 "MessageWin",  -- kalarm.
                 "battle.net.exe",
                 "Lutris",
+                "pick-colour-picker"
              },
              role = {
                 "AlarmWindow",  -- Thunderbird's calendar.
@@ -135,7 +136,8 @@ function rules.create(clientkeys, clientbuttons)
               "Android Emulator -"
             },
             class = {
-               "Xephyr"
+               "Xephyr",
+               "pick-colour-picker"
             }
          }, properties = {ontop = true}
       },

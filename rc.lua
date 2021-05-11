@@ -48,6 +48,9 @@ local tags = require("tags")
 
 -- Import panels
 local top_panel = require("components.top-panel")
+local new_top_panel = require("components.new-top-panel")
+
+local develop_mode = os.getenv("AWESOME_DEV_MODE")
 
 -- Autostart specified apps
 local apps = require("apps")
@@ -179,7 +182,11 @@ awful.screen.connect_for_each_screen(function(s)
       end
    end
 
-   top_panel.create(s)
+   if develop_mode == "TRUE" then
+      new_top_panel.create(s)
+   else
+      top_panel.create(s)
+   end
 
    logger.log('----')
 end)
@@ -254,8 +261,6 @@ client.connect_signal("manage", function (c)
 -- Development Mode
 -- ===================================================================
 -- I don't know how to do this properly, but it works!
-
-local develop_mode = os.getenv("AWESOME_DEV_MODE")
 
 if develop_mode == "TRUE" then
    local home = os.getenv("HOME")
