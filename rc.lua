@@ -259,27 +259,14 @@ local develop_mode = os.getenv("AWESOME_DEV_MODE")
 
 if develop_mode == "TRUE" then
    local home = os.getenv("HOME")
-   local reload_message_file = "/tmp/awesome_dev"
 
-   awful.widget.watch('bash -c \'luacheck --no-color ' .. home ..'/git/my-dotfiles/awesome-config | tail -1 \'', 2, function (_, stdout)
-      -- logger.log("LUACHECK_OUTPUT")
+   awful.widget.watch(home .. '/git/my-dotfiles/awesome-config/live-reload.sh', 2, function (_, stdout)
       for line in stdout:gmatch("[^\r\n]+") do
-         if string.find(line, "0 errors", 1, true) then
-            logger.log("No errors in current source, reloading...")
-            awful.spawn.easy_async_with_shell('echo "reload" > ' .. reload_message_file, function () end)
+         if line == "#reload-that-code" then
+            awesome.restart()
          end
       end
    end)
-   
-   -- awful.widget.watch('bash -c \'cat /tmp/awesome_dev\'', 2, function (_, stdout)
-   --    logger.log("DEVELOP_OUTPUT")
-   --    for line in stdout:gmatch("[^\r\n]+") do
-   --       if line == "reload" then
-   --          -- reload
-   --       end
-   --    end
-   --    logger.log(stdout)
-   -- end)
 end
 
 
