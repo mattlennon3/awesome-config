@@ -5,6 +5,11 @@
 --   / ____ \  /\  /  | |____ ____) | |__| | |  | | |____ 
 --  /_/    \_\/  \/   |______|_____/ \____/|_|  |_|______|
 
+-- ===================================================================
+-- Development aids
+-- ===================================================================
+
+require('utils.live-reload').start()
 
 -- ===================================================================
 -- Initialization
@@ -208,24 +213,6 @@ client.connect_signal("manage", function (c)
       c:connect_signal("property::name", watch_name)
    end
  end)
-
-
--- ===================================================================
--- Development Mode
--- ===================================================================
--- I don't know how to do this properly, but it works!
-
-if develop_mode == "TRUE" then
-   local home = os.getenv("HOME")
-
-   awful.widget.watch(home .. '/git/my-dotfiles/awesome-config/live-reload.sh', 2, function (_, stdout)
-      for line in stdout:gmatch("[^\r\n]+") do
-         if line == "#reload-that-code" then
-            awesome.restart()
-         end
-      end
-   end)
-end
 
 -- ===================================================================
 -- Client Focusing
