@@ -108,7 +108,8 @@ awful.layout.layouts = {
     -- awful.layout.suit.corner.se,
  }
 
- logger.log('Screencount: ' .. screen:count())
+logger.log('Screencount: ' .. screen:count())
+logger.separator()
  
  -- Set up each screen (add tags & panels)
 awful.screen.connect_for_each_screen(function(awful_screen)
@@ -217,7 +218,7 @@ client.connect_signal("manage", function (c)
 if develop_mode == "TRUE" then
    local home = os.getenv("HOME")
 
-   awful.widget.watch(home .. '/git/my-dotfiles/awesome-config/live-reload.sh', 1, function (_, stdout)
+   awful.widget.watch(home .. '/git/my-dotfiles/awesome-config/live-reload.sh', 2, function (_, stdout)
       for line in stdout:gmatch("[^\r\n]+") do
          if line == "#reload-that-code" then
             awesome.restart()
@@ -225,8 +226,6 @@ if develop_mode == "TRUE" then
       end
    end)
 end
-
-
 
 -- ===================================================================
 -- Client Focusing

@@ -25,6 +25,11 @@ local device = os.getenv("ML_DEVICE")
 -- Potential future plan
 -- All clients open on the center screen only. Unless specified otherwise
 
+-- Alias screens
+local screen_left_vertical = screens.screen_left_vertical.output
+local screen_center_primary = screens.screen_center_primary.output
+local screen_right_secondary = screens.screen_right_secondary.output
+
 
 -- return a table of client rules including provided keys / buttons
 function rules.create(clientkeys, clientbuttons)
@@ -149,7 +154,7 @@ function rules.create(clientkeys, clientbuttons)
             class = {
                "discord"
             }
-         }, properties = {tag = "Comms", screen = screens.screen_left_vertical}
+         }, properties = {tag = "Comms", screen = screen_left_vertical}
        },
        {
          rule_any = {
@@ -158,7 +163,7 @@ function rules.create(clientkeys, clientbuttons)
             },
          }, properties = {
             tag = "Comms",
-            screen = screens.screen_left_vertical,
+            screen = screen_left_vertical,
             callback = function (c)
                logger.log("Setting TS3 Location")
                -- Ideal spot, found using xprop
@@ -175,7 +180,7 @@ function rules.create(clientkeys, clientbuttons)
             class = {
                "Spotify"
             }
-         }, properties = {tag = "Music", screen = screens.screen_left_vertical}
+         }, properties = {tag = "Music", screen = screen_left_vertical}
        },
        -- Lutris
        {
@@ -183,7 +188,7 @@ function rules.create(clientkeys, clientbuttons)
             class = {
                "Lutris"
             }
-         }, properties = {tag = "Games", screen = screens.screen_center_primary}
+         }, properties = {tag = "Games", screen = screen_center_primary}
        },
       -- Steam
       {
@@ -191,7 +196,7 @@ function rules.create(clientkeys, clientbuttons)
             class = {
                "Steam"
             }
-         }, properties = {tag = "Games", screen = screens.screen_center_primary}
+         }, properties = {tag = "Games", screen = screen_center_primary}
       },
       -- Epic Launcher
       {
@@ -199,7 +204,7 @@ function rules.create(clientkeys, clientbuttons)
             class = {
                "epicgameslauncher.exe"
             }
-         }, properties = {tag = "Games", screen = screens.screen_center_primary}
+         }, properties = {tag = "Games", screen = screen_center_primary}
       },
       -- Rocket League
       {
@@ -207,7 +212,7 @@ function rules.create(clientkeys, clientbuttons)
             class = {
                "rocketleague.exe"
             }
-         }, properties = {tag = "Games", screen = screens.screen_center_primary}
+         }, properties = {tag = "Games", screen = screen_center_primary}
       },
       -- Spelunky 2
       {
@@ -215,7 +220,7 @@ function rules.create(clientkeys, clientbuttons)
             name = {
                "Spelunky 2"
             }
-         }, properties = {tag = "Games", screen = screens.screen_center_primary}
+         }, properties = {tag = "Games", screen = screen_center_primary}
       },
       -- WoW classic
       {
@@ -223,7 +228,7 @@ function rules.create(clientkeys, clientbuttons)
             class = {
                "wowclassic.exe"
             }
-         }, properties = {tag = "Games", screen = screens.screen_center_primary}
+         }, properties = {tag = "Games", screen = screen_center_primary}
       },
       -- Blizz
       {
@@ -231,7 +236,7 @@ function rules.create(clientkeys, clientbuttons)
             class = {
                "Blizzard Battle.net"
             }
-         }, properties = {tag = "Games", screen = screens.screen_center_primary}
+         }, properties = {tag = "Games", screen = screen_center_primary}
       },
       -- VSCode
       {
@@ -255,7 +260,7 @@ function rules.create(clientkeys, clientbuttons)
             instance = {
                "todoist"
             },
-         }, properties = {tag = "Notes", screen = screens.screen_right_secondary}
+         }, properties = {tag = "Notes", screen = screen_right_secondary}
       },
       -- Obsidian
       {
@@ -263,7 +268,7 @@ function rules.create(clientkeys, clientbuttons)
             class = {
                "obsidian"
             },
-         }, properties = {tag = "Notes", screen = screens.screen_right_secondary}
+         }, properties = {tag = "Notes", screen = screen_right_secondary}
       },
        -- ===================================================================
        -- Misc
@@ -278,7 +283,7 @@ function rules.create(clientkeys, clientbuttons)
          properties = {
             skip_taskbar = true,
             tag = "Music", 
-            screen = screens.screen_left_vertical
+            screen = screen_left_vertical
          }
          -- callback = function (c)
          --    decorations.hide(c)
@@ -291,7 +296,7 @@ function rules.create(clientkeys, clientbuttons)
             class = {
                "pavucontrol"
             },
-         }, properties = {tag = "Sound", screen = screens.screen_right_secondary}
+         }, properties = {tag = "Sound", screen = screen_right_secondary}
       },
       -- Pulseeffects
       {
@@ -299,7 +304,7 @@ function rules.create(clientkeys, clientbuttons)
             class = {
                "pulseeffects"
             },
-         }, properties = {tag = "Sound", screen = screens.screen_right_secondary}
+         }, properties = {tag = "Sound", screen = screen_right_secondary}
       },
  
 

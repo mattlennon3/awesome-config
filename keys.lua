@@ -367,7 +367,7 @@ keys.globalkeys = gears.table.join(
    awful.key({}, XF86Binds.macro2,
       function ()
          -- Get the main screen
-         local main_screen = screens.getScreenByOutput(screens.screen_center_primary)
+         local main_screen = screens.getScreenByOutput(screens.screen_center_primary.output)
          
          -- bail for laptop etc
          if main_screen == nil then
@@ -445,7 +445,7 @@ keys.globalkeys = gears.table.join(
    awful.key({}, XF86Binds.macro3,
       function ()
          awful.spawn.easy_async_with_shell(apps.scripts.keyboardToggle, function(state) 
-         local side_screen = screens.getScreenByOutput(screens.screen_right_secondary)
+         local side_screen = screens.getScreenByOutput(screens.screen_right_secondary.output)
          for line in state:gmatch("[^\r\n]+") do
             if line == "guest" then
                naughty.notify({
