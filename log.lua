@@ -20,6 +20,10 @@ function logger.log(message)
     print(message)
 end
 
+function logger.separator()
+    logger.log("-------")
+end
+
 function logger.clearlog()
     awful.spawn.with_shell("echo > " .. dir, false)
 end

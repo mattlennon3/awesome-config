@@ -42,6 +42,7 @@ luacheck / luarocks
   - [x] create a folder for the client name and place it there?
 - [x] If a tag has a number in the name, if you do mod + (number), jump to that tag) (Automatically worked)
 - [ ] add/rename tags on the fly
+- [ ] Games tag only appears for steam / lutris/ local game
 
 ### Things I can do last:
 - [ ] Add the menu when you right click on the desktop
@@ -64,6 +65,7 @@ luacheck / luarocks
 - [ ] awful.urgent.delete (c) (for discord and todoist who are always urgent on launch)
 - [ ] add way to serialise (print) objects https://github.com/kikito/inspect.lua ?
 - [ ] Figure out rule callback functions
+- [ ] add mod+` keybind for quick notes/menu? 
 
 
 vertical stacking layout:

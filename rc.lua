@@ -43,9 +43,6 @@ local naughty = require("naughty")
 
 -- Import components
 
--- Import tag settings
-local tags = require("tags")
-
 -- Import panels
 local top_panel = require("components.top-panel")
 local new_top_panel = require("components.new-top-panel")
@@ -111,84 +108,39 @@ awful.layout.layouts = {
     -- awful.layout.suit.corner.se,
  }
 
--- Ratio of screen space master client takes
-local local_master_width_factor = 0.65
--- Master takes the full screen when it's on it's own
-local local_master_fill_policy = "expand"
-
--- Set up each screen (add tags & panels)
-awful.screen.connect_for_each_screen(function(s)
-
+ logger.log('Screencount: ' .. screen:count())
+ 
+ -- Set up each screen (add tags & panels)
+awful.screen.connect_for_each_screen(function(awful_screen)
    local screen_name = ''
-   for k, v in pairs(s.outputs) do
+   local screen_settings = nil
+
+   for k, v in pairs(awful_screen.outputs) do
       screen_name = k
+      screen_settings = screens.getSettingsForScreen(k)
    end
 
    logger.log("Screen name: " .. screen_name)
-   logger.log("Screen index: " .. s.index)
+   logger.log("Screen settings found: " .. (screen_settings and "yes" or "no"))
 
-   -- Wallpaper
-   -- set_wallpaper(s)
-   logger.log('Screencount: ' .. screen:count())
-   
-   local selected_tag_for_screen = nil
-   -- if we are on desktop with 3 screens
-   if(screen:count() == 3) then
-      local displayed_tag_count = 1
-      for i, tag in pairs(tags) do
-         -- If the tag has no specific_screen or if the screen matches the tags specific_screen
-         if tag.specific_screen == nil or screen_name == tag.specific_screen then
-            -- The order of the tags in tags.lua matters here. Whatever comes first will be default
-            if selected_tag_for_screen == nil and (tag.name == "Web" or tag.name == "Music" or tag.name == "Notes") then
-               selected_tag_for_screen = tag.name
-            end
-
-            local default_layout = awful.layout.suit.tile
-            if screen_name == screens.screen_left_vertical then
-               default_layout = awful.layout.suit.tile.bottom
-            end
-
-            local name = string.gsub(tag.name, '{{i}}', tostring(displayed_tag_count))
-            awful.tag.add(name, {
-               layout = tag.layout and tag.layout or default_layout,
-               screen = s,
-               selected = selected_tag_for_screen == tag.name,
-               master_width_factor = tag.master_width_factor or local_master_width_factor,
-               master_fill_policy = tag.local_master_fill_policy or local_master_fill_policy,
-               gap_single_client = false
-            })
-            
-            displayed_tag_count = displayed_tag_count + 1
-         end
-      end
-      
-   -- else fall back to just putting every tag on every screen
-   else
-      for i, tag in pairs(tags) do
-         -- The order of the tags in tags.lua matters here. Whatever comes first will be default
-         if selected_tag_for_screen == nil and (tag.name == "Web" or tag.name == "Music" or tag.name == "Notes") then
-            selected_tag_for_screen = tag.name
-         end
-
-         local name = string.gsub(tag.name, '{{i}}', tostring(i))
-         awful.tag.add(name, {
-            layout = tag.layout and tag.layout or awful.layout.suit.tile,
-            screen = s,
-            selected = tag.name == "Web",
-            master_width_factor = tag.master_width_factor or local_master_width_factor,
-            master_fill_policy = tag.local_master_fill_policy or local_master_fill_policy,
-            gap_single_client = false
-         })
-      end
+   for k, tag in pairs(screen_settings.tags) do 
+      tag.tag_object = awful.tag.add(tag.name, {
+         layout = tag.layout and tag.layout or screen_settings.screen_layout,
+         screen = awful_screen,
+         selected = tag.selected,
+         master_width_factor = tag.master_width_factor or screens.master_width_factor,
+         master_fill_policy = tag.local_master_fill_policy or screens.global_master_fill_policy,
+         gap_single_client = false
+      })
    end
 
    if develop_mode == "TRUE" then
-      new_top_panel.create(s)
+      new_top_panel.create(awful_screen)
    else
-      top_panel.create(s)
+      top_panel.create(awful_screen)
    end
 
-   logger.log('----')
+   logger.separator()
 end)
 
 -- ===================================================================
