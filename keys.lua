@@ -13,7 +13,7 @@ local hotkeys_popup = require("awful.hotkeys_popup")
 -- local cyclefocus = require('cyclefocus')
 
 -- Import logger
-local logger = require("log")
+local logger = require("utils.log")
 
 -- Default Applications
 local apps = require("apps").default

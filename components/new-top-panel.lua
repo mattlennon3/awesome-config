@@ -10,9 +10,7 @@ local tag_list = require("components.panel.taglist")
 local keys = require("keys")
 
 
-
 new_top_panel.create = function (awful_screen)
-    print("top panel not implemented")
 
     -- https://github.com/undefinedDarkness/rice/blob/master/.config/awesome/components/hello_user.lua#L53
     function app_launcher(icon)

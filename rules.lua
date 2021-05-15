@@ -6,7 +6,7 @@ local awful = require("awful")
 local beautiful = require("beautiful")
 
 -- Import logger
-local logger = require("log")
+local logger = require("utils.log")
 
 local screens = require("screens")
 

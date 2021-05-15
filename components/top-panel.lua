@@ -16,7 +16,7 @@ local device = os.getenv("ML_DEVICE")
 local apps = require("apps").default
 
 -- Import logger
-local logger = require("log")
+local logger = require("utils.log")
 
 -- ===================================================================
 -- Import Widgets

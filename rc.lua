@@ -10,6 +10,7 @@
 -- ===================================================================
 
 require('utils.live-reload').start()
+local develop_mode = os.getenv("AWESOME_DEV_MODE")
 
 -- ===================================================================
 -- Initialization
@@ -19,18 +20,19 @@ require('utils.live-reload').start()
 local gears = require("gears")
 local awful = require("awful")
 
--- Import config
-
 -- Import logger
-local logger = require("log")
+local logger = require("utils.log")
 
 -- clear previous startup log
 logger.clearlog()
 
+local theme_name = develop_mode == "TRUE" and "new-space" or "default"
+
+logger.log("Using theme: " ..  theme_name)
+
 -- Import theme
 local beautiful = require("beautiful")
-beautiful.init(gears.filesystem.get_configuration_dir() .. "theme.lua")
-
+beautiful.init(gears.filesystem.get_configuration_dir() .. "/themes/" .. theme_name .. ".lua")
 
 -- Import Keybinds
 local keys = require("keys")
@@ -52,7 +54,6 @@ local naughty = require("naughty")
 local top_panel = require("components.top-panel")
 local new_top_panel = require("components.new-top-panel")
 
-local develop_mode = os.getenv("AWESOME_DEV_MODE")
 
 -- Autostart specified apps
 local apps = require("apps")
