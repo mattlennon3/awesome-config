@@ -73,13 +73,13 @@ screens.screen_right_secondary = {
          master_width_factor = 0.5,
          selected = true,
       }, {
-         name = "2",
+         name = "Web",
       }, {
-         name = "3",
+         name = "Web3",
       }, {
-         name = "4",
+         name = "Prod",
       }, {
-         name = "5",
+         name = "Sound",
       }
    }
 }

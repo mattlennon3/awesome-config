@@ -67,7 +67,7 @@ local reload_macro_button = wibox.widget {
     {
         image = beautiful.macro_keypad_reload_icon,
         resize = true,
-        forced_height = beautiful.top_panel_height,
+        forced_height = beautiful.wibar_height,
         widget = wibox.widget.imagebox
     },
     margins = 2,
@@ -168,7 +168,7 @@ top_panel.create = function(s)
     local panel = awful.wibar({
         screen = s,
         position = 'top',
-        height = beautiful.top_panel_height,
+        height = beautiful.wibar_height,
         bg = beautiful.bg_normal
     })
 

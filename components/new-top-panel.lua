@@ -5,8 +5,13 @@ local beautiful = require("beautiful")
 local wibox = require("wibox")
 local gears = require("gears")
 
+local tag_list = require("components.panel.taglist")
 
-new_top_panel.create = function (screen)
+local keys = require("keys")
+
+
+
+new_top_panel.create = function (awful_screen)
     print("top panel not implemented")
 
     -- https://github.com/undefinedDarkness/rice/blob/master/.config/awesome/components/hello_user.lua#L53
@@ -22,19 +27,38 @@ new_top_panel.create = function (screen)
         return w
     end
 
+    awful_screen.mywibox = awful.wibar({ 
+        position = beautiful.wibar_position, 
+        screen = awful_screen,
+        height = beautiful.wibar_height 
+    })
 
-    awful.popup {
-        widget = app_launcher('firefox'),
-        bg = beautiful.transparent,
-        shape = function(cr, w, h) gears.shape.rounded_rect(cr, w, h, 8) end,
-        hide_on_right_click = true,
+    -- Add widgets to the wibox
+    awful_screen.mywibox:setup {
+        layout = wibox.layout.align.horizontal,
+        { -- Left widgets
+            layout = wibox.layout.fixed.horizontal,
+            tag_list(awful_screen, keys.taglist_buttons),
+        },
+        -- require("widgets.panel.tasklist")(s), 
+        { -- Right widgets
+            layout = wibox.layout.fixed.horizontal,
+        },
     }
+
+
+    -- awful.popup {
+    --     widget = app_launcher('firefox'),
+    --     bg = beautiful.transparent,
+    --     shape = function(cr, w, h) gears.shape.rounded_rect(cr, w, h, 8) end,
+    --     hide_on_right_click = true,
+    -- }
 
 
     -- local panel = awful.wibar({
     --     screen = screen,
     --     position = 'top',
-    --     height = beautiful.top_panel_height,
+    --     height = beautiful.wibar_height,
     --     bg = beautiful.bg_normal
     -- })
 

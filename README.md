@@ -128,4 +128,8 @@ https://stackoverflow.com/a/52636847/3033813
 
 ## Credits
 
-File structure, blocks of code and lots of other things heavily borrowed from [WillPower3309](https://github.com/WillPower3309/awesome-dotfiles). Thanks dude!
+File structure, blocks of code and lots of other things heavily borrowed from [WillPower3309](https://github.com/WillPower3309/awesome-dotfiles).
+
+Main resource for widgets and theming from [Mofiqul](https://github.com/Mofiqul/awesome-shell)
+
+Thanks All!

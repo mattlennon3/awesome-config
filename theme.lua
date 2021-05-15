@@ -13,6 +13,8 @@ local dpi = xresources.apply_dpi
 local gfs = require("gears.filesystem")
 local themes_path = gfs.get_themes_dir()
 
+local gears = require("gears")
+
 -- define module table
 local theme = {}
 
@@ -47,6 +49,10 @@ theme.border_width  = dpi(1)
 theme.border_normal = "#000000"
 theme.border_focus  = "#535d6c"
 theme.border_marked = "#91231c"
+
+theme.button_bg = theme.bg_open
+theme.button_border_width = dpi(1)
+theme.button_border = theme.border_normal
 
 -- Background
 
@@ -85,9 +91,14 @@ theme.tasklist_fg_normal = theme.fg_open
 
 
 -- Panel Sizing
-theme.top_panel_height = dpi(20)
+theme.wibar_height = dpi(20)
 
 -- Notification Sizing
+
+-- Shapes
+theme.panel_button_shape = function (cr, height, width)
+    gears.shape.rounded_rect(cr, height, width, 0)
+end
 
 
 -- ===================================================================
