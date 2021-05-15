@@ -16,13 +16,13 @@ local hotkeys_popup = require("awful.hotkeys_popup")
 local logger = require("utils.log")
 
 -- Default Applications
-local apps = require("apps").default
+local apps = require("config.apps").default
 
 -- Icons
-local icon_paths = require("icons").icon_paths
+local icon_paths = require("themes.icons").icon_paths
 
 -- Screens
-local screens = require("screens")
+local screens = require("config.screens")
 
 -- Define mod keys
 local modkey = "Mod4"

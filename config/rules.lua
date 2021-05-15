@@ -8,7 +8,7 @@ local beautiful = require("beautiful")
 -- Import logger
 local logger = require("utils.log")
 
-local screens = require("screens")
+local screens = require("config.screens")
 
 -- define screen height and width
 local screen_height = awful.screen.focused().geometry.height

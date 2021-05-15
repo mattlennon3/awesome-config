@@ -35,12 +35,12 @@ local beautiful = require("beautiful")
 beautiful.init(gears.filesystem.get_configuration_dir() .. "/themes/" .. theme_name .. ".lua")
 
 -- Import Keybinds
-local keys = require("keys")
+local keys = require("config.keys")
 root.keys(keys.globalkeys)
 -- root.buttons(keys.desktopbuttons)
 
 -- Import rules
-local create_rules = require("rules").create
+local create_rules = require("config.rules").create
 awful.rules.rules = create_rules(keys.clientkeys, keys.clientbuttons)
 
 -- Notification library
@@ -56,11 +56,11 @@ local new_top_panel = require("components.new-top-panel")
 
 
 -- Autostart specified apps
-local apps = require("apps")
+local apps = require("config.apps")
 apps.autostart()
 
 -- Screens
-local screens = require("screens")
+local screens = require("config.screens")
 
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
