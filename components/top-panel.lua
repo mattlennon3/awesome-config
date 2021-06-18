@@ -26,6 +26,8 @@ local top_panel = {}
 
 local systray = wibox.widget.systray()
 
+local cpu_temp = require("components.panel.cpu_temp")
+
 -- Create a textclock widget
 
 -- https://unix.stackexchange.com/a/519655/358471
@@ -84,12 +86,12 @@ end)
 -- CPU Meter
 -- ===================================================================
 
--- sensors | grep -ioP "Tctl:\s+\+\K(.*)"
--- To use pipe (|) in commands, must be wrapped in bash -c first.
-local cpu_temp = awful.widget.watch('bash -c \'sensors | grep -ioP "Tctl:\\s+\\+\\K(.*)"\'', 10, function (widget, stdout)
-    -- TODO: Nice icon
-    widget:set_text(" " .. stdout)
-end)
+-- -- sensors | grep -ioP "Tctl:\s+\+\K(.*)"
+-- -- To use pipe (|) in commands, must be wrapped in bash -c first.
+-- local cpu_temp = awful.widget.watch('bash -c \'sensors | grep -ioP "Tctl:\\s+\\+\\K(.*)"\'', 5, function (widget, stdout)
+--     -- TODO: Nice icon
+--     widget:set_text(" " .. stdout)
+-- end)
 
 
 -- ===================================================================

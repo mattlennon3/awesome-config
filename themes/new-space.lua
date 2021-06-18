@@ -15,10 +15,15 @@ local theme = require('themes.common')
 -- Font
 theme.font = "JetBrains Mono Medium 12"
 
-theme.bg_normal     = "#222222"
-theme.bg_open       = "#444444"
-theme.bg_focus      = "#535d6c"
-theme.bg_urgent     = "#BC3908"
+-- theme.background    = "#30418D"
+-- theme.focused       = "#8D7C30"
+-- theme.unfocused     = "#808080"
+-- theme.urgent        = "#8D1C22"
+
+theme.bg_normal     = "#30418D"
+theme.bg_focus      = "#8D7C30"
+theme.bg_open       = "#808080"
+theme.bg_urgent     = "#8D1C22"
 theme.bg_minimize   = theme.bg_normal
 theme.bg_systray    = theme.bg_normal
 
