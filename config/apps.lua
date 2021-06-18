@@ -21,6 +21,7 @@ apps.default = {
     terminal = "alacritty",
     launcher = "dmenu_run",
     lock = "xsecurelock",
+    task_manager = "alacritty -e htop",
     screenshot = "maim",
     filebrowser = "thunar",
     -- TODO write a PKGBUILD for this repo? 
@@ -61,6 +62,7 @@ local run_on_start_up_delayed = {}
 if device == "desktop" then
     table.insert(run_on_start_up, "discord")
     table.insert(run_on_start_up_delayed, "alacritty --class cava -e cava")
+    table.insert(run_on_start_up_delayed, "alacritty -e vimtutor")
     table.insert(run_on_start_up_delayed, "spotify")
 end
 

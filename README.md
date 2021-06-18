@@ -44,28 +44,37 @@ luacheck / luarocks
 - [ ] add/rename tags on the fly
 - [ ] Games tag only appears for steam / lutris/ local game
 
-### Things I can do last:
-- [ ] Add the menu when you right click on the desktop
-- [ ] Implement exit screen (search for show_exit_screen)
-- [x] Install screenshot software & add it to apps (& keybinds)
+### Rules
+- [ ] Figure out rule callback functions
+- [ ] 
+
+### Hotkeys
+- [ ] Quick open notes/todo list. Something like ctrl+mod+
+- [ ] add mod+` keybind for quick notes/menu? 
+- [ ] youtube-dl rofi prompt
+- [ ] shortcut to call dmenu-run, but will create a new tag to hold the client instead of opening on the current tag (could try and generate the tag name from the client). Handy for maximized clients, prusa-slicer, freecad etc
+
+
+### Wallpaper
 - [ ] different background per screen with connect_for_each_screen
 - [ ] wallpaper driven from a folder rather than a specific file
 - [ ] separate wallpaper for portrait monitor
-- [ ] sort out imports? keys.lua is imported in 2 different files so runs twice, which could be an issue. Maybe assign the result to a global and use it if available
+
+
+### Misc:
+- [ ] Add the menu when you right click on the desktop
+- [ ] Implement exit screen (search for show_exit_screen)
+- [x] Install screenshot software & add it to apps (& keybinds)
 - [ ] when copying a screenshot to the clipboard, don't seem to be able to paste into every program (i.e works when pasting to discord chat/whatsapp but not into a directory)
 - [ ] create a PKGBUILD to keep track of what is required to be installed, rather than just listing the programs in apps.lua
-- [ ] youtube-dl rofi prompt
-- [ ] shortcut to call dmenu-run, but will create a new tag to hold the client instead of opening on the current tag (could try and generate the tag name from the client). Handy for maximized clients, prusa-slicer, freecad etc
 - [ ] gimp maximize on open
-- [ ] delayed autostart for some apps (spotify)
+- [x] delayed autostart for some apps (spotify)
 - [ ] ctrl + alt + v to reset volume to 40% (set this on start too?)
 - [ ] autostart spotify should check if it's already running and not run if it is
 - [ ] margin around CPU temp widget
 - [ ] better alt tab https://github.com/blueyed/awesome-cyclefocus/
 - [ ] awful.urgent.delete (c) (for discord and todoist who are always urgent on launch)
 - [ ] add way to serialise (print) objects https://github.com/kikito/inspect.lua ?
-- [ ] Figure out rule callback functions
-- [ ] add mod+` keybind for quick notes/menu? 
 
 
 vertical stacking layout:
@@ -125,6 +134,9 @@ https://awesomewm.org/doc/manpages/awesome-client.1.html
 
 Dangers in spawning commands
 https://stackoverflow.com/a/52636847/3033813
+
+Smooth entry/exit of widgets
+https://redd.it/mt9oy0
 
 ## Credits
 

@@ -62,17 +62,7 @@ local spotlight_source_tag = nil
 local spotlight_client = nil
 
 -- Get home dir
-local home_dir
-awful.spawn.easy_async_with_shell("echo $HOME", function(home_directory)
-   if(home_directory) then
-      -- TODO: Logs twice because this file is imported in 2 places. Fixme
-      logger.log("home directory found: " .. home_directory)
-      home_dir = string.gsub(home_directory, "\n", "")
-   else
-      logger.log("home directory not found!!!")
-   end
-end)
-
+local home_dir = os.getenv("HOME")
 
 local getScreenshotBaseDir = function (subdir)
    if(subdir) then
@@ -148,6 +138,13 @@ keys.globalkeys = gears.table.join(
         awful.spawn(apps.launcher)
         end,
         {description = "application launcher", group = "launcher"}
+    ),
+    -- Spawn task manager
+    awful.key({ ctrlkey, shiftkey }, "Escape",
+        function()
+        awful.spawn(apps.task_manager)
+        end,
+        {description = "task manager", group = "launcher"}
     ),
     -- Spawn file explorer
     awful.key({ modkey }, "e",
@@ -401,6 +398,7 @@ keys.globalkeys = gears.table.join(
          end
 
          local restoreClient = function()
+            -- TODO use clients previous fullscreen value rather than just false
             spotlight_client.fullscreen = false
             spotlight_client:move_to_tag(spotlight_source_screen.tags[spotlight_source_tag.index])
          end
@@ -796,9 +794,6 @@ for i = 1, 9 do
          {description = "toggle focused client on tag #" .. i, group = "tag"})
     )
  end
-
- -- rofi -dmenu -lines 0 > /tmp/rofi-test.txt
-
 
 -- =========================================
 -- TAG MOUSE BINDINGS

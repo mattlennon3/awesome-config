@@ -87,7 +87,9 @@ function rules.create(clientkeys, clientbuttons)
                 "MessageWin",  -- kalarm.
                 "battle.net.exe",
                 "Lutris",
-                "pick-colour-picker"
+                "pick-colour-picker",
+                "gpick",
+                "gnome-disks"
              },
              role = {
                 "AlarmWindow",  -- Thunderbird's calendar.
@@ -296,6 +298,9 @@ function rules.create(clientkeys, clientbuttons)
             class = {
                "pavucontrol"
             },
+            name = {
+               "Volume Control"
+            }
          }, properties = {tag = "Sound", screen = screen_right_secondary}
       },
       -- Pulseeffects
@@ -304,6 +309,9 @@ function rules.create(clientkeys, clientbuttons)
             class = {
                "pulseeffects"
             },
+            name = {
+               "PulseEffects"
+            }
          }, properties = {tag = "Sound", screen = screen_right_secondary}
       },
  

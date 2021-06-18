@@ -23,6 +23,8 @@ local awful = require("awful")
 -- Import logger
 local logger = require("utils.log")
 
+logger.log("Secondary rc.lua")
+
 -- clear previous startup log
 logger.clearlog()
 
@@ -186,11 +188,13 @@ client.connect_signal("manage", function (c)
          logger.log('Client class added: ' .. (c.class or ' -nil- '))
          c.minimized = false
          awful.rules.apply(c)
-         -- Spotify on comms tag
+         -- Spotify on comms/prod tag
          if c.class == "Spotify" then
-            local vert_screen = screens.getScreenByOutput(screens.screen_left_vertical)
+            local vert_screen = screens.getScreenByOutput(screens.screen_left_vertical.output)
             local comms_tag = awful.tag.find_by_name(vert_screen, "Comms")
+            local prod_tag = awful.tag.find_by_name(vert_screen, "Prod")
             c:toggle_tag(comms_tag)
+            c:toggle_tag(prod_tag)
          end
       end)
       -- CAREFUL - Clients such as spotify change their name regularly (track change), forcing them to reapply rules & jump back to their original tag
