@@ -182,7 +182,19 @@ function rules.create(clientkeys, clientbuttons)
             class = {
                "Spotify"
             }
-         }, properties = {tag = "Music", screen = screen_left_vertical}
+         }, properties = {
+            tag = "Music", 
+            screen = screen_left_vertical,
+            callback = function (c)
+               logger.log("Spotify on many tags")
+               awful.client.setmaster(c)
+               local vert_screen = screens.getScreenByOutput(screen_left_vertical)
+               local comms_tag = awful.tag.find_by_name(vert_screen, "Comms")
+               local prod_tag = awful.tag.find_by_name(vert_screen, "Prod")
+               c:toggle_tag(comms_tag)
+               c:toggle_tag(prod_tag)
+            end
+         }
        },
        -- Lutris
        {
