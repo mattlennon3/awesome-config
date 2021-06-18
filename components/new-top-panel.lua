@@ -7,7 +7,7 @@ local gears = require("gears")
 
 local tag_list = require("components.panel.taglist")
 
-local keys = require("keys")
+local keys = require("config.keys")
 
 
 new_top_panel.create = function (awful_screen)

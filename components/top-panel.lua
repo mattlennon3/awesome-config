@@ -4,7 +4,7 @@
 local awful = require("awful")
 local beautiful = require("beautiful")
 local wibox = require("wibox")
-local keys = require("keys")
+local keys = require("config.keys")
 
 -- Note that xft.dpi must be properly assigned in the .Xresources file if you are using a high DPI screen
 local xresources = require("beautiful.xresources")
@@ -13,7 +13,7 @@ local dpi = xresources.apply_dpi
 local device = os.getenv("ML_DEVICE")
 
 -- Default Applications
-local apps = require("apps").default
+local apps = require("config.apps").default
 
 -- Import logger
 local logger = require("utils.log")
