@@ -326,6 +326,34 @@ function rules.create(clientkeys, clientbuttons)
             }
          }, properties = {tag = "Sound", screen = screen_right_secondary}
       },
+
+      -- Firefox
+      {
+         rule_any = {
+            class = {
+               "firefoxdeveloperedition"
+            }
+         }, properties = {
+            callback = function (c)
+               awful.spawn.easy_async_with_shell("sleep 2", function()
+                  if c.name:find("Olympic Schedule") then
+                     logger.log("Moving Olympic Schedule to correct tag")
+                     local vert_screen = screens.getScreenByOutput(screen_left_vertical)
+                     local olympic_tag = awful.tag.find_by_name(vert_screen, "Olympics")
+                     c:move_to_tag(vert_screen.tags[olympic_tag.index])
+                  end
+
+                  if c.name:find("iPlayer") and c.name:find("Olympics") then
+                     logger.log("Moving Olympic Schedule to correct tag")
+                     local right_screen = screens.getScreenByOutput(screen_right_secondary)
+                     local olympic_tag = awful.tag.find_by_name(right_screen, "Olympics")
+                     c:move_to_tag(right_screen.tags[olympic_tag.index])
+                     c:raise()
+                  end
+               end)
+            end
+         }
+      },
  
 
        -- Rofi

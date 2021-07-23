@@ -35,6 +35,8 @@ screens.screen_left_vertical = {
       }, {
          name = "Prod",
       }, {
+         name = "Olympics",
+      }, {
          name = "Web",
       }
    }
@@ -50,9 +52,9 @@ screens.screen_center_primary = {
          name = "Code",
       }, {
          name = "Web",
-         selected = true,
       }, {
          name = "Web3",
+         selected = true,
       }, {
          name = "Prod",
       }, {
@@ -78,6 +80,8 @@ screens.screen_right_secondary = {
          name = "Web3",
       }, {
          name = "Prod",
+      }, {
+         name = "Olympics",
       }, {
          name = "Sound",
       }
