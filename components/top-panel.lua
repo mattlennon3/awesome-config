@@ -36,6 +36,7 @@ local short_clock = "%H:%M %Z"
 local date_textclock = wibox.widget.textclock(" " .. date_format .. " ")
 local local_textclock = wibox.widget.textclock(" " .. short_clock .. " ", nil)
 local est_textclock = wibox.widget.textclock(" " .. short_clock .. " ", nil, "EST")
+local tokyo_textclock = wibox.widget.textclock(" " .. short_clock .. " ", nil, "JST-9")
 
 local volumebar_widget
 local BAT0
@@ -195,6 +196,7 @@ top_panel.create = function(s)
           date_textclock,
           est_textclock,
           local_textclock,
+          tokyo_textclock,
           reload_macro_button,
           awful.widget.layoutbox(s)
        }
