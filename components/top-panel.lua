@@ -194,9 +194,9 @@ top_panel.create = function(s)
           cpu_temp,
           systray,
           date_textclock,
+          tokyo_textclock,
           est_textclock,
           local_textclock,
-          tokyo_textclock,
           reload_macro_button,
           awful.widget.layoutbox(s)
        }
