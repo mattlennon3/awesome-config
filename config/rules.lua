@@ -335,6 +335,7 @@ function rules.create(clientkeys, clientbuttons)
             }
          }, properties = {
             callback = function (c)
+               -- TODO after this is removed, make a streams tag for sport/twitch?
                awful.spawn.easy_async_with_shell("sleep 2", function()
                   if c.name:find("Olympic Schedule") then
                      logger.log("Moving Olympic Schedule to correct tag")
@@ -344,7 +345,15 @@ function rules.create(clientkeys, clientbuttons)
                   end
 
                   if c.name:find("iPlayer") and c.name:find("Olympics") then
-                     logger.log("Moving Olympic Schedule to correct tag")
+                     logger.log("Moving Olympics to correct tag")
+                     local right_screen = screens.getScreenByOutput(screen_right_secondary)
+                     local olympic_tag = awful.tag.find_by_name(right_screen, "Olympics")
+                     c:move_to_tag(right_screen.tags[olympic_tag.index])
+                     c:raise()
+                  end
+
+                  if c.name:find("Eurosport Player") then
+                     logger.log("Moving and Olympics to correct tag")
                      local right_screen = screens.getScreenByOutput(screen_right_secondary)
                      local olympic_tag = awful.tag.find_by_name(right_screen, "Olympics")
                      c:move_to_tag(right_screen.tags[olympic_tag.index])
