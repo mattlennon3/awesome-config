@@ -363,11 +363,17 @@ keys.globalkeys = gears.table.join(
 
    awful.key({}, XF86Binds.macro2,
       function ()
+
+         -- Error log:
+            -- Spotlight tag exists, not focused, no client inside. Can't send any new clients to spotlight from any screen.
+            -- Can focus and unfocus the spotlight tag but it doesn't close itself.
+            -- had to move a client onto the tag, and remove it so the spotlight tag closed itself. Then things worked as normal again.
+         
          -- Get the main screen
          local main_screen = screens.getScreenByOutput(screens.screen_center_primary.output)
          
          -- bail for laptop etc
-         if main_screen == nil then
+         if main_screen == nil then -- TODO: Just check for ML_DEVICE?
             return
          end
 

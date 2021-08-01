@@ -75,6 +75,7 @@ luacheck / luarocks
 - [ ] better alt tab https://github.com/blueyed/awesome-cyclefocus/
 - [ ] awful.urgent.delete (c) (for discord and todoist who are always urgent on launch)
 - [ ] add way to serialise (print) objects https://github.com/kikito/inspect.lua ?
+- [ ] find a way to print globals while running
 
 
 vertical stacking layout:
