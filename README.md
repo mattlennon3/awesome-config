@@ -61,6 +61,10 @@ luacheck / luarocks
 - [ ] separate wallpaper for portrait monitor
 
 
+### Notifcations
+- [ ] Add https://wiki.archlinux.org/title/Dunst to track history of notifications
+  - [ ] create pop out panel to view notifications
+
 ### Misc:
 - [ ] Add the menu when you right click on the desktop
 - [ ] Implement exit screen (search for show_exit_screen)
