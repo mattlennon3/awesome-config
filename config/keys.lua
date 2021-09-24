@@ -354,12 +354,12 @@ keys.globalkeys = gears.table.join(
    -- MACRO KEYPAD SHORTCUTS
    -- =========================================
 
-   -- awful.key({}, XF86Binds.macro1,
-   --    function ()
-
-   --    end,
-   --    {description = "macro key 1", group = "launcher"}
-   -- ),
+   awful.key({}, XF86Binds.macro1,
+      function ()
+         awful.spawn.easy_async_with_shell(apps.infographics.weather, function() end)
+      end,
+      {description = "macro key 1 - weather", group = "launcher"}
+   ),
 
    awful.key({}, XF86Binds.macro2,
       function ()

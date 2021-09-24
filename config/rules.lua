@@ -274,7 +274,13 @@ function rules.create(clientkeys, clientbuttons)
             instance = {
                "todoist"
             },
-         }, properties = {tag = "Notes", screen = screen_right_secondary}
+         }, properties = {
+            tag = "Notes", 
+            screen = screen_right_secondary,
+            callback = function (c)
+               awful.client.setmaster(c)
+            end
+         }
       },
       -- Obsidian
       {

@@ -11,6 +11,7 @@ local apps = {}
 -- get envs
 local device = os.getenv("ML_DEVICE")
 local develop_mode = os.getenv("AWESOME_DEV_MODE")
+local webbrowser = (device == "desktop" and "firefox-developer-edition" or "firefox")
 
 -- ===================================================================
 -- App Declarations
@@ -38,11 +39,14 @@ apps.default = {
     mediaKeys = "playerctl",
     -- calculator | control + numpad0 to open (requires rofi-calc package). control + c to copy result
     calculator = "rofi -show calc -modi calc -no-show-match -no-sort -kb-accept-custom 'Control_L+c' -no-unicode -calc-command 'echo {result}' | xclip -selection clipboard",
-    webbrowser = (device == "desktop" and "firefox-developer-edition" or "firefox"),
+    webbrowser = webbrowser,
     bravebrowser = "brave",
     rofiTimer = "(cd /home/matt/git/rust/rofi-timer; $PWD/target/release/rofi-timer)",
-    password_prompt = "passmenu -i",
-    youtube_dl_rofi_prompt = "rofi -dmenu -theme-str 'listview { enabled: false;}' -p 'Video URL' | youtube-dl"
+    password_prompt = "1password --toggle",
+    youtube_dl_rofi_prompt = "rofi -dmenu -theme-str 'listview { enabled: false;}' -p 'Video URL' | youtube-dl",
+    infographics = {
+        weather = webbrowser .. " https://www.windy.com"
+    }
 }
 
 -- ===================================================================
