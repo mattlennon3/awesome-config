@@ -43,6 +43,7 @@ luacheck / luarocks
 - [x] If a tag has a number in the name, if you do mod + (number), jump to that tag) (Automatically worked)
 - [ ] add/rename tags on the fly
 - [ ] Games tag only appears for steam / lutris/ local game
+- [ ] Tag for streams & sport
 
 ### Rules
 - [ ] Figure out rule callback functions
