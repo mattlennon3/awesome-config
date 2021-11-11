@@ -407,6 +407,8 @@ keys.globalkeys = gears.table.join(
             -- TODO use clients previous fullscreen value rather than just false
             spotlight_client.fullscreen = false
             spotlight_client:move_to_tag(spotlight_source_screen.tags[spotlight_source_tag.index])
+            -- Apply rules (for spotify etc, not sure if this will break other stuff)
+            awful.rules.apply(spotlight_client)
          end
        
          -- if no spotlight tag exists
