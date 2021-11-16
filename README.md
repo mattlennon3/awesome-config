@@ -15,7 +15,7 @@ luacheck / luarocks
 - [x] get taglist_buttons working
 - [x] Keybinds to open windows
 - [x] Add the "dot" indicator above each tag when a client is open on that tag
-- [x] Control + Q closes windows
+- [x] Mod + Q closes windows
 - [x] Show spotify on Music & Comms tag
 - [x] Add keybinds:
   - [x] alt+tab for clients within tag
@@ -81,6 +81,8 @@ luacheck / luarocks
 - [ ] awful.urgent.delete (c) (for discord and todoist who are always urgent on launch)
 - [ ] add way to serialise (print) objects https://github.com/kikito/inspect.lua ?
 - [ ] find a way to print globals while running
+- [ ] implement logger.error (get icon for notification etc)
+- [ ] move spotlight code to it's own file workflows/spotlight
 
 
 vertical stacking layout:

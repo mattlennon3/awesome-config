@@ -28,6 +28,9 @@ function logger.clearlog()
     awful.spawn.with_shell("echo > " .. dir, false)
 end
 
+function logger.error(message)
+-- todo send notification and pass message to logger.error
+end
 
 -- old & unsafe
 -- function logger.log(message)

@@ -56,10 +56,12 @@ local naughty = require("naughty")
 local top_panel = require("components.top-panel")
 local new_top_panel = require("components.new-top-panel")
 
-
 -- Autostart specified apps
 local apps = require("config.apps")
 apps.autostart()
+
+-- Import external workflow functions (globals)
+require("config.external")
 
 -- Screens
 local screens = require("config.screens")

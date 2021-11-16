@@ -401,6 +401,7 @@ keys.globalkeys = gears.table.join(
             spotlight_client.fullscreen = true
             -- focus spotlight
             spotlight_client:raise()
+            spotlight_tag:view_only()
          end
 
          local restoreClient = function()
