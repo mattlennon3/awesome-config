@@ -1,6 +1,6 @@
 #!/bin/sh
 
-CONFIG_DIR="$HOME/git/my-dotfiles/awesome-config"
+CONFIG_DIR="$HOME/git/dots/awesome-config"
 
 CHECKSUM_FILE=/tmp/awesome_checksum
 

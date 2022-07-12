@@ -9,6 +9,6 @@ DISPLAY=:1.0
 
 sleep 2
 
-awesome -c $HOME/git/my-dotfiles/awesome-config/rc.lua 
-#awesome -c ~/git/my-dotfiles/awesome-config/rc.lua --search $HOME/.config/awesome
+awesome -c $HOME/git/dots/awesome-config/rc.lua 
+#awesome -c ~/git/dots/awesome-config/rc.lua --search $HOME/.config/awesome
 
