@@ -64,7 +64,7 @@ local run_on_start_up = {
 local run_on_start_up_delayed = {}
 
 if device == "desktop" then
-    table.insert(run_on_start_up, "discord")
+    -- table.insert(run_on_start_up, "discord")
     -- table.insert(run_on_start_up_delayed, "alacritty --class cava -e cava")
     -- table.insert(run_on_start_up_delayed, "alacritty -e vimtutor")
     table.insert(run_on_start_up_delayed, "spotify")
