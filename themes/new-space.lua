@@ -50,7 +50,7 @@ theme.taglist_bg_occupied = theme.bg_normal
 theme.taglist_bg_urgent = theme.bg_urgent
 theme.taglist_bg_focus = theme.bg_focus
 -- Generate taglist squares:
-local taglist_square_size = dpi(4)
+local taglist_square_size = dpi(3)
 theme.taglist_squares_sel = theme_assets.taglist_squares_sel(
     taglist_square_size, theme.fg_normal
 )

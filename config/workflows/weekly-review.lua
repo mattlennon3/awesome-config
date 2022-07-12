@@ -13,7 +13,8 @@ local logger = require("utils.log")
 local weekly_review = {}
 
 local main_screen = screens.getScreenByOutput(screens.screen_center_primary.output)
-local right_secondary_screen = screens.getScreenByOutput(screens.screen_right_secondary.output)
+-- TODO, this should be get tag name? Rearranging screens breaks this code
+local right_secondary_screen = screens.getScreenByOutput(screens.screen_right_vertical.output)
 
 -- Finds clients if they are not where they were expected to be
 local find_review_clients = function ()

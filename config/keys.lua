@@ -452,7 +452,7 @@ keys.globalkeys = gears.table.join(
    awful.key({}, XF86Binds.macro3,
       function ()
          awful.spawn.easy_async_with_shell(apps.scripts.keyboardToggle, function(state) 
-         local side_screen = screens.getScreenByOutput(screens.screen_right_secondary.output)
+         local side_screen = screens.getScreenByOutput(screens.screen_right_vertical.output)
          for line in state:gmatch("[^\r\n]+") do
             if line == "guest" then
                naughty.notify({

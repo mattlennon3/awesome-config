@@ -20,8 +20,8 @@ screens.global_master_fill_policy = "expand"
 -- Desktop screens
 -- ===================================================================
 
-screens.screen_left_vertical = {
-   output = "DVI-D-0",
+screens.screen_right_vertical = {
+   output = "DP-1",
    screen = nil, -- screen object
    screen_layout = awful.layout.suit.tile.bottom, -- TODO check for pure vertical layout
    screen_master_width_factor = 0.55,
@@ -31,17 +31,22 @@ screens.screen_left_vertical = {
          selected = true,
          master_width_factor = 0.9
       }, {
+         name = "Notes",
+         master_width_factor = 0.5
+      }, {
          name = "Comms",
       }, {
-         name = "Prod",
-      }, {
          name = "Web",
+      }, {
+         name = "Web5",
+      }, {
+         name = "Sound",
       }
    }
 }
 
 screens.screen_center_primary = {
-   output = "DP-1",
+   output = "DVI-I-1",
    screen = nil, -- screen object
    screen_layout = awful.layout.suit.tile,
    screen_master_width_factor = screens.global_master_width_factor,
@@ -61,29 +66,6 @@ screens.screen_center_primary = {
       }
    }
 }
-
-screens.screen_right_secondary = {
-   output = "DVI-I-1",
-   screen = nil, -- screen object
-   screen_layout = awful.layout.suit.tile,
-   screen_master_width_factor = screens.global_master_width_factor,
-   tags = {
-      {
-         name = "Notes",
-         master_width_factor = 0.5,
-         selected = true,
-      }, {
-         name = "Web",
-      }, {
-         name = "Web3",
-      }, {
-         name = "Prod",
-      }, {
-         name = "Sound",
-      }
-   }
-}
-
 
 
 -- ===================================================================

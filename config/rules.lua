@@ -26,9 +26,8 @@ local device = os.getenv("ML_DEVICE")
 -- All clients open on the center screen only. Unless specified otherwise
 
 -- Alias screens
-local screen_left_vertical = screens.screen_left_vertical.output
 local screen_center_primary = screens.screen_center_primary.output
-local screen_right_secondary = screens.screen_right_secondary.output
+local screen_right_vertical = screens.screen_right_vertical.output
 
 
 -- return a table of client rules including provided keys / buttons
@@ -156,7 +155,7 @@ function rules.create(clientkeys, clientbuttons)
             class = {
                "discord"
             }
-         }, properties = {tag = "Comms", screen = screen_left_vertical}
+         }, properties = {tag = "Comms", screen = screen_right_vertical}
        },
        {
          rule_any = {
@@ -165,7 +164,7 @@ function rules.create(clientkeys, clientbuttons)
             },
          }, properties = {
             tag = "Comms",
-            screen = screen_left_vertical,
+            screen = screen_right_vertical,
             callback = function (c)
                logger.log("Setting TS3 Location")
                -- Ideal spot, found using xprop
@@ -184,11 +183,11 @@ function rules.create(clientkeys, clientbuttons)
             }
          }, properties = {
             tag = "Music", 
-            screen = screen_left_vertical,
+            screen = screen_right_vertical,
             callback = function (c)
                logger.log("Spotify on many tags")
                awful.client.setmaster(c)
-               local vert_screen = screens.getScreenByOutput(screen_left_vertical)
+               local vert_screen = screens.getScreenByOutput(screen_right_vertical)
                local comms_tag = awful.tag.find_by_name(vert_screen, "Comms")
                local prod_tag = awful.tag.find_by_name(vert_screen, "Prod")
                c:toggle_tag(comms_tag)
@@ -260,14 +259,6 @@ function rules.create(clientkeys, clientbuttons)
             },
          }, properties = {tag = "Code"}
       },
-      -- VSCode (notes) could not get this working :(
-      -- {
-      --    rule = {
-      --      name = {
-      --          "foam-diary"
-      --       },
-      --    }, properties = {tag = "Notes"}
-      -- },
       -- Todoist
       {
          rule_any = {
@@ -276,7 +267,7 @@ function rules.create(clientkeys, clientbuttons)
             },
          }, properties = {
             tag = "Notes", 
-            screen = screen_right_secondary,
+            screen = screen_right_vertical,
             callback = function (c)
                awful.client.setmaster(c)
             end
@@ -288,7 +279,7 @@ function rules.create(clientkeys, clientbuttons)
             class = {
                "obsidian"
             },
-         }, properties = {tag = "Notes", screen = screen_right_secondary}
+         }, properties = {tag = "Notes", screen = screen_right_vertical}
       },
        -- ===================================================================
        -- Misc
@@ -303,7 +294,7 @@ function rules.create(clientkeys, clientbuttons)
          properties = {
             skip_taskbar = true,
             tag = "Music", 
-            screen = screen_left_vertical
+            screen = screen_right_vertical
          }
          -- callback = function (c)
          --    decorations.hide(c)
@@ -319,7 +310,7 @@ function rules.create(clientkeys, clientbuttons)
             name = {
                "Volume Control"
             }
-         }, properties = {tag = "Sound", screen = screen_right_secondary}
+         }, properties = {tag = "Sound", screen = screen_right_vertical}
       },
       -- Pulseeffects
       {
@@ -330,7 +321,7 @@ function rules.create(clientkeys, clientbuttons)
             name = {
                "PulseEffects"
             }
-         }, properties = {tag = "Sound", screen = screen_right_secondary}
+         }, properties = {tag = "Sound", screen = screen_right_vertical}
       },
 
       -- Firefox

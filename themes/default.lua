@@ -14,7 +14,7 @@ local dpi = xresources.apply_dpi
 local theme = require('themes.common')
 
 -- Font
-theme.font = "JetBrains Mono Medium 12"
+theme.font = "JetBrains Mono Medium 8"
 
 theme.bg_normal     = "#222222"
 theme.bg_open       = "#444444"
@@ -46,7 +46,7 @@ theme.taglist_bg_occupied = theme.bg_normal
 theme.taglist_bg_urgent = theme.bg_urgent
 theme.taglist_bg_focus = theme.bg_focus
 -- Generate taglist squares:
-local taglist_square_size = dpi(4)
+local taglist_square_size = dpi(3)
 theme.taglist_squares_sel = theme_assets.taglist_squares_sel(
     taglist_square_size, theme.fg_normal
 )
@@ -67,7 +67,7 @@ theme.tasklist_fg_normal = theme.fg_open
 
 
 -- Panel Sizing
-theme.wibar_height = dpi(20)
+theme.wibar_height = dpi(13)
 
 -- Notification Sizing
 theme.notification_icon_size = 150
